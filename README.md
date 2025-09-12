@@ -14,6 +14,9 @@ Text for idea 2
 
 </details>
 
+💡 Idea 1 | 🎨 Idea 2 | 🧪 Idea 3
+
+
 
 <table>
   <tr>
