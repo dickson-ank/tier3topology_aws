@@ -1,3 +1,41 @@
+# Project Title
+
+## Main Navigation
+[Home](#home) | [Features](#features) | [Installation](#installation) | [Usage](#usage)
+
+---
+
+## Secondary Navigation: Ideas
+[Idea 1](#idea-1) | [Idea 2](#idea-2) | [Idea 3](#idea-3)
+
+---
+
+## Home
+Welcome to the project!
+
+## Features
+- Feature 1
+- Feature 2
+
+## Installation
+Instructions...
+
+## Usage
+Instructions...
+
+---
+
+## Ideas
+
+### Idea 1
+Description and details...
+
+### Idea 2
+Description and details...
+
+### Idea 3
+Description and details...
+
 <details>
 <summary>Idea 1</summary>
 
