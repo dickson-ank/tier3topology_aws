@@ -33,8 +33,7 @@ Description and details...
 ### Idea 2
 Description and details...
 
-### Idea 3
-Description and details...
+
 
 <details>
 <summary>Idea 1</summary>
