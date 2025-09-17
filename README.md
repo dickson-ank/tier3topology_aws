@@ -1,75 +1,12 @@
-# Project Title
+# React + Vite
 
-## Main Navigation
-[Home](#home) | [Features](#features) | [Installation](#installation) | [Usage](#usage)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Secondary Navigation: Ideas
-[Idea 1](#idea-1) | [Idea 2](#idea-2) | [Idea 3](#idea-3)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
----
+## Expanding the ESLint configuration
 
-## Home
-Welcome to the project!
-
-## Features
-- Feature 1
-- Feature 2
-
-## Installation
-Instructions...
-
-## Usage
-Instructions...
-
----
-
-## Ideas
-
-### Idea 1
-Description and details...
-
-### Idea 2
-Description and details...
-
-
-
-<details>
-<summary>Idea 1</summary>
-
-![Image1](url_to_image1)
-Text for idea 1
-
-</details>
-
-<details>
-<summary>Idea 2</summary>
-
-![Image2](url_to_image2)
-Text for idea 2
-
-</details>
-
-💡 Idea 1 | 🎨 Idea 2 | 🧪 Idea 3
-
-
-
-<table>
-  <tr>
-    <td width="50%">
-      <details>
-        <summary><strong>✨ Idea 1: Minimalist</strong></summary>
-        <img src="https://raw.githubusercontent.com/github/explore/main/topics/clean-code/clean-code.png" width="100%" />
-        <p>Clean layout with neutral colors and fast UX.</p>
-      </details>
-    </td>
-    <td width="50%">
-      <details>
-        <summary><strong>🌈 Idea 2: Colorful</strong></summary>
-        <img src="https://raw.githubusercontent.com/github/explore/main/topics/design/design.png" width="100%" />
-        <p>Bright colors and playful layout for creative apps.</p>
-      </details>
-    </td>
-  </tr>
-</table>
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
