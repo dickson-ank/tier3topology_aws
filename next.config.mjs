@@ -2,7 +2,8 @@
 const nextConfig = {
   output: 'export',
   basePath: '/tier3topology_aws',
-  assetPrefix: '/tier3topology_aws',
+  assetPrefix: '/tier3topology_aws/',
+  trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
