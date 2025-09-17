@@ -1,14 +1,15 @@
 {
-  "name": "my-v0-project",
+  "homepage": "https://dikson-ank.github.io/tier3topology_aws",
+  "name": "tier3topology_aws",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "deploy": "npm run build && npm run export && gh-pages -d out"
-  },
+  "dev": "next dev",
+  "build": "next build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d out",
+  "start": "next start"
+},
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "1.2.2",
