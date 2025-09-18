@@ -7,9 +7,9 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AWS 3-Tier Architecture Tutorial",
+  title: "AWS 3-Tier Architecture",
   description: "A step-by-step guide to building a 3-tier architecture on AWS",
-  generator: "v0.app",
+  generator: "Dickson Ankamah",
 }
 
 export default function RootLayout({

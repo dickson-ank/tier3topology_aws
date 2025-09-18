@@ -197,8 +197,7 @@ export default function TutorialPage() {
           onClick={scrollToContact}
           className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
         >
-          <MessageCircle className="w-4 h-4" />
-          <span className="ml-2 text-xs font-medium hidden sm:inline">Contact</span>
+          <span className="text-xs font-medium hidden sm:inline">Contact Me</span>
         </Button>
       </div>
 
@@ -252,7 +251,7 @@ export default function TutorialPage() {
           <div className="text-center space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-              Step-by-Step Tutorial
+              Dickson Ankamah
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
               Build Scalable 3-Tier Architecture
@@ -345,11 +344,11 @@ export default function TutorialPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 pt-4">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:dicksonank@gmail.com"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-105 p-3 rounded-lg hover:bg-muted/50"
                 >
                   <Mail className="w-5 h-5" />
-                  <span className="text-sm sm:text-base font-medium">your.email@example.com</span>
+                  <span className="text-sm sm:text-base font-medium">dicksonank@gmail.com</span>
                 </a>
                 <a
                   href="https://linkedin.com/in/yourprofile"
@@ -358,7 +357,7 @@ export default function TutorialPage() {
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-105 p-3 rounded-lg hover:bg-muted/50"
                 >
                   <Linkedin className="w-5 h-5" />
-                  <span className="text-sm sm:text-base font-medium">LinkedIn Profile</span>
+                  <span className="text-sm sm:text-base font-medium">LinkedIn</span>
                 </a>
                 <a
                   href="https://wa.me/1234567890"
