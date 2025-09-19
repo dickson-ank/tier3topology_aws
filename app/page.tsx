@@ -249,8 +249,8 @@ export default function TutorialPage() {
       <section className="relative bg-gradient-to-br from-background via-background to-muted/20 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-4 h-4 bg-primary rounded-full mr-2"></span>
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-lg font-medium">
+              <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
               Project by: Dickson Ankamah
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
@@ -350,7 +350,7 @@ export default function TutorialPage() {
                   <span className="text-sm sm:text-base font-medium">dicksonank@gmail.com</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://linkedin.com/in/dickson-ank"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-105 p-3 rounded-lg hover:bg-muted/50"
