@@ -250,8 +250,8 @@ export default function TutorialPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-              Dickson Ankamah
+              <span className="w-4 h-4 bg-primary rounded-full mr-2"></span>
+              Project by: Dickson Ankamah
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
               Build Scalable 3-Tier Architecture
@@ -337,10 +337,9 @@ export default function TutorialPage() {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Get in Touch
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">Need Help or Have Questions?</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">Have Questions?</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-                I'm here to help you succeed with your AWS architecture journey. Reach out for support, clarifications,
-                or collaboration opportunities.
+                Reach out to me if you have any questions regarding the project or other reasons
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 pt-4">
                 <a
@@ -360,7 +359,7 @@ export default function TutorialPage() {
                   <span className="text-sm sm:text-base font-medium">LinkedIn</span>
                 </a>
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/233547407384"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-105 p-3 rounded-lg hover:bg-muted/50"
