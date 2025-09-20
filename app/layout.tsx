@@ -7,7 +7,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AWS 3-Tier Architecture",
+  title: "AWS 3-Tier Architecture Project",
   description: "A step-by-step guide to building a 3-tier architecture on AWS",
   generator: "Dickson Ankamah",
 }

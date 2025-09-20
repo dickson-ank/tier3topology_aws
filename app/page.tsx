@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, Linkedin, Phone, Menu, X, Sun, Moon, MessageCircle } from "lucide-react"
+import Image from "next/image"
 
 const tutorialSteps = [
   {
@@ -14,6 +15,7 @@ const tutorialSteps = [
       
       This tutorial will guide you through building a scalable 3-tier architecture on AWS using modern cloud services.
     `,
+    image: "/tier3.png",
   },
   {
     id: "presentation-tier",
@@ -27,6 +29,7 @@ const tutorialSteps = [
       
       This tier handles user interactions and presents information to the user.
     `,
+    image: "/Newtwork Topology - Project 4.png",
   },
   {
     id: "application-tier",
@@ -40,6 +43,7 @@ const tutorialSteps = [
       
       This tier processes requests from the presentation tier and communicates with the data tier.
     `,
+    image: "/erhenfest.jpg",
   },
   {
     id: "data-tier",
@@ -53,6 +57,7 @@ const tutorialSteps = [
       
       This tier ensures data persistence, backup, and recovery capabilities.
     `,
+    image: "/shirt_illus.jgp",
   },
   {
     id: "security",
@@ -67,6 +72,7 @@ const tutorialSteps = [
       
       These measures ensure your architecture is secure and compliant.
     `,
+    image: "/Architecture Diagram.png",
   },
   {
     id: "monitoring",
@@ -80,6 +86,7 @@ const tutorialSteps = [
       
       These tools provide visibility into your application's performance and help with troubleshooting.
     `,
+    image: "/shirt.jpg",
   },
   {
     id: "deployment",
@@ -93,6 +100,7 @@ const tutorialSteps = [
       
       This ensures your architecture is production-ready and scalable.
     `,
+    image: "/tier3topology.png",
   },
 ]
 
@@ -249,7 +257,7 @@ export default function TutorialPage() {
       <section className="relative bg-gradient-to-br from-background via-background to-muted/20 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-lg font-medium">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
               Project by: Dickson Ankamah
             </div>
@@ -268,6 +276,7 @@ export default function TutorialPage() {
                 className="px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
               >
                 Start Tutorial
+
               </Button>
               <Button
                 variant="outline"
@@ -282,7 +291,7 @@ export default function TutorialPage() {
         </div>
       </section>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {tutorialSteps.map((step, index) => (
           <section key={step.id} id={step.id} className="mb-12 sm:mb-16 scroll-mt-24">
             <Card className="p-6 sm:p-8 bg-card border-border">
@@ -317,11 +326,10 @@ export default function TutorialPage() {
                   {/* Placeholder for screenshot */}
                   <div className="mt-6 p-6 sm:p-8 bg-muted rounded-lg border-2 border-dashed border-border">
                     <div className="text-center text-muted-foreground">
+                      <Image src={step.image} alt={step.id} width={700} height={600} />
                       <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 bg-background rounded-lg flex items-center justify-center text-2xl">
-                        📸
+                        ssss
                       </div>
-                      <p className="text-sm">Screenshot placeholder for {step.title}</p>
-                      <p className="text-xs mt-1">Add your AWS console screenshots here</p>
                     </div>
                   </div>
                 </div>
