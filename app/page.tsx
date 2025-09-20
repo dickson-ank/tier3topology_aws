@@ -56,7 +56,7 @@ const tutorialSteps = [
   },
   {
     id: "security",
-    title: "Step 4: Implementing Security Best Practices",
+    title: "Step 4: Implementing Security",
     content: `
       Security is crucial in a 3-tier architecture. We'll configure:
       
