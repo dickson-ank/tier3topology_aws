@@ -257,35 +257,18 @@ export default function TutorialPage() {
       <section className="relative bg-gradient-to-br from-background via-background to-muted/20 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
-              Project by: Dickson Ankamah
-            </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
-              Build Scalable 3-Tier Architecture
-              <span className="block text-primary mt-2">on Amazon Web Services</span>
+              3-Tier Architecture
+              <span className="block text-primary mt-2 !text-3xl">on Amazon Web Services(AWS)</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
               Learn to design and implement a robust, scalable 3-tier architecture using AWS cloud services. From
               presentation layer to data storage, master every component with hands-on examples.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button
-                size="lg"
-                onClick={() => scrollToSection("introduction")}
-                className="px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-              >
-                Start Tutorial
-
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={scrollToContact}
-                className="px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 bg-transparent"
-              >
-                Get Support
-              </Button>
+            <Image className="mx-auto" src="/tier3topology.png" alt="Topology diagram" width={700} height={700} /> 
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+              <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
+              Project by: Dickson Ankamah
             </div>
           </div>
         </div>
