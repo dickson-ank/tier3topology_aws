@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Mail, Linkedin, Phone, Menu, X, Sun, Moon, MessageCircle } from "lucide-react"
 import Image from "next/image"
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const tutorialSteps = [
   {
     id: "introduction",
@@ -265,7 +267,7 @@ export default function TutorialPage() {
               Learn to design and implement a robust, scalable 3-tier architecture using AWS cloud services. From
               presentation layer to data storage, master every component with hands-on examples.
             </p>
-            <Image className="mx-auto" src="/tier3topology.png" alt="Topology diagram" width={700} height={700} /> 
+            <Image className="mx-auto" src={`${basePath}/tier3topology.png`} alt="Topology diagram" width={700} height={700} /> 
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
               Project by: Dickson Ankamah
