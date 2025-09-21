@@ -27,7 +27,10 @@ yarn-error.log*
 next-env.d.ts
 
 .github/workflows/setup-node
+
 .github/workflows/publish.yml
+
 public/*
 !public/tier3topology.png
+
 deleted_code_snippets.txt
