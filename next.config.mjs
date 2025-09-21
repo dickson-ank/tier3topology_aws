@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/tier3topology_aws',
+  basePath: '/tier3topology_aws/',
   assetPrefix: '/tier3topology_aws/',
   images: {
-    loader: 'custom',
-    loaderFile: './my_loader.ts',
+    unoptimized: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
