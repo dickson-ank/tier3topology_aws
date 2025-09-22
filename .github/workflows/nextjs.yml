@@ -80,7 +80,9 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build && node scripts/fix-path.js
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: fix-paths
+        run: node fix-paths.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
