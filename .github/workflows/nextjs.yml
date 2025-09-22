@@ -81,6 +81,33 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
+
+            # 🔧 Debug - Check what files exist in GitHub runner
+      - name: Debug - List all files
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== Files in root ==="
+          ls -la
+          echo "=== Check for scripts folder ==="
+          ls -la scripts/ || echo "❌ scripts folder does not exist"
+          echo "=== Check for script file ==="
+          ls -la scripts/fix-paths.js || echo "❌ scripts/fix-paths.js does not exist"
+          echo "=== All .js files in project ==="
+          find . -name "*.js" -type f | head -10
+
+      # 🔧 Fix image paths (only if file exists)
+      - name: Fix image paths for GitHub Pages
+        run: |
+          if [ -f "scripts/fix-paths.js" ]; then
+            echo "✅ Found scripts/fix-paths.js - running script"
+            node scripts/fix-paths.js
+          else
+            echo "❌ scripts/fix-paths.js not found, skipping path fixes"
+            echo "You may need to commit and push this file to your repository"
+          fi
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
