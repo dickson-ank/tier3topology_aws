@@ -3,8 +3,8 @@
 const nextConfig = {
   output: 'export',
   basePath: '/tier3topology_aws',
-  assetPrefix: '/tier3topology_aws/.',
-  reactStrictMode: true;
+  assetPrefix: '/tier3topology_aws/',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
