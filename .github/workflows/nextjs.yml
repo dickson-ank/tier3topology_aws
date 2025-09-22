@@ -86,6 +86,7 @@ jobs:
         with:
           path: ./out
 
+
   # Deployment job
   deploy:
     environment:
@@ -97,5 +98,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: fix-paths
-        run: node fix-paths.js
+
