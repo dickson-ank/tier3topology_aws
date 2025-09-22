@@ -90,6 +90,8 @@ jobs:
           pwd
           echo "=== Files in root ==="
           ls -la
+          echo "== Files in out=="
+          cd out
           echo "=== Check for scripts folder ==="
           ls -la scripts/ || echo "❌ scripts folder does not exist"
           echo "=== Check for script file ==="
