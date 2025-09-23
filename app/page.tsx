@@ -250,9 +250,10 @@ export default function TutorialPage() {
       <header className="sticky top-1 z-30 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 pl-20 sm:pl-24 pr-32 sm:pr-40">
           <div className="flex items-center justify-center">
-            <ExpandableImage
+            <Image
               src="/profilepic.jpg" 
               alt="Profile" 
+              onClick={scrollToContact}
               width={40}
               height={40}
               className="w-10 h-10 mr-4 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-border"
@@ -336,7 +337,7 @@ export default function TutorialPage() {
           <Card className="p-8 sm:p-12 bg-gradient-to-br from-card via-card to-muted/20 border-border shadow-xl">
             <div className="text-center space-y-6">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                <MessageCircle className="w-4 h-4 mr-2" />
+                <Mail className="w-4 h-4 mr-2" />
                 Get in Touch
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">Have Questions?</h2>
@@ -344,6 +345,13 @@ export default function TutorialPage() {
                 Reach out to me if you have any questions regarding the project or other reasons
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 pt-4">
+                 <Image
+                  src="/profilepic.jpg" 
+                  alt="Profile" 
+                  width={70}
+                  height={140}
+                  className="w-10 h-10 mr-4 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-border"
+                />
                 <a
                   href="mailto:dicksonank@gmail.com"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-105 p-3 rounded-lg hover:bg-muted/50"
