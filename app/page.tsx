@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, Linkedin, Phone, Menu, X, Sun, Moon, MessageCircle } from "lucide-react"
 import Image from "next/image"
+import ExpandableImage from "@/components/ui/expandableImage"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -249,8 +250,7 @@ export default function TutorialPage() {
       <header className="sticky top-1 z-30 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 pl-20 sm:pl-24 pr-32 sm:pr-40">
           <div className="flex items-center justify-center">
-
-            <Image 
+            <ExpandableImage
               src="/profilepic.jpg" 
               alt="Profile" 
               width={40}
@@ -258,7 +258,7 @@ export default function TutorialPage() {
               className="w-10 h-10 mr-4 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-border"
             />
             <div className="text-left max-w-md">
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Project by:</p>
+              <p className="text-xs sm:text-xsm text-muted-foreground mt-1">Project by:</p>
               <h1 className="text-base sm:text-lg md:text-xl font-bold text-foreground text-balance">Dickson Ankamah</h1>
             </div>
           </div>
@@ -276,10 +276,10 @@ export default function TutorialPage() {
               Learn to design and implement a robust, scalable 3-tier architecture using AWS cloud services. From
               presentation layer to data storage, master every component with hands-on examples.
             </p>
-            <Image className="mx-auto" src={`${basePath}/tier3topology.png`} alt="Topology diagram" width={700} height={700} /> 
+            <ExpandableImage className="mx-auto" src="/tier3topology.png" alt="Topology diagram" width={700} height={700} /> 
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <span className="w-3 h-3 bg-primary rounded-full mr-2"></span>
-              Project by: Dickson Ankamah
+              Topology Diagram
             </div>
           </div>
         </div>
