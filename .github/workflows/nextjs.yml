@@ -81,6 +81,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      #Set image paths as relative (to begin with ./ instead of /)
       - name: Fix image paths
         run: |
           node ./out/fix-paths.js

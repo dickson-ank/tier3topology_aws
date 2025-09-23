@@ -31,22 +31,7 @@ function fixImagePaths() {
   htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
     const originalContent = content;
-    
-    // ONLY fix href attributes that point to image files WITHOUT the base path
-    // This targets: href="/favicon-32x32.png" but NOT href="/tier3topology_aws/..."
-    // content = content.replace(
-    //   /href="\/([^"\/][^"]*\.(png|jpg|jpeg|gif|svg|ico|webmanifest))"/gi,
-    //   'href="./$1"'
-    // );
-    
-    // // Also fix any src attributes for images that don't have the base path
-    // content = content.replace(
-    //   /src="\/([^"\/][^"]*\.(png|jpg|jpeg|gif|svg|ico))"/gi,
-    //   'src="./$1"'
-    // );
-    // Fix href attributes (for <link> tags, CSS, JS, etc.)
-
-
+    // Fix href attributes (for <img>, <script>, etc.)
     content = content.replace(
       /href="\/([^"\/]+\.[^"\/]+)"/gi,
       'href="./$1"'
@@ -72,8 +57,8 @@ function fixImagePaths() {
   console.log('  href="/favicon-32x32.png" → href="./favicon-32x32.png"');
   console.log('  href="/site.webmanifest" → href="./site.webmanifest"');
   console.log('\n✅ This script preserves paths like:');
-  console.log('  href="/tier3topology_aws/./_next/static/css/..." (unchanged)');
-  console.log('  src="/tier3topology_aws/./_next/static/chunks/..." (unchanged)');
+  console.log('  href="/tier3topology_aws/_next/static/css/..." (unchanged)');
+  console.log('  src="/tier3topology_aws/_next/static/chunks/..." (unchanged)');
 }
 
 fixImagePaths();

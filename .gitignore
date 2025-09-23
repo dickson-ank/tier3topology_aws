@@ -1,6 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
 /node_modules
 
 # next.js
@@ -32,6 +29,4 @@ next-env.d.ts
 
 deleted_code_snippets.txt
 
-scripts/current_state.js
-scripts/should_change.js
 /scripts

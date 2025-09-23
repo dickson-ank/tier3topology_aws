@@ -207,7 +207,7 @@ export default function TutorialPage() {
           onClick={scrollToContact}
           className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
         >
-          <span className="text-xs font-medium hidden sm:inline">Contact Me</span>
+          <span className="text-xs font-medium">Contact Me</span>
         </Button>
       </div>
 
@@ -247,9 +247,9 @@ export default function TutorialPage() {
 
       <header className="sticky top-1 z-30 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 pl-20 sm:pl-24 pr-32 sm:pr-40">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-lg sm:text-xl font-bold text-foreground text-balance">AWS 3-Tier Architecture</h1>
+          <div className="flex items-center justify-center">
+            <div className="text-center max-w-md">
+              <h1 className="text-base sm:text-lg md:text-xl font-bold text-foreground text-balance">AWS 3-Tier Architecture</h1>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1">Complete Tutorial Guide</p>
             </div>
           </div>
