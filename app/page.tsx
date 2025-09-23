@@ -199,7 +199,7 @@ export default function TutorialPage() {
           className="bg-background/95 backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
         >
           {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          <span className="ml-2 text-xs font-medium hidden sm:inline">{isDarkMode ? "Light" : "Dark"}</span>
+          <span className="ml-1 text-xs font-medium hidden sm:inline">{isDarkMode ? "Light" : "Dark"}</span>
         </Button>
         <Button
           variant="default"
@@ -207,7 +207,8 @@ export default function TutorialPage() {
           onClick={scrollToContact}
           className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
         >
-          <span className="text-xs font-medium">Contact Me</span>
+          <Mail className="h-4 w-4 sm:mr-2" />
+          <span className="text-xs font-medium hidden sm:inline">Contact Me</span>
         </Button>
       </div>
 
@@ -248,9 +249,17 @@ export default function TutorialPage() {
       <header className="sticky top-1 z-30 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 pl-20 sm:pl-24 pr-32 sm:pr-40">
           <div className="flex items-center justify-center">
-            <div className="text-center max-w-md">
-              <h1 className="text-base sm:text-lg md:text-xl font-bold text-foreground text-balance">AWS 3-Tier Architecture</h1>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Complete Tutorial Guide</p>
+
+            <Image 
+              src="/profilepic.jpg" 
+              alt="Profile" 
+              width={40}
+              height={40}
+              className="w-10 h-10 mr-4 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-border"
+            />
+            <div className="text-left max-w-md">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Project by:</p>
+              <h1 className="text-base sm:text-lg md:text-xl font-bold text-foreground text-balance">Dickson Ankamah</h1>
             </div>
           </div>
         </div>
