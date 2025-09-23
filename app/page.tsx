@@ -321,7 +321,7 @@ export default function TutorialPage() {
                   {/* Placeholder for screenshot */}
                   <div className="mt-6 p-6 sm:p-8 bg-muted rounded-lg border-2 border-dashed border-border">
                     <div className="text-center text-muted-foreground">
-                      <Image src={step.image} alt={step.id} width={700} height={600} />
+                      <ExpandableImage src={step.image} alt={step.id} width={700} height={600} />
                       <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 bg-background rounded-lg flex items-center justify-center text-2xl">
                         ssss
                       </div>
@@ -338,7 +338,7 @@ export default function TutorialPage() {
             <div className="text-center space-y-6">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
                 <Mail className="w-4 h-4 mr-2" />
-                Get in Touch
+                Get in Touch with Dickson
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">Have Questions?</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
@@ -348,9 +348,9 @@ export default function TutorialPage() {
                  <Image
                   src="/profilepic.jpg" 
                   alt="Profile" 
-                  width={70}
-                  height={140}
-                  className="w-10 h-10 mr-4 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-border"
+                  width={130}
+                  height={130}
+                  className="rounded-full object-cover border-2 border-border"
                 />
                 <a
                   href="mailto:dicksonank@gmail.com"
