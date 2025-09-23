@@ -76,7 +76,7 @@ const ExpandableImage: React.FC<ExpandableImageProps> = ({
 
           {/* Expanded Image Container */}
           <div 
-            className="relative w-full h-full flex items-center justify-center"
+            className="w-full h-full flex items-center justify-center"
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             <Image

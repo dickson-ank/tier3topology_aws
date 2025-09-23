@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Linkedin, Phone, Menu, X, Sun, Moon, MessageCircle } from "lucide-react"
+import { Mail, Linkedin, Phone, Menu, X, Sun, Moon} from "lucide-react"
 import Image from "next/image"
 import ExpandableImage from "@/components/ui/expandableImage"
 
@@ -270,8 +270,8 @@ export default function TutorialPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
-              3-Tier Architecture
-              <span className="block text-primary mt-2 !text-3xl">on Amazon Web Services(AWS)</span>
+              Build A 3-Tier Web Application Architecture With
+              <span className="inline text-primary mt-2 ml-2">AWS</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
               Learn to design and implement a robust, scalable 3-tier architecture using AWS cloud services. From
@@ -317,16 +317,8 @@ export default function TutorialPage() {
                       )
                     })}
                   </div>
-
-                  {/* Placeholder for screenshot */}
-                  <div className="mt-6 p-6 sm:p-8 bg-muted rounded-lg border-2 border-dashed border-border">
-                    <div className="text-center text-muted-foreground">
-                      <ExpandableImage src={step.image} alt={step.id} width={700} height={600} />
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 bg-background rounded-lg flex items-center justify-center text-2xl">
-                        ssss
-                      </div>
-                    </div>
-                  </div>
+                      <ExpandableImage className="text-center text-muted-foreground" src={step.image} alt={step.id} width={700} height={600} 
+                        />
                 </div>
               </div>
             </Card>
