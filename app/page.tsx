@@ -260,7 +260,7 @@ export default function TutorialPage() {
             />
             <div className="text-left max-w-md">
               <p className="text-xs sm:text-xsm text-muted-foreground mt-1">Project by:</p>
-              <h1 className="text-base sm:text-lg md:text-xl font-bold text-foreground text-balance">Dickson Ankamah</h1>
+              <h1 className="text-base sm:text-sm md:text-sm font-bold text-foreground text-balance">Dickson Ankamah</h1>
             </div>
           </div>
         </div>
@@ -269,7 +269,7 @@ export default function TutorialPage() {
       <section className="relative bg-gradient-to-br from-background via-background to-muted/20 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center space-y-6">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
+            <h1 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-foreground text-balance leading-tight">
               Build A 3-Tier Web Application Architecture With
               <span className="inline text-primary mt-2 ml-2">AWS</span>
             </h1>
