@@ -9,9 +9,10 @@ function findHtmlFiles(dir, files = []) {
     
     if (entry.isDirectory()) {
       findHtmlFiles(fullPath, files);
-    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+    } else if (entry.isFile() && (entry.name.endsWith('.html') || entry.name.endsWith('.js') ) ){
       files.push(fullPath);
     }
+
   }
   
   return files;
