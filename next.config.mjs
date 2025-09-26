@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/serverless_aws",
-  assetPrefix: "/serverless_aws/",
+  basePath: "/tier3topology_aws",
+  assetPrefix: "/tier3topology_aws/",
   eslint: {
     ignoreDuringBuilds: true,
   },

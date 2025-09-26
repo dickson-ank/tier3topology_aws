@@ -1,5 +1,5 @@
 {
-  "name": "serverless_aws",
+  "name": "tier3topology_aws",
   "version": "0.1.0",
   "private": true,
   "scripts": {
