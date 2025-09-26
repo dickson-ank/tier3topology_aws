@@ -24,7 +24,7 @@ export function ContactSection() {
         <div className="flex flex-col items-center space-y-8">
           {/* Profile Picture */}
           <div className="relative">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/60 shadow-lg">
               <img
                 src="./profilepic.jpg"
                 alt="Dickson Ankamah"
