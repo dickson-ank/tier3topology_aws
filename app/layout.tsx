@@ -1,25 +1,23 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
+import { Montserrat } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: "AWS 3-Tier Architecture Project",
-  description: "A step-by-step guide to building a 3-tier architecture on AWS",
-  generator: "Dickson Ankamah",
-  icons: {
-    icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
-  },
-  manifest: "/site.webmanifest",
+  title: "AWS Serverless Project",
+  description: "Provisioning and Managing Serverless Architectures on AWS",
+    generator: 'Dickson Ankamah',
+    applicationName: 'Project Documentation Template',
+    keywords: ['Documentation', 'Template', 'Next.js', 'React', 'Tailwind CSS'],
+    authors: [{ name: 'Dickson Ankamah'}],
+    creator: 'Dickson Ankamah',
 }
 
 export default function RootLayout({
@@ -28,10 +26,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans ${montserrat.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,7 +1,3 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
 name: Deploy Next.js site to Pages
 
 on:
@@ -71,8 +67,6 @@ jobs:
       #     # If source files changed but packages didn't, rebuild from a prior cache.
       #     restore-keys: |
       #       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-
-      # 🚨 Ensure old build files are deleted
       - name: Clean old build artifacts
         run: |
           rm -rf .next
@@ -81,16 +75,10 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      #Set image paths as relative (to begin with ./ instead of /)
-      - name: Fix image paths
-        run: |
-          node ./out/fix-paths.js
-          echo Edited image paths in html successfully!
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-
 
   # Deployment job
   deploy:
@@ -103,4 +91,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
