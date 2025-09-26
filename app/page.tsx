@@ -13,6 +13,7 @@ const sections = [
   { id: "step-3", title: "Step 3: Implementation" },
   { id: "step-4", title: "Step 4: Deployment" },
   { id: "step-5", title: "Step 5: Testing" },
+  { id: "thank-you", title: "Thank You" },
 ]
 
 export default function Home() {
@@ -26,11 +27,10 @@ export default function Home() {
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-              AWS Serverless Architecture Guide
+              Build A 3-Tier Web Application on AWS
             </h1>
             <p className="text-sm sm:text-lg text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
-              A comprehensive step-by-step guide to provisioning and deploying a serverless architecture on AWS. Follow
-              along with detailed instructions and screenshots.
+              Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
             </p>
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -47,9 +47,18 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
           <ProjectSection id="step-1" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Before we begin provisioning our serverless architecture, we need to set up our development environment
-              and ensure we have all the necessary prerequisites in place.
+              A 3-tier architecture is a well-established software application architecture orgainizes application into 
+              three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
+              This guide will walk you through setting up a 3-tier web application on AWS.
             </p>
+              <div className="bg-card border border-border rounded-lg p-1 mb-6">
+                <img
+                  src="./tier3topology.png"
+                  alt="AWS Console Setup"
+                  className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
+                  onClick={() => setSelectedImage("./tier3topology.png")}
+                />
+            </div>
 
             <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
               <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites Checklist</h3>
@@ -64,12 +73,10 @@ export default function Home() {
 
             <div className="bg-card border border-border rounded-lg p-1 mb-6">
               <img
-                src={"./net-topology.png" }
+                src={"./net-topoogy.png" }
                 alt={"AWS Console Setup"}
                 className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
-                // width={977}
-                // height={414}
-                onClick={() => setSelectedImage("./net-topology.png")}
+                onClick={() => setSelectedImage("./net-toplogy.png")}
               />
             </div>
 
@@ -205,6 +212,64 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Before and after, placing images side by side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="bg-card border border-border rounded-lg p-1">
+                  <img
+                    src="./usage-xample-before.jpg"
+                    alt="Before Deployment"
+                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
+                    onClick={() => setSelectedImage("./usage-exmple-before.jpg")}
+                  />
+                </div>
+                <div className="bg-card border border-border rounded-lg p-1">
+                  <img
+                    src="./usage-exampe-after.jpg"
+                    alt="After Deployment"
+                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
+                    onClick={() => setSelectedImage("./usage-exampe-after.jpg")}
+                  />
+                </div>
+              </div>
+
+              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
+                  Use these commands to test your deployed serverless architecture and verify all components are working
+                  correctly.
+                </p>
+                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                  <div className="text-muted-foreground mb-1"># Test API endpoint</div>
+                  <div>curl -X GET https://your-api-id.execute-api.region.amazonaws.com/prod/hello</div>
+                </div>
+              </div>
+            </div>
+          </ProjectSection>
+
+          <ProjectSection id="thank-you" title="Thank You" onImageClick={setSelectedImage}>
+            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
+             Thank you for following this guide on building a 3-tier web application on AWS. I hope you found it informative and helpful.
+             If you have any questions or need further assistance, feel free to reach out!
+            </p>
+
+            <div className="space-y-6">
+              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Deployment Commands</h3>
+                <div className="space-y-4">
+                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                    <div className="text-muted-foreground mb-1"># Thanks</div>
+                    <div>
+                      aws lambda update-function-code --function-name myFunction --zip-file fileb://function.zip
+                    </div>
+                  </div>
+                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                    <div className="text-muted-foreground mb-1"># Deploy API Gateway</div>
+                    <div>aws apigateway create-deployment --rest-api-id abc123 --stage-name prod</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Before and after, placing images side by side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-card border border-border rounded-lg p-1">
                   <img
