@@ -58,6 +58,9 @@ export default function Home() {
                   className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
                   onClick={() => setSelectedImage("./tier3topology.png")}
                 />
+            <div className="text-center p-1 rounded text-xs sm:text-sm text-muted-foreground mt-1">
+              Topology Diagram
+            </div>
             </div>
 
             <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
