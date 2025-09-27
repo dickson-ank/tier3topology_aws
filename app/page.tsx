@@ -6,7 +6,6 @@ import { ContactSection } from "@/components/contact-section"
 import { ImageModal } from "@/components/image-modal"
 import { useState } from "react"
 
-
 const sections = [
   { id: "step-1", title: "Step 1: Setup" },
   { id: "step-2", title: "Step 2: Configuration" },
@@ -47,7 +46,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
           <ProjectSection id="step-1" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              A 3-tier architecture is a well-established software application architecture orgainizes application into 
+              A 3-tier architecture is a well-established software application architecture that orgainizes application into 
               three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
               This guide will walk you through setting up a 3-tier web application on AWS.
             </p>
