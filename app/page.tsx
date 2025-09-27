@@ -28,9 +28,15 @@ export default function Home() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
               Build A 3-Tier Web Application on AWS
             </h1>
-            <p className="text-sm sm:text-lg text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
+            <p className="text-sm sm:text-lg text-muted-foreground mb-4 text-pretty max-w-2xl mx-auto">
               Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
             </p>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
+              I used a lab environment for this project which normally shuts terminates all
+              resources when the lab timer lapses. For that reason I kept developing an IaaC code with cloudformation
+              to stack the into one piece that I can quickly run to launch so I can easily continue from where I left off when the lab restarts
+            </p>
+            
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => window.open("https://github.com/yourusername/aws-serverless-guide", "_blank")}
