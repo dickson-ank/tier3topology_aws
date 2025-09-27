@@ -28,7 +28,7 @@ export default function Home() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
               Build A 3-Tier Web Application on AWS
             </h1>
-            <p className="text-sm sm:text-lg text-muted-foreground mb-4 text-pretty max-w-2xl mx-auto">
+            <p className="text-sm sm:text-lg text-chart-3 mb-4 text-pretty max-w-2xl mx-auto">
               Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
             </p>
             <p className="text-xs sm:text-sm text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
