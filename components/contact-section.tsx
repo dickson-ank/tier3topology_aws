@@ -16,7 +16,7 @@ export function ContactSection() {
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-foreground mb-4 text-balance">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary rounded-full mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
+          <p className="text-lg text-muted-hero text-pretty max-w-2xl mx-auto">
             Have questions about this project or want to collaborate? I'd love to hear from you!
           </p>
         </div>
@@ -36,7 +36,7 @@ export function ContactSection() {
           {/* Name and Title */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-foreground mb-2">Dickson Ankamah</h3>
-            <p className="text-muted-foreground">Cloud Engineer</p>
+            <p className="text-muted-hero">Cloud Engineer</p>
           </div>
 
           {/* Contact Methods */}
@@ -50,7 +50,7 @@ export function ContactSection() {
               <Mail className="h-5 w-5 text-primary flex-shrink-0" />
               <div className="text-left min-w-4">
                 <div className="font-medium text-foreground text-sm sm:text-base">Email</div>
-                <div className="text-xs sm:text-xs text-muted-foreground truncate">dicksonank@gmail.com</div>
+                <div className="text-xs sm:text-xs text-muted-hero truncate">dicksonank@gmail.com</div>
               </div>
             </Button>
 
@@ -63,7 +63,7 @@ export function ContactSection() {
               <Linkedin className="h-5 w-5 text-primary flex-shrink-0" />
               <div className="text-left">
                 <div className="font-medium text-foreground text-sm sm:text-base">LinkedIn</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Connect with me</div>
+                <div className="text-xs sm:text-sm text-muted-hero">Connect with me</div>
               </div>
             </Button>
 
@@ -76,14 +76,14 @@ export function ContactSection() {
               <WhatsAppIcon className="h-5 w-5 text-primary flex-shrink-0" />
               <div className="text-left">
                 <div className="font-medium text-foreground text-sm sm:text-base">WhatsApp</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Message me</div>
+                <div className="text-xs sm:text-sm text-muted-hero">Message me</div>
               </div>
             </Button>
           </div>
 
           {/* Additional Info */}
           <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-4 sm:p-6 max-w-2xl w-full">
-            <p className="text-sm text-muted-foreground text-center text-pretty">
+            <p className="text-sm text-muted-hero text-center text-pretty">
               I'm always open to discussing new opportunities, interesting projects, or just having a chat about
               technology. Feel free to reach out through any of the channels above!
             </p>
