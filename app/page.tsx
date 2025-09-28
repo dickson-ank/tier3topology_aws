@@ -24,8 +24,8 @@ export default function Home() {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-foreground mb-6 text-balance">
               Build A 3-Tier Web Application on AWS
             </h1>
             <p className="text-sm sm:text-lg text-primary mb-10 text-pretty max-w-2xl mx-auto">
@@ -51,7 +51,7 @@ export default function Home() {
         </section>
 
         {/* Project Sections */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
           <ProjectSection id="step-1" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
               A 3-tier architecture is a well-established software application architecture that orgainizes application into 
@@ -83,10 +83,10 @@ export default function Home() {
 
             <div className="bg-card border border-border rounded-lg p-1 mb-6">
               <img
-                src={"./net-topoogy.png" }
+                src={"./placeholder.svg"}
                 alt={"AWS Console Setup"}
                 className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
-                onClick={() => setSelectedImage("./net-toplogy.png")}
+                onClick={() => setSelectedImage("./placeholder.svg")}
               />
             </div>
 
@@ -120,10 +120,10 @@ export default function Home() {
 
               <div className="bg-card border border-border rounded-lg p-1">
                 <img
-                  src="./feature-one-interfac.jpg"
+                  src="./placeholder.svg"
                   alt="Lambda Function Creation"
                   className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage("./feature-one-interfac.jpg")}
+                  onClick={() => setSelectedImage("./placeholder.svg")}
                 />
               </div>
             </div>
@@ -152,10 +152,10 @@ export default function Home() {
 
             <div className="bg-card border border-border rounded-lg p-1">
               <img
-                src="./feature-two-dashboad.jpg"
+                src="./placeholder.svg"
                 alt="API Gateway Configuration"
                 className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage("./feature-two-dashoard.jpg")}
+                onClick={() => setSelectedImage("./placeholder.svg")}
               />
             </div>
           </ProjectSection>
@@ -181,18 +181,18 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-card border border-border rounded-lg p-1">
                   <img
-                    src="./feature-three-analtics.jpg"
+                    src="./placeholder.svg"
                     alt="DynamoDB Setup"
                     className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./feature-tree-analytics.jpg")}
+                    onClick={() => setSelectedImage("./placeholder.svg")}
                   />
                 </div>
                 <div className="bg-card border border-border rounded-lg p-1">
                   <img
-                    src="./terminal-installation-rocess.jpg"
+                    src="./placeholder.svg"
                     alt="S3 Configuration"
                     className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./terminal-insallation-process.jpg")}
+                    onClick={() => setSelectedImage("./placeholder.svg")}
                   />
                 </div>
               </div>
@@ -226,18 +226,18 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-card border border-border rounded-lg p-1">
                   <img
-                    src="./usage-xample-before.jpg"
+                    src="./placeholder.svg"
                     alt="Before Deployment"
                     className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./usage-exmple-before.jpg")}
+                    onClick={() => setSelectedImage("./placeholder.svg")}
                   />
                 </div>
                 <div className="bg-card border border-border rounded-lg p-1">
                   <img
-                    src="./usage-exampe-after.jpg"
+                    src="./placeholder.svg"
                     alt="After Deployment"
                     className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./usage-exampe-after.jpg")}
+                    onClick={() => setSelectedImage("./placeholder.svg")}
                   />
                 </div>
               </div>
@@ -256,61 +256,11 @@ export default function Home() {
             </div>
           </ProjectSection>
 
-          <ProjectSection id="thank-you" title="Thank You" onImageClick={setSelectedImage}>
+          <ProjectSection id="thank-you" title="Thank You">
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
              Thank you for following this guide on building a 3-tier web application on AWS. I hope you found it informative and helpful.
              If you have any questions or need further assistance, feel free to reach out!
             </p>
-
-            <div className="space-y-6">
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Deployment Commands</h3>
-                <div className="space-y-4">
-                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Thanks</div>
-                    <div>
-                      aws lambda update-function-code --function-name myFunction --zip-file fileb://function.zip
-                    </div>
-                  </div>
-                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Deploy API Gateway</div>
-                    <div>aws apigateway create-deployment --rest-api-id abc123 --stage-name prod</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Before and after, placing images side by side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./usage-xample-before.jpg"
-                    alt="Before Deployment"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./usage-exmple-before.jpg")}
-                  />
-                </div>
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./usage-exampe-after.jpg"
-                    alt="After Deployment"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./usage-exampe-after.jpg")}
-                  />
-                </div>
-              </div>
-
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
-                  Use these commands to test your deployed serverless architecture and verify all components are working
-                  correctly.
-                </p>
-                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                  <div className="text-muted-foreground mb-1"># Test API endpoint</div>
-                  <div>curl -X GET https://your-api-id.execute-api.region.amazonaws.com/prod/hello</div>
-                </div>
-              </div>
-            </div>
           </ProjectSection>
         </div>
 
@@ -318,7 +268,7 @@ export default function Home() {
       </main>
 
       <ImageModal
-        src={selectedImage || "/placeholder.svg"}
+        src={selectedImage || "./placeholder.svg"}
         alt="Expanded view"
         isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
