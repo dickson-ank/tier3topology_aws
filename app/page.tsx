@@ -24,22 +24,24 @@ export default function Home() {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
               Build A 3-Tier Web Application on AWS
             </h1>
-            <p className="text-sm sm:text-lg text-chart-3 mb-10 text-pretty max-w-2xl mx-auto">
+            <p className="text-sm sm:text-lg text-primary mb-10 text-pretty max-w-2xl mx-auto">
               Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
             </p>
             <p className="text-left text-xs sm:text-sm text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
-              I used a lab environment for this project which normally shuts terminates all
-              resources when the lab timer lapses. For that reason I kept developing an IaaC code with cloudformation
-              to stack the all developments into one piece that I can quickly launch to easily continue from where I left off when the lab restarts
+              This project was developed within a lab environment that automatically terminates 
+              all resources when lab timer lapses. To streamline the development process and ensure continuity,
+               I created an Infrastructure as Code (IaC) solution using CloudFormation. 
+               This allowed me to quickly redeploy the entire stack, allowing seamless 
+               resumption of work whenever the lab environment is reset.
             </p>
             
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.open("https://github.com/yourusername/aws-serverless-guide", "_blank")}
+                onClick={() => window.open("https://github.com/dickson-ank/aws-serverless-guide", "_blank")}
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
               >
                 View CloudFormation Code 
