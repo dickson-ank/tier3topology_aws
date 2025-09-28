@@ -33,10 +33,10 @@ export default function Home() {
             </p>
             <p className="text-left text-xs sm:text-sm text-muted-hero mb-8 text-pretty max-w-2xl mx-auto">
               This project was developed within a lab environment that automatically terminates 
-              all resources when lab timer lapses. To streamline the development process and ensure continuity,
+              all resources when lab timer lapses. To ensure continuity,
                I created an Infrastructure as Code (IaC) solution using CloudFormation. 
-               This allowed me to quickly redeploy the entire stack, allowing seamless 
-               resumption of work whenever the lab environment is reset.
+               This allowed me to quickly redeploy the entire stack, allowing me to pick up right where
+                I left off without any manual reconfiguration after the lab resets.
             </p>
             
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -60,10 +60,10 @@ export default function Home() {
             </p>
               <div className="bg-card border border-border rounded-lg p-1 mb-6">
                 <img
-                  src="./tier3topology.png"
+                  src="./tier3topology.svg"
                   alt="AWS Console Setup"
                   className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
-                  onClick={() => setSelectedImage("./tier3topology.png")}
+                  onClick={() => setSelectedImage("./tier3topology.svg")}
                 />
             <div className="text-center p-1 rounded text-xs sm:text-sm text-muted-foreground mt-1">
               Topology Diagram

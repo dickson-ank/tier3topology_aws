@@ -4,7 +4,7 @@ interface ProjectSectionProps {
   id: string
   title: string
   children: ReactNode
-  onImageClick: (src: string) => void
+  onImageClick ?: (src: string) => void
 }
 
 export function ProjectSection({ id, title, children }: ProjectSectionProps) {
