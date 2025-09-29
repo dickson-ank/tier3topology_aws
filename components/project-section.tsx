@@ -4,6 +4,7 @@ interface ProjectSectionProps {
   id: string
   title: string
   children: ReactNode
+
   onImageClick ?: (src: string) => void
 }
 
