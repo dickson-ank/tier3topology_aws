@@ -3,8 +3,10 @@
 import { Navigation } from "@/components/navigation"
 import { ProjectSection } from "@/components/project-section"
 import { ContactSection } from "@/components/contact-section"
+import { ImageContainer } from "@/components/custom-image-container"
 import { ImageModal } from "@/components/image-modal"
 import { useState } from "react"
+import { Introduction } from "@/components/pagesections/Introduction"
 
 const sections = [
   { id: "step-1", title: "Step 1: Setup" },
@@ -44,7 +46,7 @@ export default function Home() {
                 onClick={() => window.open("https://github.com/dickson-ank/tier3topology_aws/blob/main/Cloudformation/tier3.yml", "_blank")}
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
               >
-                View CloudFormation Code 
+                View CloudFormation Code
               </button>
             </div>
           </div>
@@ -52,82 +54,9 @@ export default function Home() {
 
         {/* Project Sections */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
-          <ProjectSection id="step-1" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
-            <p className="text-muted-foreground mb-6 text-sm sm:text-base">
-              A 3-tier architecture is a well-established software application architecture that orgainizes application into 
-              three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
-              This guide will walk you through setting up a 3-tier web application on AWS.
-            </p>
-              <div className="bg-card border border-border rounded-lg p-1 mb-6">
-                <img
-                  src="./tier3topology.svg"
-                  alt="AWS Console Setup"
-                  className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
-                  onClick={() => setSelectedImage("./tier3topology.svg")}
-                />
-            <div className="text-center p-1 rounded text-xs sm:text-sm text-muted-foreground mt-1">
-              Topology Diagram
-            </div>
-            </div>
+          <Introduction />
 
-            <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
-              <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites Checklist</h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
-                <li>• AWS Account with appropriate permissions</li>
-                <li>• AWS CLI installed and configured</li>
-                <li>• Node.js 18+ for Lambda functions</li>
-                <li>• Terraform or AWS CDK (optional but recommended)</li>
-                <li>• Code editor with AWS extensions</li>
-              </ul>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-1 mb-6">
-              <img
-                src={"./placeholder.svg"}
-                alt={"AWS Console Setup"}
-                className={"w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"}
-                onClick={() => setSelectedImage("./placeholder.svg")}
-              />
-            </div>
-
-            <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto">
-              <div className="text-muted-foreground mb-1"># Configure AWS CLI</div>
-              <div className="whitespace-nowrap">aws configure</div>
-              <div className="mt-2 text-muted-foreground"># Verify configuration</div>
-              <div>aws sts get-caller-identity</div>
-            </div>
-          </ProjectSection>
-
-          <ProjectSection id="step-2" title="Step 2: Create Lambda Functions" onImageClick={setSelectedImage}>
-            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Now we'll create our Lambda functions that will handle the core business logic of our serverless
-              application. We'll start with a simple API handler and then add more complex functions.
-            </p>
-
-            <div className="space-y-6">
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Creating Your First Lambda</h3>
-                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
-                  <div className="text-muted-foreground mb-2">// lambda/handler.js</div>
-                  <div>exports.handler = async (event) =&gt; {"{"}</div>
-                  <div className="ml-4">return {"{"}</div>
-                  <div className="ml-8">statusCode: 200,</div>
-                  <div className="ml-8">body: JSON.stringify('Hello from Lambda!')</div>
-                  <div className="ml-4">{"}"}</div>
-                  <div>{"}"}</div>
-                </div>
-              </div>
-
-              <div className="bg-card border border-border rounded-lg p-1">
-                <img
-                  src="./placeholder.svg"
-                  alt="Lambda Function Creation"
-                  className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage("./placeholder.svg")}
-                />
-              </div>
-            </div>
-          </ProjectSection>
+          
 
           <ProjectSection id="step-3" title="Step 3: Set Up API Gateway" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
@@ -150,14 +79,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-card border border-border rounded-lg p-1">
-              <img
-                src="./placeholder.svg"
-                alt="API Gateway Configuration"
-                className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage("./placeholder.svg")}
-              />
-            </div>
+            <ImageContainer src="./placeholder.svg" alt="Lambda function creation" selectedImage={setSelectedImage} />
+
           </ProjectSection>
 
           <ProjectSection id="step-4" title="Step 4: Configure Database & Storage" onImageClick={setSelectedImage}>
@@ -179,22 +102,8 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./placeholder.svg"
-                    alt="DynamoDB Setup"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./placeholder.svg")}
-                  />
-                </div>
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./placeholder.svg"
-                    alt="S3 Configuration"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./placeholder.svg")}
-                  />
-                </div>
+                <ImageContainer src="./placeholder.svg" alt="Dynamo DB" selectedImage={setSelectedImage} />
+                <ImageContainer src="./placeholder.svg" alt="S3 configuration" selectedImage={setSelectedImage} />
               </div>
             </div>
           </ProjectSection>
@@ -224,22 +133,8 @@ export default function Home() {
 
               {/* Before and after, placing images side by side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./placeholder.svg"
-                    alt="Before Deployment"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./placeholder.svg")}
-                  />
-                </div>
-                <div className="bg-card border border-border rounded-lg p-1">
-                  <img
-                    src="./placeholder.svg"
-                    alt="After Deployment"
-                    className="w-full h-auto rounded cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => setSelectedImage("./placeholder.svg")}
-                  />
-                </div>
+                <ImageContainer src="./placeholder.svg" alt="Before Deployment" selectedImage={setSelectedImage} />
+                <ImageContainer src="./placeholder.svg" alt="After-deployment" selectedImage={setSelectedImage} />
               </div>
 
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
