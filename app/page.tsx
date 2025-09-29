@@ -4,12 +4,12 @@ import { Navigation } from "@/components/navigation"
 import { ProjectSection } from "@/components/project-section"
 import { ContactSection } from "@/components/contact-section"
 import { ImageModal } from "@/components/image-modal"
-import { useState } from "react"
 import { Introduction } from "@/components/pagesections/Introduction"
 import { Step1 } from "@/components/pagesections/step-1"
 import { Step2 } from "@/components/pagesections/step-2"
 import { Step3 } from "@/components/pagesections/step-3"
 import { Step4 } from "@/components/pagesections/step-4"
+import { useState } from "react"
 
 const sections = [
   { id: "introduction", title: "Introduction" },
