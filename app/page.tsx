@@ -9,11 +9,11 @@ import { useState } from "react"
 import { Introduction } from "@/components/pagesections/Introduction"
 
 const sections = [
-  { id: "step-1", title: "Step 1: Setup" },
-  { id: "step-2", title: "Step 2: Configuration" },
-  { id: "step-3", title: "Step 3: Implementation" },
-  { id: "step-4", title: "Step 4: Deployment" },
-  { id: "step-5", title: "Step 5: Testing" },
+  { id: "Introduction", title: "Introduction: Setup and Preriquisites" },
+  { id: "step-1", title: "Step 1: Configuration" },
+  { id: "step-2", title: "Step 2: Implementation" },
+  { id: "step-3", title: "Step 3: Deployment" },
+  { id: "step-4", title: "Step 4: Testing" },
   { id: "thank-you", title: "Thank You" },
 ]
 
