@@ -34,18 +34,15 @@ export function ImageModal({ src, alt, isOpen, onClose }: ImageModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-      onClick={onClose}
-    >
-      <div className="max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      onClick={onClose}>
+      <div className="max-w-[90vw] max-h-[90vh] flex">
         <Button
           variant="secondary"
           size="icon"
-          className="absolute top-2 right-2 z-10 bg-background/90 backdrop-blur-sm hover:bg-background border border-border shadow-lg"
-          onClick={onClose}
-        >
+          className="absolute top-2 right-2 z-10 bg-background/60 backdrop-blur-sm hover:bg-background border border-border shadow-lg"
+          onClick={onClose}>
           <X className="h-4 w-4" />
-          <span className="sr-only">Close image</span>
         </Button>
 
         <img

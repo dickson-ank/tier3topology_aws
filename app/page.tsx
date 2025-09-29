@@ -53,7 +53,7 @@ export default function Home() {
         {/* Project Sections */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
           <ProjectSection id="step-1" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
-            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
+            <p className="text-muted-foreground mb-6 text-sm sm:text-base">
               A 3-tier architecture is a well-established software application architecture that orgainizes application into 
               three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
               This guide will walk you through setting up a 3-tier web application on AWS.

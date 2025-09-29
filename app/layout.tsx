@@ -9,15 +9,15 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
 })
-
+    
 export const metadata: Metadata = {
   title: "3-Tier Web Application on AWS",
-  description: "3-Tier Web Application on AWS",
+  description: "Setting up 3-Tier Web Application on AWS",
     generator: 'Dickson Ankamah',
     applicationName: '3-Tier Web Application on AWS',
-    keywords: ['Documentation', 'Template', 'Next.js', 'React', 'Tailwind CSS'],
+    keywords: ['how to', 'security group','3 tier project','walkthrough', 'ec2', 'autoscaling', 'web application'],
     authors: [{ name: 'Dickson Ankamah'}],
-    creator: 'Dickson Ankamah',
+    creator: 'Dickson Ankamah'
 }
 
 export default function RootLayout({
