@@ -7,7 +7,7 @@ import { ProjectSection } from "../project-section";
 export function Introduction(){
     const [selectedImage, setSelectedImage] = useState<string | null>(null)
     return(
-        <>
+        
             <ProjectSection id="introduction" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
                 <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                     A 3-tier architecture is a well-established software application architecture that orgainizes application into 
@@ -40,6 +40,5 @@ export function Introduction(){
                     <div>aws sts get-caller-identity</div>
                 </div>
             </ProjectSection>
-        </>
     )
 }
