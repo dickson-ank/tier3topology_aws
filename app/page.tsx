@@ -3,7 +3,6 @@
 import { Navigation } from "@/components/navigation"
 import { ProjectSection } from "@/components/project-section"
 import { ContactSection } from "@/components/contact-section"
-import { ImageContainer } from "@/components/custom-image-container"
 import { ImageModal } from "@/components/image-modal"
 import { useState } from "react"
 import { Introduction } from "@/components/pagesections/Introduction"
