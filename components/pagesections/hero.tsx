@@ -11,7 +11,7 @@ export function Hero(){
             <p className="text-sm sm:text-lg text-primary mb-10 text-pretty max-w-2xl mx-auto">
               Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
             </p>
-            <p className="text-left text-xs sm:text-sm text-muted-hero mb-8 text-pretty max-w-2xl mx-auto">
+            <p className="font-mono text-left text-xs sm:text-sm text-muted-hero mb-8 text-pretty max-w-2xl mx-auto">
               This project was developed within a lab environment that automatically terminates 
               all resources when lab timer lapses. To ensure continuity,
                I created an Infrastructure as Code (IaC) solution using CloudFormation. 

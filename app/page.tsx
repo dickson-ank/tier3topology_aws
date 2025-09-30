@@ -33,11 +33,11 @@ export default function Home() {
 
         {/* Project Sections */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
-          <Introduction />
-          <Step1/>
-          <Step2/>
-          <Step3/>
-          <Step4/>
+          <Introduction setSelectedImage={setSelectedImage}/>
+          <Step1 setSelectedImage={setSelectedImage}/>
+          <Step2 setSelectedImage={setSelectedImage}/>
+          <Step3 setSelectedImage={setSelectedImage}/>
+          <Step4 setSelectedImage={setSelectedImage}/>
 
           {/* Thank you section */}
           <ProjectSection id="thank-you" title="Thank You">

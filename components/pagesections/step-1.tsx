@@ -2,10 +2,11 @@ import { useState } from "react";
 import { ImageContainer } from "../custom-image-container";
 import { ProjectSection } from "../project-section";
 
+interface Step1Props {
+    setSelectedImage: (src: string) => void
+}
 
-
-export function Step1(){
-    const [selectedImage, setSelectedImage] = useState<string | null>(null)
+export function Step1({setSelectedImage}: Step1Props){
     return(
         <ProjectSection id="step-1" title="Step 1: Create Lambda Functions" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">

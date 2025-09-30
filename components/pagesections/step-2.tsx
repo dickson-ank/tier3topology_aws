@@ -2,10 +2,11 @@ import { useState } from "react";
 import { ImageContainer } from "../custom-image-container";
 import { ProjectSection } from "../project-section";
 
+interface Step2Props {
+    setSelectedImage: (src: string) => void
+}
 
-
-export function Step2(){
-    const [selectedImage, setSelectedImage] = useState<string | null>(null)
+export function Step2({setSelectedImage}: Step2Props){
     return(
         <ProjectSection id="step-2" title="Step 2: Set Up API Gateway" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
