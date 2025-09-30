@@ -6,7 +6,6 @@ interface IntroductionProps {
     setSelectedImage: (src: string) => void
 }
 
-
 export function Introduction({setSelectedImage}: IntroductionProps){
     return(
         
