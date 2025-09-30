@@ -15,8 +15,8 @@ export function Hero(){
               This project was developed within a lab environment that automatically terminates 
               all resources when lab timer lapses. To ensure continuity,
                I created an Infrastructure as Code (IaC) solution using CloudFormation. 
-               This allowed me to quickly redeploy the entire stack, allowing me to pick up right where
-                I left off without any manual reconfiguration after the lab resets.
+               This allowed me to quickly redeploy the entire stack when the lab is restarted and pick up from where
+                I left off without any manual reconfiguration.
             </p>
             
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
