@@ -34,7 +34,7 @@ export function ImageModal({ src, alt, isOpen, onClose }: ImageModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
       onClick={onClose}>
       <div className="max-w-[90vw] max-h-[90vh] flex">
         <Button

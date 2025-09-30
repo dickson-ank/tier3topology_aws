@@ -2,10 +2,11 @@ import { useState } from "react";
 import { ImageContainer } from "../custom-image-container";
 import { ProjectSection } from "../project-section";
 
+interface Step4Props {
+    setSelectedImage: (src: string) => void
+}
 
-
-export function Step4(){
-    const [selectedImage, setSelectedImage] = useState<string | null>(null)
+export function Step4({setSelectedImage}: Step4Props){
     return(
         <ProjectSection id="step-4" title="Step 4: Deploy & Test Your Architecture" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">

@@ -28,7 +28,6 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navigation sections={sections} />
       <main className="pt-16">
-        {/* Hero Section */}
         <Hero/>
 
         {/* Project Sections */}
