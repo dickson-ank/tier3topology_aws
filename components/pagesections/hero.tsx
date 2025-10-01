@@ -1,7 +1,6 @@
 import { useState } from "react"
 
 export function Hero(){
-    const [selectedImage, setSelectedImage] = useState<string | null>(null)
     return(
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
