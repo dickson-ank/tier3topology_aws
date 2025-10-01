@@ -1,70 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="220" height="220" viewBox="0 0 220 220"
-     role="img" aria-label="Loading screenshot, please wait">
-  <style>
-    .shimmer {
-      fill: url(#grad);
-      animation: slide 1.6s linear infinite;
-      transform-box: fill-box;
-      transform-origin: 0 0;
-    }
-    .card {
-      fill: #ffffff;
-      stroke: #e6e6e6;
-      stroke-width: 1.5;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.06));
-      rx: 8px;
-    }
-    .pulse {
-      animation: pulse 1.6s ease-in-out infinite;
-      transform-origin: center;
-    }
-    .spin { transform-origin: 110px 170px; animation: rotate 1s linear infinite; }
-    @keyframes slide {
-      0% { transform: translateX(-120%); }
-      100% { transform: translateX(120%); }
-    }
-    @keyframes pulse {
-      0% { opacity: 0.95; }
-      50% { opacity: 0.8; }
-      100% { opacity: 0.95; }
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-  <rect width="220" height="220" rx="12" fill="#f7fafb"/>
-  <g transform="translate(20,18)" class="pulse" aria-hidden="true">
-    <rect class="card" width="180" height="120" rx="6"/>
-    <rect x="12" y="10" width="28" height="8" rx="2" fill="#f1f5f9"/>
-    <rect x="44" y="10" width="28" height="8" rx="2" fill="#f1f5f9"/>
-    <rect x="76" y="10" width="28" height="8" rx="2" fill="#f1f5f9"/>
-    <rect x="12" y="26" width="156" height="12" rx="3" fill="#eef2f7"/>
-    <rect x="12" y="44" width="120" height="10" rx="3" fill="#eef2f7"/>
-    <rect x="12" y="58" width="90" height="10" rx="3" fill="#eef2f7"/>
-    <rect x="12" y="74" width="156" height="10" rx="3" fill="#eef2f7"/>
-    <defs>
-      <linearGradient id="grad" x1="0" x2="1">
-        <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
-        <stop offset="50%" stop-color="rgba(255,255,255,0.8)"/>
-        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-      </linearGradient>
-      <clipPath id="cardClip">
-        <rect x="0" y="0" width="180" height="120" rx="6"/>
-      </clipPath>
-    </defs>
-    <g clip-path="url(#cardClip)">
-      <rect class="shimmer" x="-220" y="-10" width="220" height="140" />
-    </g>
-    <rect x="0" y="120" width="180" height="10" rx="4" fill="#f3f4f6"/>
-  </g>
-  <g class="spin" aria-hidden="true">
-    <circle cx="110" cy="170" r="20" fill="none" stroke="#e6edf0" stroke-width="6"/>
-    <path d="M130 170 A20 20 0 0 1 90 170"
-          stroke="#041d44" stroke-width="4" stroke-linecap="round" fill="none"/>
-    <circle cx="110" cy="170" r="3.2" fill="#041d44"/>
-  </g>
-  <text x="110" y="200" font-family="Segoe UI, Roboto, Arial, sans-serif"
-        font-size="10" fill="#585f6dff" text-anchor="middle">Loading screenshot…</text>
+     width="300" height="150" viewBox="0 0 600 300" role="img" aria-label="Loading placeholder">
+  
+  <!-- Background -->
+  <rect width="600" height="300" fill="black"/>
+
+  <!-- Avatar circle -->
+  <circle cx="70" cy="70" r="50" fill="white" fill-opacity="0.35">
+    <animate attributeName="fill-opacity"
+             values="0.20;0.85;0.20"
+             dur="1.6s"
+             repeatCount="indefinite" />
+  </circle>
+
+  <!-- Title line -->
+  <rect x="140" y="40" rx="6" ry="6" width="420" height="22" fill="white" fill-opacity="0.35">
+    <animate attributeName="fill-opacity"
+             values="0.18;0.9;0.18"
+             dur="1.6s"
+             begin="0.15s"
+             repeatCount="indefinite" />
+  </rect>
+
+  <!-- Subtitle -->
+  <rect x="140" y="72" rx="5" ry="5" width="300" height="14" fill="white" fill-opacity="0.30">
+    <animate attributeName="fill-opacity"
+             values="0.15;0.85;0.15"
+             dur="1.6s"
+             begin="0.30s"
+             repeatCount="indefinite" />
+  </rect>
+
+  <!-- Content blocks -->
+  <rect x="20" y="140" rx="8" ry="8" width="560" height="18" fill="white" fill-opacity="0.28">
+    <animate attributeName="fill-opacity"
+             values="0.12;0.8;0.12"
+             dur="1.6s"
+             begin="0.05s"
+             repeatCount="indefinite" />
+  </rect>
+
+  <rect x="20" y="170" rx="8" ry="8" width="520" height="18" fill="white" fill-opacity="0.28">
+    <animate attributeName="fill-opacity"
+             values="0.12;0.8;0.12"
+             dur="1.6s"
+             begin="0.20s"
+             repeatCount="indefinite" />
+  </rect>
+
+  <rect x="20" y="200" rx="8" ry="8" width="480" height="18" fill="white" fill-opacity="0.28">
+    <animate attributeName="fill-opacity"
+             values="0.12;0.8;0.12"
+             dur="1.6s"
+             begin="0.35s"
+             repeatCount="indefinite" />
+  </rect>
+
+  <!-- Small square item -->
+  <rect x="520" y="230" rx="6" ry="6" width="60" height="50" fill="white" fill-opacity="0.30">
+    <animate attributeName="fill-opacity"
+             values="0.18;0.85;0.18"
+             dur="1.6s"
+             begin="0.10s"
+             repeatCount="indefinite" />
+  </rect>
 </svg>
