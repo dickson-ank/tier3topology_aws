@@ -15,7 +15,7 @@ export function Introduction({setSelectedImage}: IntroductionProps){
                 three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
                 This guide will walk you through setting up a 3-tier web application on AWS.
             </p>
-            <ImageContainer src="./tier3topology.svg" alt="Topology Diagram" selectedImage={setSelectedImage}>
+            <ImageContainer src="./tier3topology.png" alt="Topology Diagram" selectedImage={setSelectedImage}>
                 <div className="text-center p-1 rounded text-xs sm:text-sm text-muted-foreground mt-1">
                 Topology Diagram
                 </div>
