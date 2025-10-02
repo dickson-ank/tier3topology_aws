@@ -16,7 +16,7 @@ export function ImageContainer({src, alt, children, selectedImage} : ImageAttrib
             <img
             src={src}
             alt={alt}
-            className="w-full h-auto rounded cursor-pointer hover:opacity-0 transition-opacity"
+            className="w-full h-auto rounded cursor-pointer hover:opacity-100 transition-opacity"
             onClick={() => selectedImage(src)}
             />
             
