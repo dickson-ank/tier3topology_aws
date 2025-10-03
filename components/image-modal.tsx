@@ -46,7 +46,7 @@ export function ImageModal({ src, alt, isOpen, onClose }: ImageModalProps) {
         </Button>
 
         <img
-          src={src || "/placeholder.svg"}
+          src={src || "./placeholder.svg"}
           alt={alt}
           className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
           onClick={(e) => e.stopPropagation()}
