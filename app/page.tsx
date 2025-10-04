@@ -18,6 +18,7 @@ const sections = [
   { id: "step-2", title: "Step 2: Implementation" },
   { id: "step-3", title: "Step 3: Deployment" },
   { id: "step-4", title: "Step 4: Testing" },
+  { id: "conclusion", title: "Conclusion"},
   { id: "thank-you", title: "Thank You" },
 ]
 
