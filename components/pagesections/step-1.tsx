@@ -10,7 +10,7 @@ export function Step1({setSelectedImage}: Step1Props){
     return(
         <ProjectSection id="step-1" title="Step 1: Create Lambda Functions" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Now we'll create our Lambda functions that will handle the core business logic of our serverless
+              We'll create our Lambda functions that will handle the core business logic of our serverless
               application. We'll start with a simple API handler and then add more complex functions.
             </p>
 
