@@ -32,16 +32,24 @@ export function Step4({setSelectedImage}: Step4Props){
 
                         sudo systemctl enable --now mariadb
                     </div>
-                    <div className="text-muted-foreground mb-1"># Web Server User Data</div>
-                    <div> #!/bin/bash
-                          sudo yum update -y
-                          sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
-                          sudo yum install -y httpd
-                          sudo systemctl start httpd
-                          sudo systemctl enable httpd
-
-                    </div>
+                    <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
+                      <div> #!/bin/bash <br />
+                            sudo yum update -y <br />
+                            sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2 <br />
+                            sudo yum install -y httpd <br />
+                            sudo systemctl start httpd <br />
+                            sudo systemctl enable httpd
+                      </div>
                   </div>
+                        <div>
+                          <a
+                            href="./index.html"
+                            download
+                            className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono hover:bg-primary/90 transition-colors text-sm sm:text-base"
+                          >
+                            📄Download index.html
+                          </a>
+                        </div>
                 </div>
               </div>
 
