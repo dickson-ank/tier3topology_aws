@@ -21,24 +21,25 @@ export function Introduction({setSelectedImage}: IntroductionProps){
             </ImageContainer>
 
             <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites Checklist</h3>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites</h3>
                 <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
-                <li>• AWS Account with appropriate permissions</li>
-                <li>• AWS CLI installed and configured</li>
-                <li>• Node.js 18+ for Lambda functions</li>
-                <li>• Terraform or AWS CDK (optional but recommended)</li>
-                <li>• Code editor with AWS extensions</li>
+                <li>• AWS Account with appropriate IAM users and permissions</li>
+                <li>• Familiarity with AWS Management Console</li>
+                <li>• A Command Line Interface (CLI) tool</li>
+                <p className="text-xs text-muted-foreground mt-1 pl-4">I will use a wsl terminal in this guide</p>
+                <li>• Familiarity with Linux Commands</li>
+                <li>• Familiarity with AWS CloudFormation (optional but recommended)</li>
                 </ul>
             </div>
 
-            <ImageContainer src="./placeholder.svg" alt="Container setup" selectedImage={setSelectedImage} />
+            {/* <ImageContainer src="./placeholder.svg" alt="Container setup" selectedImage={setSelectedImage} />
 
             <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                 <div className="text-muted-foreground mb-1"># Configure AWS CLI</div>
                 <div className="whitespace-nowrap">aws configure</div>
                 <div className="mt-2 text-muted-foreground"># Verify configuration</div>
                 <div>aws sts get-caller-identity</div>
-            </div>
+            </div> */}
         </ProjectSection>
     )
 }
