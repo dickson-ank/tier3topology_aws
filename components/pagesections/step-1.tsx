@@ -34,9 +34,14 @@ export function Step1({setSelectedImage}: Step1Props){
             <Paragraph>
               In the Subnets section, click on "Create Subnet". <br />
               Choose the VPC you created earlier ("webapp-network"). <br />
-              Create the following subnets: <br />
-              • Public Subnet (e.g., "webapp-public") <br />
-              • Private Subnet (e.g., "webapp-private") <br />
+              • We will create the Public Subnet first <br />
+              Note that when you provision the resources using the
+              cloudformation template the vpc name will prepend the subnet names. <br />
+              to avoid confusion as you follow along, we will omit that here
+              • Name it "public-subnet" since it's the only public subnet <br />
+              • Set the Availability Zone to your preference (e.g., us-east-1a) <br />
+                note it somewhere <br />
+              • Set the IPv4 CIDR block to <span className="font-mono">10.0.1.0/24</span> <br />
               • Data Subnet 1 (e.g., "webapp-data-1") <br />
               • Data Subnet 2 (e.g., "webapp-data-2") <br />
             </Paragraph>
