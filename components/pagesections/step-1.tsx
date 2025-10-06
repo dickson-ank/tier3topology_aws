@@ -25,8 +25,8 @@ export function Step1({setSelectedImage}: Step1Props){
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
               Next we will create our subnets. One for presentation Tier, One for Application Tier and 
               Two for the data tier for extra security and high availability. <br />
-            <ImageContainer className="mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
             </p>
+            <ImageContainer className="!mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
 
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
