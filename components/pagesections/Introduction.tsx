@@ -31,7 +31,6 @@ export function Introduction({setSelectedImage}: IntroductionProps){
                 <li>• Familiarity with AWS CloudFormation (optional but recommended)</li>
                 </ul>
             </div>
-
             {/* <ImageContainer src="./placeholder.svg" alt="Container setup" selectedImage={setSelectedImage} />
 
             <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto">

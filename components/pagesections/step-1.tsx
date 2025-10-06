@@ -13,7 +13,9 @@ export function Step1({setSelectedImage}: Step1Props){
               We'll create our VPC and subnets to isolate our application resources.
                This is a crucial step in setting up a secure and scalable architecture.
             </p>
-
+            <ImageContainer className="mb-1"src="./vpc-create.png" alt="Container setup" selectedImage={setSelectedImage} />
+            <ImageContainer className="!mt-1"src="./vpc-create2.png" alt="Container setup" selectedImage={setSelectedImage} />
+          
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Creating Your First Lambda</h3>
