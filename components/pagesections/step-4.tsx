@@ -15,17 +15,23 @@ export function Step4({setSelectedImage}: Step4Props){
 
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Deployment Commands</h3>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Set UP MariaDB database</h3>
                 <div className="space-y-4">
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Deploy Lambda function</div>
+                    <div className="text-muted-foreground mb-1"># # # # # #</div>
                     <div>
-                      aws lambda update-function-code --function-name myFunction --zip-file fileb://function.zip
+                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p mydb
                     </div>
                   </div>
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Deploy API Gateway</div>
-                    <div>aws apigateway create-deployment --rest-api-id abc123 --stage-name prod</div>
+                    <div className="text-muted-foreground mb-1"># Database User Data</div>
+                    <div>#!/bin/bash <br />
+                        set -euxo pipefail <br />
+                        sudo dnf update -y <br />
+                        sudo dnf install -y mariadb105-server <br />
+
+                        sudo systemctl enable --now mariadb
+                    </div>
                   </div>
                 </div>
               </div>
