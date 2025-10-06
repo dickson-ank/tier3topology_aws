@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { ImageContainer } from "../custom-image-container";
 import { ProjectSection } from "../project-section";
+import { Paragraph } from "../paragraph";
 
 interface Step1Props {
     setSelectedImage: (src: string) => void
@@ -8,26 +8,38 @@ interface Step1Props {
 
 export function Step1({setSelectedImage}: Step1Props){
     return(
-        <ProjectSection id="step-1" title="Step 1: Creating the VPC and Subnets" onImageClick={setSelectedImage}>
+        <ProjectSection id="step-1" title="Step 1: Creating VPC and Subnets" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
               We'll create our VPC and subnets to isolate our application resources.
                This is a crucial step in setting up a secure and scalable architecture. <br/>
                 <br />
-                1. Search for VPC in the AWS Management Console and open the VPC Dashboard. <br/>
-                2. Click on "Create VPC". <br/>
-                3. Choose "VPC only" and provide a name ("webapp-network" in my case). <br/>
-                4. Set the IPv4 CIDR block to "10.0.0.0/16". <br/>
-                5. Review and Click "Create VPC". <br/>
+                • Search for VPC in the AWS Management Console and open the VPC Dashboard. <br/>
+                • Click on "Create VPC". <br/>
+                • Choose "VPC only" and provide a name ("webapp-network" in my case). <br/>
+                • Set the IPv4 CIDR block to "10.0.0.0/16". <br/>
+                • Review and Click "Create VPC". <br/>
             </p>
             <ImageContainer className="mb-1"src="./vpc-create.png" alt="Container setup" selectedImage={setSelectedImage} />
             <ImageContainer className="mt-1"src="./vpc-create2.png" alt="Container setup" selectedImage={setSelectedImage} />
-          
+            <hr />
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Next we will create our subnets. One for presentation Tier, One for Application Tier and 
-              Two for the data tier for extra security and high availability. <br />
+              Next we will create our subnets. One each for presentation Tier and Application Tier, <br />
+              and Two for the data tier for extra security and high availability. <br />
+              as shown in the image below. <br />
             </p>
-            <ImageContainer className="!mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
-
+            <ImageContainer className="mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
+            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
+              Expand the VPC Dashboard menu if closed and select Subnets
+            </p>
+            <Paragraph>
+              In the Subnets section, click on "Create Subnet". <br />
+              Choose the VPC you created earlier ("webapp-network"). <br />
+              Create the following subnets: <br />
+              • Public Subnet (e.g., "webapp-public") <br />
+              • Private Subnet (e.g., "webapp-private") <br />
+              • Data Subnet 1 (e.g., "webapp-data-1") <br />
+              • Data Subnet 2 (e.g., "webapp-data-2") <br />
+            </Paragraph>
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Creating Your First Lambda</h3>
