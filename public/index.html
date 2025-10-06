@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Server Status</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f7fbfb;
+      color: #08304b;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(2,12,27,0.08);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      max-width: 720px;
+      width: 100%;
+    }
+    h1 { margin: 0 0 .5rem; font-size: 1.5rem; }
+    p { margin: .25rem 0; font-size: 1rem; color:#2c4f63; }
+    .time { font-weight: 600; margin-top: .75rem; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p>Congratulations!</p>
+    <h1>SERVER IS UP!</h1>
+    <br>
+    <div id="datetime" class="time" aria-live="polite">Loading…</div>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const el = document.getElementById('datetime');
+      const now = new Date();
+      // Format: Weekday, Month Day, Year — HH:MM:SS (local)
+      const formatted = now.toLocaleString(undefined, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      el.textContent = formatted;
+    }
+
+    // initialize and update every second
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>
