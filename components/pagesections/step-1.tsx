@@ -32,19 +32,20 @@ export function Step1({setSelectedImage}: Step1Props){
               Expand the VPC Dashboard menu if closed and select Subnets
             </p>
             <Paragraph>
-              In the Subnets section, click on "Create Subnet". <br />
+              In the Subnets section, click on <span className="text-primary font-semibold">Create Subnet</span><br />
               Choose the VPC you created earlier ("webapp-network"). <br />
               • We will create the Public Subnet first <br />
-              Note that when you provision the resources using the
-              cloudformation template the vpc name will prepend the subnet names. <br />
+              <span className="font-mono ml-4 mb-1 block">Note that when you provision the resources using the
+                cloudformation template the vpc name will prepend the subnet names.</span>
               to avoid confusion as you follow along, we will omit that here
               • Name it "public-subnet" since it's the only public subnet <br />
               • Set the Availability Zone to your preference (e.g., us-east-1a) <br />
                 note it somewhere <br />
-              • Set the IPv4 CIDR block to <span className="font-mono">10.0.1.0/24</span> <br />
-              • Data Subnet 1 (e.g., "webapp-data-1") <br />
-              • Data Subnet 2 (e.g., "webapp-data-2") <br />
+              • Set the IPv4 CIDR block to <span className="font-mono text-primary">10.0.1.0/24</span> <br />
+              • Review and click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create Subnet</span> <br />
             </Paragraph>
+            <ImageContainer className="mb-1"src="./create-subnet1.jpeg" alt="Subnet create screenshot" selectedImage={setSelectedImage} />
+            <ImageContainer className="mt-1"src="./create-subnet2.jpeg" alt="Subnet create screenshot" selectedImage={setSelectedImage} />
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Creating Your First Lambda</h3>
