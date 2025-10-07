@@ -12,10 +12,10 @@ export function Step1({setSelectedImage}: Step1Props){
     return(
         <ProjectSection id="step-1" title="Step 1: Creating VPC and Subnets" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              We'll create our VPC and subnets to isolate our application resources.
-               This is a crucial step in setting up a secure and scalable architecture. <br/>
+              We'll begin by creating our VPC and subnets to isolate our application resources.
+               a crucial step in setting up a highly available and resilient architecture. <br/>
                 <br />
-                • Search for VPC in the AWS Management Console and open the VPC Dashboard. <br/>
+                • In the Management Console search for VPC and open the VPC Dashboard. <br/>
                 • Click on <span className="text-primary font-semibold">Create VPC</span>. <br/>
                 • Choose "VPC only" and provide a name ("webapp-network" in my case). <br/>
                 • Set the IPv4 CIDR block to <span className="font-mono text-primary">10.0.0.0/16</span><br/>
@@ -57,8 +57,8 @@ export function Step1({setSelectedImage}: Step1Props){
             </Paragraph>
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation code for Step 1</h3>
-                <p className="text:xm text-muted-foreground md:text:xs lg:text-xs mb-2">Uploading this to Cloudformation creates a vpc and subnets as we discussed above
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 1</h3>
+                <p className="text:xm text-muted-foreground md:text:xs lg:text-xs mb-2">The part of the Cloudformation code that creates the vpc and subnets as we discussed above
                 </p>
                 <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
                 <ReadMore>
@@ -66,142 +66,105 @@ export function Step1({setSelectedImage}: Step1Props){
                   {`AWSTemplateFormatVersion: "2010-09-09"
                     
 Description: >-
-This template creates a 3 tier web application infrastructure on AWS.
-It includes a VPC with public and private subnets across two availability zones,
-along with necessary routing, NAT gateways, and network ACLs.
+  This template creates a 3 tier web application infrastructure on AWS.
+  It includes a VPC with public and private subnets across two availability zones,
+  along with necessary routing, NAT gateways, and network ACLs.
 
 Parameters:
-VPCName:
-Description: The name of the VPC being created.
-Type: String
-Default: webapp-network
+  VPCName:
+    Description: The name of the VPC being created.
+    Type: String
+    Default: webapp-network
 
 Mappings:
-SubnetConfig:
-VPC:
-  CIDR: 10.0.0.0/16
-Public:
-  CIDR: 10.0.1.0/24
-Private1:
-  CIDR: 10.0.2.0/24
-Private2:
-  CIDR: 10.0.3.0/24
-Private3:
-  CIDR: 10.0.4.0/24
+  SubnetConfig:
+    VPC:
+      CIDR: 10.0.0.0/16
+    Public:
+      CIDR: 10.0.1.0/24
+    Private1:
+      CIDR: 10.0.2.0/24
+    Private2:
+      CIDR: 10.0.3.0/24
+    Private3:
+      CIDR: 10.0.4.0/24
 
 Resources:
 VPC:
-Type: AWS::EC2::VPC
+Type: AWS::EC2::VPC                   
 Properties:
-  EnableDnsSupport: "true"
-  EnableDnsHostnames: "true"
-  CidrBlock: !FindInMap
-    - SubnetConfig
-    - VPC
-    - CIDR
-  Tags:
-    - Key: Name
-      Value: !Ref VPCName
+EnableDnsSupport: "true"
+EnableDnsHostnames: "true"
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - VPC
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: !Ref VPCName          
 
-PublicSubnet:
-Type: AWS::EC2::Subnet
-Properties:
-  VpcId: !Ref VPC
-  AvailabilityZone: !Select
-    - 0
-    - !GetAZs
-  CidrBlock: !FindInMap
-    - SubnetConfig
-    - Public
-    - CIDR
-  MapPublicIpOnLaunch: "true"
-  Tags:
-    - Key: Name
-      Value: !Join
-        - ""
-        - - !Ref VPCName
-          - -public-
-          - !Select
-            - 0
-            - !GetAZs
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Public
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: public-subnet
 
-PrivateSubnet1:
-Type: AWS::EC2::Subnet
-Properties:
-  VpcId: !Ref VPC
-  AvailabilityZone: !Select
-    - 0
-    - !GetAZs
-  CidrBlock: !FindInMap
-    - SubnetConfig
-    - Private1
-    - CIDR
-  MapPublicIpOnLaunch: "true"
-  Tags:
-    - Key: Application
-      Value: !Ref AWS::StackName
-    - Key: Network
-      Value: Public
-    - Key: Name
-      Value: !Join
-        - ""
-        - - !Ref VPCName
-          - -private1-
-          - !Select
-            - 0
-            - !GetAZs
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private1
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-1
 
-PrivateSubnet2:
-Type: AWS::EC2::Subnet
-Properties:
-  VpcId: !Ref VPC
-  AvailabilityZone: !Select
-    - 0
-    - !GetAZs
-  CidrBlock: !FindInMap
-    - SubnetConfig
-    - Private2
-    - CIDR
-  Tags:
-    - Key: Name
-      Value: !Join
-        - ""
-        - - !Ref VPCName
-          - -private2-
-          - !Select
-            - 0
-            - !GetAZs
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private2
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-2
 
-PrivateSubnet3:
-Type: AWS::EC2::Subnet
-Properties:
-  VpcId: !Ref VPC
-  AvailabilityZone: !Select
-    - 1
-    - !GetAZs
-  CidrBlock: !FindInMap
-    - SubnetConfig
-    - Private3
-    - CIDR
-  Tags:
-    - Key: Name
-      Value: !Join
-        - ""
-        - - !Ref VPCName
-          - -private3-
-          - !Select
-            - 1
-            - !GetAZs
+  PrivateSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private3
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-3
                     `}
                    </SyntaxHighlighter>
                   </ReadMore>
-                  
-                  {/* <div>exports.handler = async (event) =&gt; {"{"}</div>
-                  <div className="ml-4">return {"{"}</div>
-                  <div className="ml-8">statusCode: 200,</div>
-                  <div className="ml-8">body: JSON.stringify('Hello from Lambda!')</div>
-                  <div className="ml-4">{"}"}</div>
-                  <div>{"}"}</div> */}
                 </div>
               </div>
             </div>
