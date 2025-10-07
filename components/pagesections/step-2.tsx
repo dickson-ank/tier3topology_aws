@@ -31,9 +31,10 @@ export function Step2({setSelectedImage}: Step2Props){
               Before that, we need to allocate an Elastic IP address to the NAT Gateway so that it maintains a consistent public IP address.<br />
               Go to "Elastic IPs" and click on <span className="text-primary font-semibold">Allocate Elastic IP address</span>.<br />
               Let's give it a tag name "ngw-eip" and leave the rest as default.<br />
-              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span> in the next screen to confirm.<br /><br />
+              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span><br /><br />
             </Paragraph>
-              <ImageContainer  src="./eip-create.jpeg" alt="Elastic IP create" selectedImage={setSelectedImage} />
+            <ImageContainer  src="./eip-create.jpeg" alt="Elastic IP create" selectedImage={setSelectedImage} />
+            
             <Paragraph>
                Now, go back to the VPC Dashboard. <br />
               •Choose "NAT Gateways" from the side menu and click on <span className="text-primary font-semibold">Create NAT Gateway</span>.<br />
@@ -46,7 +47,7 @@ export function Step2({setSelectedImage}: Step2Props){
               • Review and click on
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create a NAT gateway</span>
             </Paragraph>
-              <ImageContainer className="mt-1" src="./ngw-create.jpeg" alt="NAT Gateway create" selectedImage={setSelectedImage} />
+            <ImageContainer className="mt-1" src="./ngw-create.jpeg" alt="NAT Gateway create" selectedImage={setSelectedImage} />
 
             <Paragraph>
               Now that we have both Internet Gateway and NAT Gateway created, focus is back on the main subject of this step: <span className="text-muted-foreground font-medium">"Setting up routes"</span><br />
@@ -55,11 +56,21 @@ export function Step2({setSelectedImage}: Step2Props){
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create route table</span> to confirm.<br />
             </Paragraph>
             <ImageContainer className="mt-1" src="./public-rt-create.jpeg" alt="Public route table create" selectedImage={setSelectedImage} />
+
             <Paragraph>
                • After creating the route table, select it and go to the "Routes" tab. Click on <span className="text-primary font-semibold">Edit routes</span> and then <span className="text-primary font-semibold">Add route</span>. <br />
               • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway you created earlier. <br />
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save routes</span> to apply the changes.
             </Paragraph>
+
+
+
+
+
+
+
+
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-3 text-sm sm:text-base">REST API Setup</h3>
