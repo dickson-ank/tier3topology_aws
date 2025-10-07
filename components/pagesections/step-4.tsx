@@ -43,7 +43,7 @@ export function Step4({setSelectedImage}: Step4Props){
                   </div>
                         <div>
                           <a
-                            href="./index.html"
+                            href="./webapp-index.html"
                             download
                             className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono hover:bg-primary/90 transition-colors text-sm sm:text-base"
                           >
