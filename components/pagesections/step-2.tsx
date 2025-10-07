@@ -89,110 +89,137 @@ export function Step2({setSelectedImage}: Step2Props){
               </div>
             </div>
 
-        <ReadMore>
-          <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
-            {`AWSTemplateFormatVersion: "2010-09-09"
-              
-Description: >-
-This template creates a 3 tier web application infrastructure on AWS.
-It includes a VPC with public and private subnets across two availability zones,
-along with necessary routing, NAT gateways, and network ACLs.
 
-Parameters:
-VPCName:
-Description: The name of the VPC being created.
-Type: String
-Default: webapp-network
+            <div className="space-y-6">
+              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 2 - (Routing)</h3>
+                <p className="text:xm text-muted-foreground md:text:xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, NAT Gateway and Route Tables as discussed above<br/>
+                Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
+                Append this code to the code from Step 1 to make it work, and ensure the indentations are correct
+                </p>
+                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
+                  <ReadMore>
+                    <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
+                      {`# Resources: ...
 
-Mappings:
-SubnetConfig:
-VPC:
-CIDR: 10.0.0.0/16
-Public:
-CIDR: 10.0.1.0/24
-Private1:
-CIDR: 10.0.2.0/24
-Private2:
-CIDR: 10.0.3.0/24
-Private3:
-CIDR: 10.0.4.0/24
+# VPC and Subnets section  
 
-Resources:
-VPC:
-Type: AWS::EC2::VPC                   
-Properties:
-EnableDnsSupport: "true"
-EnableDnsHostnames: "true"
-CidrBlock: !FindInMap
-  - SubnetConfig
-  - VPC
-  - CIDR
-Tags:
-  - Key: Name
-    Value: !Ref VPCName          
+#######################
+# Routing section
+#######################
 
-PublicSubnet:
-Type: AWS::EC2::Subnet
-Properties:
-VpcId: !Ref VPC
-AvailabilityZone: !Select
-  - 0
-  - !GetAZs
-CidrBlock: !FindInMap
-  - SubnetConfig
-  - Public
-  - CIDR
-Tags:
-  - Key: Name
-    Value: public-subnet
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: webapp-network-igw
 
-PrivateSubnet1:
-Type: AWS::EC2::Subnet
-Properties:
-VpcId: !Ref VPC
-AvailabilityZone: !Select
-  - 0
-  - !GetAZs
-CidrBlock: !FindInMap
-  - SubnetConfig
-  - Private1
-  - CIDR
-Tags:
-  - Key: Name
-    Value: private-subnet-1
+  GatewayToInternet:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
 
-PrivateSubnet2:
-Type: AWS::EC2::Subnet
-Properties:
-VpcId: !Ref VPC
-AvailabilityZone: !Select
-  - 0
-  - !GetAZs
-CidrBlock: !FindInMap
-  - SubnetConfig
-  - Private2
-  - CIDR
-Tags:
-  - Key: Name
-    Value: private-subnet-2
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: public-rt
 
-PrivateSubnet3:
-Type: AWS::EC2::Subnet
-Properties:
-VpcId: !Ref VPC
-AvailabilityZone: !Select
-  - 1
-  - !GetAZs
-CidrBlock: !FindInMap
-  - SubnetConfig
-  - Private3
-  - CIDR
-Tags:
-  - Key: Name
-    Value: private-subnet-3
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: GatewayToInternet
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Name
+          Value: ngw-eip
+
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt ElasticIP.AllocationId
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Name
+          Value: webapp-network-ngw
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: public-rt
+
+  PublicRouteToInternet:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      InternetGatewayId: !Ref InternetGateway
+  
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: private-rt
+  PrivateRouteToNAT:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NATGateway
+  
+  PrivateSubnetRouteTableAssociation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable
+
+  PrivateSubnetRouteTableAssociation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet2
+      RouteTableId: !Ref PrivateRouteTable
+
+  PrivateSubnetRouteTableAssociation3:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet3
+      RouteTableId: !Ref PrivateRouteTable
               `}
               </SyntaxHighlighter>
             </ReadMore>
+                  </div>
+              </div>
+            </div>
         </ProjectSection>
     )
 }
