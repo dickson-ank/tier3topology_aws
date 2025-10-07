@@ -1,6 +1,8 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ImageContainer } from "../custom-image-container";
 import { ProjectSection } from "../project-section";
 import { Paragraph } from "../paragraph";
+import ReadMore from "../read-more-less";
 
 interface Step1Props {
     setSelectedImage: (src: string) => void
@@ -47,22 +49,159 @@ export function Step1({setSelectedImage}: Step1Props){
 
             <Paragraph>
               Repeat the process to create the three private subnets <br />
+              <br />
               • Name them "private-subnet-1", "private-subnet-2", and "private-subnet-3" respectively <br />
               • Put the first 2 private subnets in same Availability Zone as the public subnet <br />
-                and put the last subnet in a different Availability Zone <br />
-                refer the image <a href="vpc-subnet-base">here</a> and set their CIDRs as shown <br />
+                <span className="block ml-4">and put the last subnet in a different Availability Zone <br />
+                refer to the image for clarity <a href="#vpc-subnet-base" className="text-primary font-medium">here</a> and set their CIDRs as shown </span><br />
             </Paragraph>
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Creating Your First Lambda</h3>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation code for Step 1</h3>
+                <p className="text:xm text-muted-foreground md:text:xs lg:text-xs mb-2">Uploading this to Cloudformation creates a vpc and subnets as we discussed above
+                </p>
                 <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
-                  <div className="text-muted-foreground mb-2">// lambda/handler.js</div>
-                  <div>exports.handler = async (event) =&gt; {"{"}</div>
+                <ReadMore>
+                <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
+                  {`AWSTemplateFormatVersion: "2010-09-09"
+                    
+Description: >-
+This template creates a 3 tier web application infrastructure on AWS.
+It includes a VPC with public and private subnets across two availability zones,
+along with necessary routing, NAT gateways, and network ACLs.
+
+Parameters:
+VPCName:
+Description: The name of the VPC being created.
+Type: String
+Default: webapp-network
+
+Mappings:
+SubnetConfig:
+VPC:
+  CIDR: 10.0.0.0/16
+Public:
+  CIDR: 10.0.1.0/24
+Private1:
+  CIDR: 10.0.2.0/24
+Private2:
+  CIDR: 10.0.3.0/24
+Private3:
+  CIDR: 10.0.4.0/24
+
+Resources:
+VPC:
+Type: AWS::EC2::VPC
+Properties:
+  EnableDnsSupport: "true"
+  EnableDnsHostnames: "true"
+  CidrBlock: !FindInMap
+    - SubnetConfig
+    - VPC
+    - CIDR
+  Tags:
+    - Key: Name
+      Value: !Ref VPCName
+
+PublicSubnet:
+Type: AWS::EC2::Subnet
+Properties:
+  VpcId: !Ref VPC
+  AvailabilityZone: !Select
+    - 0
+    - !GetAZs
+  CidrBlock: !FindInMap
+    - SubnetConfig
+    - Public
+    - CIDR
+  MapPublicIpOnLaunch: "true"
+  Tags:
+    - Key: Name
+      Value: !Join
+        - ""
+        - - !Ref VPCName
+          - -public-
+          - !Select
+            - 0
+            - !GetAZs
+
+PrivateSubnet1:
+Type: AWS::EC2::Subnet
+Properties:
+  VpcId: !Ref VPC
+  AvailabilityZone: !Select
+    - 0
+    - !GetAZs
+  CidrBlock: !FindInMap
+    - SubnetConfig
+    - Private1
+    - CIDR
+  MapPublicIpOnLaunch: "true"
+  Tags:
+    - Key: Application
+      Value: !Ref AWS::StackName
+    - Key: Network
+      Value: Public
+    - Key: Name
+      Value: !Join
+        - ""
+        - - !Ref VPCName
+          - -private1-
+          - !Select
+            - 0
+            - !GetAZs
+
+PrivateSubnet2:
+Type: AWS::EC2::Subnet
+Properties:
+  VpcId: !Ref VPC
+  AvailabilityZone: !Select
+    - 0
+    - !GetAZs
+  CidrBlock: !FindInMap
+    - SubnetConfig
+    - Private2
+    - CIDR
+  Tags:
+    - Key: Name
+      Value: !Join
+        - ""
+        - - !Ref VPCName
+          - -private2-
+          - !Select
+            - 0
+            - !GetAZs
+
+PrivateSubnet3:
+Type: AWS::EC2::Subnet
+Properties:
+  VpcId: !Ref VPC
+  AvailabilityZone: !Select
+    - 1
+    - !GetAZs
+  CidrBlock: !FindInMap
+    - SubnetConfig
+    - Private3
+    - CIDR
+  Tags:
+    - Key: Name
+      Value: !Join
+        - ""
+        - - !Ref VPCName
+          - -private3-
+          - !Select
+            - 1
+            - !GetAZs
+                    `}
+                   </SyntaxHighlighter>
+                  </ReadMore>
+                  
+                  {/* <div>exports.handler = async (event) =&gt; {"{"}</div>
                   <div className="ml-4">return {"{"}</div>
                   <div className="ml-8">statusCode: 200,</div>
                   <div className="ml-8">body: JSON.stringify('Hello from Lambda!')</div>
                   <div className="ml-4">{"}"}</div>
-                  <div>{"}"}</div>
+                  <div>{"}"}</div> */}
                 </div>
               </div>
             </div>

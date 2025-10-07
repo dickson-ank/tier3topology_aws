@@ -19,7 +19,6 @@ export function Introduction({setSelectedImage}: IntroductionProps){
                 Topology Diagram
                 </div>
             </ImageContainer>
-
             <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites</h3>
                 <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
