@@ -1,0 +1,247 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >-
+  This template creates a 3 tier web application infrastructure on AWS.
+  It includes a VPC with public and private subnets across two availability zones,
+  along with necessary routing, NAT gateways, and network ACLs.
+
+Parameters:
+  VPCName:
+    Description: The name of the VPC being created.
+    Type: String
+    Default: webapp-network
+
+Mappings:
+  SubnetConfig:
+    VPC:
+      CIDR: 10.0.0.0/16
+    Public:
+      CIDR: 10.0.1.0/24
+    Private1:
+      CIDR: 10.0.2.0/24
+    Private2:
+      CIDR: 10.0.3.0/24
+    Private3:
+      CIDR: 10.0.4.0/24
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      EnableDnsSupport: "true"
+      EnableDnsHostnames: "true"
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - VPC
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: !Ref VPCName
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Public
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: public-subnet
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private1
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-1
+
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private2
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-2
+
+  PrivateSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs
+      CidrBlock: !FindInMap
+        - SubnetConfig
+        - Private3
+        - CIDR
+      Tags:
+        - Key: Name
+          Value: private-subnet-3
+
+#######################
+# Routing section
+#######################
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: webapp-network-igw
+
+  GatewayToInternet:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - !Ref VPCName
+              - -public-rt
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: GatewayToInternet
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Name
+          Value: ngw-eip
+
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt ElasticIP.AllocationId
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Name
+          Value: webapp-network-ngw
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: public-rt
+
+  PublicRouteToInternet:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      InternetGatewayId: !Ref InternetGateway
+  
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: private-rt
+  PrivateRouteToNAT:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NATGateway
+  
+  PrivateSubnetRouteTableAssociation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable
+
+  PrivateSubnetRouteTableAssociation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet2
+      RouteTableId: !Ref PrivateRouteTable
+
+  PrivateSubnetRouteTableAssociation3:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet3
+      RouteTableId: !Ref PrivateRouteTable
+
+
+# Outputs
+Outputs:
+  VPCId:
+    Description: VPCId of VPC
+    Value: !Ref VPC
+    Export:
+      Name: !Sub ${AWS::Region}-${AWS::StackName}-VPC
+
+  PublicSubnet:
+    Description: SubnetId of public subnet
+    Value: !Ref PublicSubnet
+    Export:
+      Name: !Sub ${AWS::Region}-${AWS::StackName}-PublicSubnet
+
+  PrivateSubnet1:
+    Description: SubnetId of private subnet 1
+    Value: !Ref PrivateSubnet1
+    Export:
+      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet1
+
+  PrivateSubnet2:
+    Description: SubnetId of private subnet 2
+    Value: !Ref PrivateSubnet2
+    Export:
+      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet2
+
+  PrivateSubnet3:
+    Description: SubnetId of private subnet 3
+    Value: !Ref PrivateSubnet3
+    Export:
+      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet3
+
