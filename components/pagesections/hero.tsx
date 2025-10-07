@@ -24,7 +24,7 @@ export function Hero(){
             
             <div className="px-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.open("https://github.com/dickson-ank/tier3topology_aws/blob/main/Cloudformation/tier3.yml", "_blank")}
+                onClick={() => window.open("https://github.com/dickson-ank/tier3topology_aws/blob/main/Cloudformation/cloudformation.yaml", "_blank")}
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
               >
                 View CloudFormation Code
