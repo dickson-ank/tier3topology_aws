@@ -21,16 +21,31 @@ export function Step2({setSelectedImage}: Step2Props){
             </Paragraph>
             <Paragraph>Let's create the internet gateways<br />
               In the VPC Dashboard, choose "Internet Gateways" and click on <span className="text-primary font-semibold">Create Internet Gateway</span>.<br />
-              • Name it "webapp-network-igw" implying that it's the VPC's gateway to the internet and click 
+              • Name it "webapp-network-igw" implying that it's the VPC's gateway to the internet <br />and click 
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create internet gateway</span>.<br />
             </Paragraph>
             <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC</span> from the green pop-up and choose the VPC we created earlier ("webapp-network").</Paragraph>
             <ImageContainer src="./igw-attach.png" alt="Internet gateway attach" selectedImage={setSelectedImage} />
             <ImageContainer src="./igw-attach.png" alt="Internet gateway attach" selectedImage={setSelectedImage} />
-            
             <Paragraph>
-              We have both internet
-              Go back to the side menu, navigate to the "Route Tables" section and click on <span className="text-primary font-semibold">Create Route Table</span>.<br />
+              Let's create a NAT Gateway in the same manner.<br /> <br />
+              Before that, we need to allocate an Elastic IP address to the NAT Gateway so that it maintains a consistent public IP address.<br />
+              In the Management Console search for "Elastic IPs" and click on <span className="text-primary font-semibold">Allocate Elastic IP address</span>.<br />
+              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span> in the next screen to confirm.<br /><br />
+              • Now, go back to the VPC Dashboard. <br />
+              Choose "NAT Gateways" from the side menu and click on <span className="text-primary font-semibold">Create NAT Gateway</span>.<br />
+              • We'll name it "webapp-network-ngw" <br />
+              • Choose the public subnet we created earlier ("public-subnet") from the dropdown <br />
+                <span className="text-muted-foreground block font-mono text-sm mt-1 ml-4">
+                A NAT Gateway must always be in a public subnet
+                </span>
+              • For the Elastic IP allocation ID, click on <span className="text-primary font-semibold">Allocate new EIP</span> and then click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create a NAT gateway</span>.<br />
+              • After the NAT Gateway is created, select it and wait for its status to change to "Available".<br />
+            </Paragraph>
+
+            <Paragraph>
+              Now that we have both Internet Gateway and NAT Gateway created, focus is back on the main subject of this step: <span className="text-muted-foreground font-medium">"Setting up routes"</span><br />
+              So let's go to the side menu, navigate to the "Route Tables" section and click on <span className="text-primary font-semibold">Create Route Table</span>.<br />
               • We'll name it "public-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
               • After creating the route table, select it and go to the "Routes" tab. Click on <span className="text-primary font-semibold">Edit routes</span> and then <span className="text-primary font-semibold">Add route</span>. <br />
               • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway you created earlier. <br />
@@ -50,9 +65,6 @@ export function Step2({setSelectedImage}: Step2Props){
                 </p>
               </div>
             </div>
-
-            <ImageContainer src="./placeholder.svg" alt="Lambda function creation" selectedImage={setSelectedImage} />
-
         </ProjectSection>
     )
 }
