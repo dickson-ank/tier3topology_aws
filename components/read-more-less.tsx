@@ -39,11 +39,11 @@ export default function ReadMore({
 
   const toggleExpanded = () => {
     if (expanded) {
-      // collapsing → wait for transition to finish, then scroll
-      setExpanded(false);
+      // Scroll first, then collapse after scroll completes
+      scrollToContainer();
       setTimeout(() => {
-        scrollToContainer();
-      }, transitionDuration); // wait for the CSS transition
+        setExpanded(false);
+      }, 500); // wait for smooth scroll to complete
     } else {
       setExpanded(true);
     }
@@ -51,7 +51,7 @@ export default function ReadMore({
 
   return (
     <div className="max-w-3xl mx-auto" ref={containerRef}>
-        {contentHeight > collapsedHeight && (
+      {contentHeight > collapsedHeight && (
         <button
           onClick={toggleExpanded}
           className="text-right text-primary font-semibold hover:underline mb-1"
@@ -69,13 +69,13 @@ export default function ReadMore({
         {children}
       </div>
 
-      {contentHeight > collapsedHeight && (
-        expanded ? <button
+      {contentHeight > collapsedHeight && expanded && (
+        <button
           onClick={toggleExpanded}
           className="text-primary font-semibold hover:underline mt-1 border-border text-right"
         >
           Collapse
-        </button> : null
+        </button>
       )}
     </div>
   );
