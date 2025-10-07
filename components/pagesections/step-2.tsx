@@ -1,6 +1,8 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ImageContainer } from "../custom-image-container";
 import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
+import ReadMore from "../read-more-less";
 
 interface Step2Props {
     setSelectedImage: (src: string) => void
@@ -58,9 +60,10 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./public-rt-create.jpeg" alt="Public route table create" selectedImage={setSelectedImage} />
 
             <Paragraph>
-               • After creating the route table, select it and go to the "Routes" tab. Click on <span className="text-primary font-semibold">Edit routes</span> and then <span className="text-primary font-semibold">Add route</span>. <br />
-              • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway you created earlier. <br />
-              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save routes</span> to apply the changes.
+              • We will be led to the dashboard of the just created route table<br />
+              There, select the "Routes" tab. Click on <span className="text-primary font-semibold">Edit routes</span> and then <span className="text-primary font-semibold">Add route</span>. <br />
+              • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway we created earlier("webapp-network-igw")<br />
+              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save changes</span> to apply the changes.
             </Paragraph>
 
 
@@ -85,6 +88,111 @@ export function Step2({setSelectedImage}: Step2Props){
                 </p>
               </div>
             </div>
+
+        <ReadMore>
+          <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
+            {`AWSTemplateFormatVersion: "2010-09-09"
+              
+Description: >-
+This template creates a 3 tier web application infrastructure on AWS.
+It includes a VPC with public and private subnets across two availability zones,
+along with necessary routing, NAT gateways, and network ACLs.
+
+Parameters:
+VPCName:
+Description: The name of the VPC being created.
+Type: String
+Default: webapp-network
+
+Mappings:
+SubnetConfig:
+VPC:
+CIDR: 10.0.0.0/16
+Public:
+CIDR: 10.0.1.0/24
+Private1:
+CIDR: 10.0.2.0/24
+Private2:
+CIDR: 10.0.3.0/24
+Private3:
+CIDR: 10.0.4.0/24
+
+Resources:
+VPC:
+Type: AWS::EC2::VPC                   
+Properties:
+EnableDnsSupport: "true"
+EnableDnsHostnames: "true"
+CidrBlock: !FindInMap
+  - SubnetConfig
+  - VPC
+  - CIDR
+Tags:
+  - Key: Name
+    Value: !Ref VPCName          
+
+PublicSubnet:
+Type: AWS::EC2::Subnet
+Properties:
+VpcId: !Ref VPC
+AvailabilityZone: !Select
+  - 0
+  - !GetAZs
+CidrBlock: !FindInMap
+  - SubnetConfig
+  - Public
+  - CIDR
+Tags:
+  - Key: Name
+    Value: public-subnet
+
+PrivateSubnet1:
+Type: AWS::EC2::Subnet
+Properties:
+VpcId: !Ref VPC
+AvailabilityZone: !Select
+  - 0
+  - !GetAZs
+CidrBlock: !FindInMap
+  - SubnetConfig
+  - Private1
+  - CIDR
+Tags:
+  - Key: Name
+    Value: private-subnet-1
+
+PrivateSubnet2:
+Type: AWS::EC2::Subnet
+Properties:
+VpcId: !Ref VPC
+AvailabilityZone: !Select
+  - 0
+  - !GetAZs
+CidrBlock: !FindInMap
+  - SubnetConfig
+  - Private2
+  - CIDR
+Tags:
+  - Key: Name
+    Value: private-subnet-2
+
+PrivateSubnet3:
+Type: AWS::EC2::Subnet
+Properties:
+VpcId: !Ref VPC
+AvailabilityZone: !Select
+  - 1
+  - !GetAZs
+CidrBlock: !FindInMap
+  - SubnetConfig
+  - Private3
+  - CIDR
+Tags:
+  - Key: Name
+    Value: private-subnet-3
+              `}
+              </SyntaxHighlighter>
+            </ReadMore>
         </ProjectSection>
     )
 }
