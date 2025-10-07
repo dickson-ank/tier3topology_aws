@@ -54,7 +54,7 @@ export default function ReadMore({
       {contentHeight > collapsedHeight && (
         <button
           onClick={toggleExpanded}
-          className="text-right text-primary font-semibold hover:underline mb-1"
+          className="text-right text-primary font-sans font-semibold hover:underline mb-1"
         >
           {expanded ? "Collapse" : "Show More"}
         </button>
@@ -72,7 +72,7 @@ export default function ReadMore({
       {contentHeight > collapsedHeight && expanded && (
         <button
           onClick={toggleExpanded}
-          className="text-primary font-semibold hover:underline mt-1 border-border text-right"
+          className="text-primary font-sans font-semibold hover:underline mt-1 border-border text-right"
         >
           Collapse
         </button>
