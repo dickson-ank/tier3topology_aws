@@ -103,10 +103,9 @@ export function Step2({setSelectedImage}: Step2Props){
                       {`# Resources: ...
 
 # VPC and Subnets section  
-
+#    ....
 #######################
 # Routing section
-#######################
 
   InternetGateway:
     Type: AWS::EC2::InternetGateway
