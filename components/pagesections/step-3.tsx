@@ -30,8 +30,6 @@ export function Step3({setSelectedImage}: Step3Props){
               • We'll name it "BastionHostSG" <br />
               • Add a description (optional) <br />
               • Choose the VPC we created earlier ("webapp-vpc") from the dropdown <br />
-
-
             </Paragraph>
 
             <Paragraph>
@@ -43,8 +41,21 @@ export function Step3({setSelectedImage}: Step3Props){
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Create security group</span>
             </Paragraph>
+            <ImageContainer  src="./bastionhostSG-create.jpeg" alt="Bastion Host SG screenshot" selectedImage={setSelectedImage} />
 
-
+            <Paragraph>
+              We'll create the Web Server Security Group next. <br />
+              • We'll name it "WebServerSG" <br />
+              • Add 3 inbound rules:<br />
+              • HTTP - Source: Anywhere IPv4<span className="font-mono text-primary"> (0.0.0.0/0) </span><br />
+              • HTTPS - Source: Anywhere IPv4 <span className="font-mono text-primary"> (0.0.0.0/0)  </span><br />
+              • SSH - Source: "My IP" (for management purposes) <br />
+              • We should add ICMP rule from the App Server SG but we 
+              haven't created it yet so we'll come back and add it later<br />
+              Review and create the security group<br />
+            </Paragraph>
+            <ImageContainer  src="./webserverSG-create.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
+            <ImageContainer  src="./webserverSG-create2.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">DynamoDB Table Creation</h3>
