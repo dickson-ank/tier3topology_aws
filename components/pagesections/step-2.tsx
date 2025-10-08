@@ -66,14 +66,24 @@ export function Step2({setSelectedImage}: Step2Props){
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save changes</span> to apply the changes.
             </Paragraph>
             <ImageContainer className="mt-1" src="./public-rt-route.jpeg" alt="Public route table route" selectedImage={setSelectedImage} />
-            
+
             <Paragraph>
               • Next, we need to associate this route table with the public subnet so that it can use this route table for its routing needs.<br />
               • Select the "Subnet associations" tab and click on <span className="text-primary font-semibold">Edit subnet associations</span>.<br />
               • Select the public subnet ("public-subnet") and click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save associations</span> to confirm.
             </Paragraph>
             <ImageContainer className="mt-1" src="./public-rt-assoc.jpeg" alt="Public route table association" selectedImage={setSelectedImage} />
-          
+
+            <Paragraph>
+              Repeat the process to create a route table for the private subnets.<br />
+              • We'll name it "private-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
+              • In the "Routes" tab, add a route with destination <span className="font-mono text-primary">0.0.0.0/0</span> 
+              and target the NAT Gateway we created earlier ("webapp-network-ngw"). <br />
+              • In the "Subnet associations" tab, associate all three private subnets 
+              ("private-subnet-1", "private-subnet-2", and "private-subnet-3") with this route table.<br />
+            </Paragraph>
+            <ImageContainer className="mt-1" src="./private-rt-route.jpeg" alt="Private route table route" selectedImage={setSelectedImage} />
+            <ImageContainer className="mt-1" src="./private-rt-assoc.jpeg" alt="Private route table association" selectedImage={setSelectedImage} />
 
 
 
