@@ -1,4 +1,5 @@
 import { ImageContainer } from "../custom-image-container";
+import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
 
 interface Step4Props {
@@ -7,11 +8,23 @@ interface Step4Props {
 
 export function Step4({setSelectedImage}: Step4Props){
     return(
-        <ProjectSection id="step-4" title="Step 4: Deploy & Test Your Architecture" onImageClick={setSelectedImage}>
-            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              The final step involves deploying our serverless architecture and running comprehensive tests to ensure
-              everything works as expected. We'll also set up monitoring and logging.
-            </p>
+        <ProjectSection id="step-4" title="Step 4: EC2 Instances & RDS Database" onImageClick={setSelectedImage}>
+          <Paragraph>
+            In this step, we will launch EC2 instances for the web server and database server,
+             configure them with appropriate security groups created in the previous step,
+            and set up user data scripts to automate the installation of necessary software.
+          </Paragraph>
+          <Paragraph>
+            What we'll create:
+            • EC2 Instance for Bastion
+            • EC2 Instance for Web Server
+            • EC2 Instance for Database Server
+            • RDS Instance for MariaDB
+          </Paragraph>
+          <ImageContainer src="./draw.io-ec2-database.png" alt="EC2 and Database Setup Diagram" selectedImage={setSelectedImage} />
+
+
+
 
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
