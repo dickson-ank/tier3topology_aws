@@ -65,6 +65,15 @@ export function Step2({setSelectedImage}: Step2Props){
               • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway we created earlier("webapp-network-igw")<br />
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save changes</span> to apply the changes.
             </Paragraph>
+            <ImageContainer className="mt-1" src="./public-rt-route.jpeg" alt="Public route table route" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
+              • Next, we need to associate this route table with the public subnet so that it can use this route table for its routing needs.<br />
+              • Select the "Subnet associations" tab and click on <span className="text-primary font-semibold">Edit subnet associations</span>.<br />
+              • Select the public subnet ("public-subnet") and click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save associations</span> to confirm.
+            </Paragraph>
+            <ImageContainer className="mt-1" src="./public-rt-assoc.jpeg" alt="Public route table association" selectedImage={setSelectedImage} />
+          
 
 
 
@@ -119,6 +128,23 @@ export function Step2({setSelectedImage}: Step2Props){
     Properties:
       VpcId: !Ref VPC
       InternetGatewayId: !Ref InternetGateway
+      
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Name
+          Value: ngw-eip
+
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt ElasticIP.AllocationId
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Name
+          Value: webapp-network-ngw
 
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
@@ -142,22 +168,6 @@ export function Step2({setSelectedImage}: Step2Props){
       SubnetId: !Ref PublicSubnet
       RouteTableId: !Ref PublicRouteTable
 
-  ElasticIP:
-    Type: AWS::EC2::EIP
-    Properties:
-      Domain: vpc
-      Tags:
-        - Key: Name
-          Value: ngw-eip
-
-  NATGateway:
-    Type: AWS::EC2::NatGateway
-    Properties:
-      AllocationId: !GetAtt ElasticIP.AllocationId
-      SubnetId: !Ref PublicSubnet
-      Tags:
-        - Key: Name
-          Value: webapp-network-ngw
 
   PrivateRouteTable:
     Type: AWS::EC2::RouteTable
