@@ -86,7 +86,7 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./private-rt-assoc.jpeg" alt="Private route table association" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              If everything is done correctly the VPC resource map should look like this
+              If everything is done correctly the VPC resource map should look like this. <br />
               The additional route table was created by default by the lab environment I used. It doesn't affect anything
             </Paragraph>
             <ImageContainer className="mt-1" src="./vpc-resource-map.jpeg" alt="VPC resource map" selectedImage={setSelectedImage} />
@@ -99,9 +99,12 @@ export function Step2({setSelectedImage}: Step2Props){
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-3 text-sm sm:text-base">REST API Setup</h3>
+                <h3 className="font-semibold text-foreground mb-3 text-sm sm:text-base">Key things to note in this step</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground text-pretty">
-                  Create a new REST API in API Gateway and configure the necessary resources and methods.
+                  - A NAT Gateway must always be in a public subnet <br />
+                  - Private subnets should not have a direct route to the Internet Gateway <br />
+                  - Ensure that the route tables are correctly associated with their respective subnets <br />
+                  - Double-check the CIDR blocks to avoid overlaps and ensure proper segmentation <br />
                 </p>
               </div>
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
@@ -116,7 +119,8 @@ export function Step2({setSelectedImage}: Step2Props){
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 2 - (Routing)</h3>
-                <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, NAT Gateway and Route Tables as discussed above<br/>
+                <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, 
+                  NAT Gateway and Route Tables as discussed above<br/>
                 Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
                 Append this code to the code from Step 1 to make it work, and ensure the indentations are correct
                 </p>
