@@ -95,8 +95,7 @@ export function Step3({setSelectedImage}: Step3Props){
             
             <Note grid={false}
             note1={<>
-              - Things to note in this section <br />
-              - Allow only necessary traffic <br />
+              - Allow limited access to specific IPs into bastion host <br />
               - Since web server already built to allow traffic from internet,
                we do not to ssh into it through the bastion host<br />
               - Allowing too much traffic from anywhere can risk your most critical resources <br />
