@@ -10,9 +10,9 @@ interface ReadMoreProps {
 
 export default function ReadMore({
   children,
-  collapsedHeight = 90,
+  collapsedHeight = 70,
   scrollOffset = 220,
-  transitionDuration = 300,
+  transitionDuration = 150,
 }: ReadMoreProps) {
   const [expanded, setExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ export default function ReadMore({
       scrollToContainer();
       setTimeout(() => {
         setExpanded(false);
-      }, 500); // wait for smooth scroll to complete
+      }, 20); // wait for smooth scroll to complete
     } else {
       setExpanded(true);
     }

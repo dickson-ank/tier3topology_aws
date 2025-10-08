@@ -16,7 +16,7 @@ const sections = [
   { id: "introduction", title: "Introduction" },
   { id: "step-1", title: "Step 1: VPC and Subnets" },
   { id: "step-2", title: "Step 2: Routing" },
-  { id: "step-3", title: "Step 3: Deployment" },
+  { id: "step-3", title: "Step 3: Security Groups" },
   { id: "step-4", title: "Step 4: Testing" },
   { id: "conclusion", title: "Conclusion"},
   { id: "thank-you", title: "Thank You" },

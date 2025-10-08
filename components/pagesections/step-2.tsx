@@ -3,6 +3,7 @@ import { ImageContainer } from "../custom-image-container";
 import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
 import ReadMore from "../read-more-less";
+import Note from "../note";
 
 interface Step2Props {
     setSelectedImage: (src: string) => void
@@ -97,23 +98,18 @@ export function Step2({setSelectedImage}: Step2Props){
 
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-3 text-sm sm:text-base">Key things to note in this step</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground text-pretty">
-                  - A NAT Gateway must always be in a public subnet <br />
-                  - Private subnets should not have a direct route to the Internet Gateway <br />
-                  - Ensure that the route tables are correctly associated with their respective subnets <br />
-                  - Double-check the CIDR blocks to avoid overlaps and ensure proper segmentation <br />
-                </p>
-              </div>
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-3 text-sm sm:text-base">Lambda Integration</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground text-pretty">
-                  Connect your API Gateway endpoints to the Lambda functions we created in the previous step.
-                </p>
-              </div>
-            </div>
+            <Note grid={true} 
+              note1={
+                    <>- A NAT Gateway must always be in a public subnet <br />
+                - Private subnets should not have a direct route to the Internet Gateway <br />
+                - Ensure that the route tables are correctly associated with their respective subnets <br />
+                - Double-check the CIDR blocks to avoid overlaps and ensure proper segmentation <br /></>
+                }
+              
+              note2={
+              <>- Connect your API Gateway endpoints to the Lambda functions we created in the previous step.</>
+            }
+            />
 
 
             <div className="space-y-6">

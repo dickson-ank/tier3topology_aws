@@ -7,10 +7,9 @@ interface Step3Props {
 
 export function Step3({setSelectedImage}: Step3Props){
     return(
-        <ProjectSection id="step-3" title="Step 3: Configure Database & Storage" onImageClick={setSelectedImage}>
+        <ProjectSection id="step-3" title="Step 3: Security Groups" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Set up DynamoDB for our NoSQL database needs and configure S3 buckets for file storage. This step ensures
-              our serverless application has persistent data storage.
+              
             </p>
 
             <div className="space-y-6">
