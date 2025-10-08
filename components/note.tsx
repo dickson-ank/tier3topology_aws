@@ -12,7 +12,7 @@ export default function Note({ note1, note2, grid }: NoteProps){
             return(
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6" >
                 <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                    <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Key things to note in this step</h3>
+                    <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Key Points / Best Practices</h3>
                     <Paragraph>
                         {note1}
                     </Paragraph>
