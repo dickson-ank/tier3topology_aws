@@ -93,7 +93,7 @@ export function Step2({setSelectedImage}: Step2Props){
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 2 - (Routing)</h3>
-                <p className="text:xs text-muted-foreground md:text:xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, NAT Gateway and Route Tables as discussed above<br/>
+                <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, NAT Gateway and Route Tables as discussed above<br/>
                 Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
                 Append this code to the code from Step 1 to make it work, and ensure the indentations are correct
                 </p>
