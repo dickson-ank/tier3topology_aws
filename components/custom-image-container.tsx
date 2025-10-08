@@ -14,7 +14,7 @@ interface ImageAttributes{
 export function ImageContainer({src, alt, id,className, children, selectedImage} : ImageAttributes){
     return(
 
-        <div className={`bg-card my-6 border border-border rounded-lg p-1 ${className}`}>
+        <div className={`bg-card my-6 !scroll-mt-120 border border-border rounded-lg p-1 ${className}`}>
             <img
             src={src}
             alt={alt}
