@@ -1,7 +1,9 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ImageContainer } from "../custom-image-container";
 import Note from "../note";
 import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
+import ReadMore from "../read-more-less";
 
 interface Step3Props {
     setSelectedImage: (src: string) => void
@@ -104,20 +106,31 @@ export function Step3({setSelectedImage}: Step3Props){
                   </>}        
             />
             
-            
-            
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">DynamoDB Table Creation</h3>
-                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto">
-                  <div className="text-muted-foreground mb-1"># Create DynamoDB table</div>
-                  <div className="whitespace-nowrap">aws dynamodb create-table \</div>
-                  <div className="ml-4">--table-name UserData \</div>
-                  <div className="ml-4">--attribute-definitions AttributeName=userId,AttributeType=S \</div>
-                  <div className="ml-4">--key-schema AttributeName=userId,KeyType=HASH</div>
-                </div>
-              </div>
-              </div>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 2 - (Routing)</h3>
+                <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates the IGW, 
+                  NAT Gateway and Route Tables as discussed above<br/>
+                Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
+                Append this code to the code from Step 1 to make it work, and ensure the indentations are correct
+                </p>
+                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
+                  <ReadMore>
+                    <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
+                      {`# Resources: ...
+
+# VPC and Subnets section  
+#    ....
+#######################
+# Routing section
+
+
+              `}
+                    </SyntaxHighlighter>
+                  </ReadMore>
+                                    </div>
+                                </div>
+                              </div>
           
         </ProjectSection>
     )
