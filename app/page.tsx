@@ -39,7 +39,7 @@ export default function Home() {
           <Step3 setSelectedImage={setSelectedImage}/>
           <Step4 setSelectedImage={setSelectedImage}/>
 
-          {/* Thank you section */}
+          {/* Conclusion section */}
           <ProjectSection id="thank-you" title="Thank You">
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
              Thank you for following this guide on building a 3-tier web application on AWS. I hope you found it informative and helpful.
