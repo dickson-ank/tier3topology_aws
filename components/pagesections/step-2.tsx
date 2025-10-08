@@ -60,7 +60,7 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./public-rt-create.jpeg" alt="Public route table create" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              • We will be led to the dashboard of the just created route table<br />
+              • We will be redirected to the dashboard of the just created route table<br />
               There, select the "Routes" tab. Click on <span className="text-primary font-semibold">Edit routes</span> and then <span className="text-primary font-semibold">Add route</span>. <br />
               • Set the destination to <span className="font-mono text-primary">0.0.0.0/0</span> and the target to the Internet Gateway we created earlier("webapp-network-igw")<br />
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save changes</span> to apply the changes.
