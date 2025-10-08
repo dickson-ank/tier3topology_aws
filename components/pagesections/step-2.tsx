@@ -77,7 +77,7 @@ export function Step2({setSelectedImage}: Step2Props){
             <Paragraph>
               Repeat the process to create a route table for the private subnets.<br />
               • We'll name it "private-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
-              • In the "Routes" tab, add a route with destination <span className="font-mono text-primary">0.0.0.0/0</span> 
+              • In the "Routes" tab, add a route with destination <span className="font-mono text-primary">0.0.0.0/0 </span> 
               and target the NAT Gateway we created earlier ("webapp-network-ngw"). <br />
               • In the "Subnet associations" tab, associate all three private subnets 
               ("private-subnet-1", "private-subnet-2", and "private-subnet-3") with this route table.<br />
@@ -85,7 +85,11 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./private-rt-route.jpeg" alt="Private route table route" selectedImage={setSelectedImage} />
             <ImageContainer className="mt-1" src="./private-rt-assoc.jpeg" alt="Private route table association" selectedImage={setSelectedImage} />
 
-
+            <Paragraph>
+              If everything is done correctly the VPC resource map should look like this
+              The additional route table was created by default by the lab environment I used. It doesn't affect anything
+            </Paragraph>
+            <ImageContainer className="mt-1" src="./vpc-resource-map.jpeg" alt="VPC resource map" selectedImage={setSelectedImage} />
 
 
 
