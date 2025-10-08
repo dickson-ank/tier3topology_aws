@@ -50,12 +50,36 @@ export function Step3({setSelectedImage}: Step3Props){
               • HTTP - Source: Anywhere IPv4<span className="font-mono text-primary"> (0.0.0.0/0) </span><br />
               • HTTPS - Source: Anywhere IPv4 <span className="font-mono text-primary"> (0.0.0.0/0)  </span><br />
               • SSH - Source: "My IP" (for management purposes) <br />
-              • We should add ICMP rule from the App Server SG but we 
+              • We should add ICMP rule from App Server SG but we 
               haven't created it yet so we'll come back and add it later<br />
-              Review and create the security group<br />
+              • Review and create the security group<br />
             </Paragraph>
             <ImageContainer  src="./webserverSG-create.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
             <ImageContainer  src="./webserverSG-create2.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
+              Next, we'll create the App Server Security Group. <br />
+              • We'll name it "AppServerSG" <br />
+              • Add 3 inbound rules:<br />
+              • SSH - Source: Custom - "BastionHostSG" (search "sg" and select BastionHostSG from the dropdown) <br />
+              • HTTP - Source: Custom - "WebServerSG" (search "sg" and select WebServerSG from the dropdown) <br />
+              • ICMP - Source: Custom - "WebServerSG"<br />
+              • We can ingnore https and use only http between web and app server for simplicity <br />
+              • We should add MySQL/Aurora rule from Database SG but we 
+              haven't created it yet so we'll come back and add it later<br /><br />
+              • Review and create the security group<br />
+            </Paragraph>
+            <ImageContainer  src="./appserverSG-create.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />
+            <ImageContainer  src="./appserverSG-create2.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />          
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">DynamoDB Table Creation</h3>
