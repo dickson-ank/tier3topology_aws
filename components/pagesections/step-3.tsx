@@ -1,4 +1,5 @@
 import { ImageContainer } from "../custom-image-container";
+import Note from "../note";
 import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
 
@@ -82,8 +83,27 @@ export function Step3({setSelectedImage}: Step3Props){
             </Paragraph>
             <ImageContainer  src="./databaseSG-create.jpeg" alt="Database SG screenshot" selectedImage={setSelectedImage} />            
             
+            <Paragraph>
+              Now, let's go back and add the missing rules to the Web Server and App Server Security Groups. <br />
+              • Select each Security Group and edit the inbound rules<br />
+              • For WebServerSG, add an ICMP rule with Source: Custom - "AppServerSG"<br />
+              • For AppServerSG, add a MySQL/Aurora rule with Source: Custom - "DatabaseSG"<br />
+              • Save the changes<br /><br />
+              This completes the setup of our Security Groups, ensuring that our application components
+              can communicate securely while minimizing exposure to potential threats.
+            </Paragraph>
             
-            
+            <Note grid={false}
+            note1={<>
+              - Things to note in this section <br />
+              - Allow only necessary traffic <br />
+              - Since web server already built to allow traffic from internet,
+               we do not to ssh into it through the bastion host<br />
+              - Allowing too much traffic from anywhere can risk your most critical resources <br />
+              - Regularly review and update security group rules as needed <br />
+              - Use descriptive names and comments for rules to make management easier <br />
+                  </>}        
+            />
             
             
             
