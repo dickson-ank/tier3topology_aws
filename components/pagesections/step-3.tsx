@@ -69,11 +69,18 @@ export function Step3({setSelectedImage}: Step3Props){
               haven't created it yet so we'll come back and add it later<br /><br />
               • Review and create the security group<br />
             </Paragraph>
-            <ImageContainer  src="./appserverSG-create.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />
-            <ImageContainer  src="./appserverSG-create2.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />          
+            <ImageContainer  src="./appserverSG-create2.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />
+            <ImageContainer  src="./appserverSG-create.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />          
             
-            
-            
+            <Paragraph>
+              Finally, we'll create the Database Security Group. <br />
+              • We'll name it "DatabaseSG" <br />
+              • Add 2 inbound rules:<br />
+              • MySQL/Aurora - Source: Custom - "AppServerSG" <br />
+              • MySQL/Aurora - Source: Custom - "BastionHostSG" <br />
+              • Review and create the security group<br />
+            </Paragraph>
+            <ImageContainer  src="./databaseSG-create.jpeg" alt="Database SG screenshot" selectedImage={setSelectedImage} />            
             
             
             
