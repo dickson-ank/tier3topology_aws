@@ -1,4 +1,5 @@
 import { ImageContainer } from "../custom-image-container";
+import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
 
 interface Step3Props {
@@ -8,10 +9,14 @@ interface Step3Props {
 export function Step3({setSelectedImage}: Step3Props){
     return(
         <ProjectSection id="step-3" title="Step 3: Security Groups" onImageClick={setSelectedImage}>
-            <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              
-            </p>
+            <Paragraph>
+              In this step we will set up Security Groups to control access to our AWS resources.
+              Security Groups act as virtual firewalls that regulate inbound and outbound traffic. 
+               We will create rules to allow only necessary traffic, enhancing the security of our application.
+            </Paragraph>
+            <ImageContainer  src="./draw.io.securitygroups.png" alt="" selectedImage={setSelectedImage} />
 
+            
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">DynamoDB Table Creation</h3>
@@ -23,12 +28,8 @@ export function Step3({setSelectedImage}: Step3Props){
                   <div className="ml-4">--key-schema AttributeName=userId,KeyType=HASH</div>
                 </div>
               </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                <ImageContainer src="./placeholder.svg" alt="Dynamo DB" selectedImage={setSelectedImage} />
-                <ImageContainer src="./placeholder.svg" alt="S3 configuration" selectedImage={setSelectedImage} />
               </div>
-            </div>
+          
         </ProjectSection>
     )
 }
