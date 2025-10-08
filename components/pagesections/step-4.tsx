@@ -16,9 +16,9 @@ export function Step4({setSelectedImage}: Step4Props){
           </Paragraph>
           <Paragraph>
             What we'll create:
-            • EC2 Instance for Bastion
-            • EC2 Instance for Web Server
-            • EC2 Instance for Database Server
+            • EC2 Instance for Bastion<br />
+            • EC2 Instance for Web Server<br />
+            • EC2 Instance for Database Server<br />
             • RDS Instance for MariaDB
           </Paragraph>
           <ImageContainer src="./draw.io-ec2-database.png" alt="EC2 and Database Setup Diagram" selectedImage={setSelectedImage} />
@@ -58,18 +58,13 @@ export function Step4({setSelectedImage}: Step4Props){
                           <a
                             href="./webapp-index.html"
                             download
-                            className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono hover:bg-primary/90 transition-colors text-sm sm:text-base"
+                            className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono 
+                            hover:bg-primary/90 transition-colors text-xs sm:text-xs md:text-sm lg:text-sm"
                           >
-                            📄Download index.html
+                            📄Download webapp-index.html
                           </a>
                         </div>
                 </div>
-              </div>
-
-              {/* Before and after, placing images side by side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <ImageContainer src="./placeholder.svg" alt="Before Deployment" selectedImage={setSelectedImage} />
-                <ImageContainer src="./placeholder.svg" alt="After-deployment" selectedImage={setSelectedImage} />
               </div>
 
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
