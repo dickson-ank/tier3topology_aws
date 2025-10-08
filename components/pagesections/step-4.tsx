@@ -23,10 +23,11 @@ export function Step4({setSelectedImage}: Step4Props){
           </Paragraph>
           <ImageContainer src="./draw.io-ec2-database.png" alt="EC2 and Database Setup Diagram" selectedImage={setSelectedImage} />
 
-
-
-
-            <div className="space-y-6">
+          <Paragraph>
+            • Search for "EC2" in the Search bar and open the EC2 Dashboard. <br/>
+            • Click on "Launch Instance" to create a new EC2 instance. <br/>
+          </Paragraph>
+       <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Set UP MariaDB database</h3>
                 <div className="space-y-4">
