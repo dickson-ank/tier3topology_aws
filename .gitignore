@@ -27,4 +27,3 @@ next-env.d.ts
 #misc
 cloudformation.json
 cloudformation.yaml
-workflow_comparison.yaml
