@@ -82,7 +82,7 @@ export function Step4({setSelectedImage}: Step4Props){
 
                <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
                     <div>
-                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p mydb
+                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p db
                     </div>
                       <div> #!/bin/bash
                             set -euxo pipefail
