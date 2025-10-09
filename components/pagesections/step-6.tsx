@@ -11,7 +11,7 @@ interface Step6Props {
 
 export function Step6({setSelectedImage}: Step6Props){
     return(
-        <ProjectSection id="step-3" title="Step 3: Security Groups" onImageClick={setSelectedImage}>
+        <ProjectSection id="step-6" title="Step 6: Testing" onImageClick={setSelectedImage}>
             <div className="space-y-6 mt-6">
         <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
