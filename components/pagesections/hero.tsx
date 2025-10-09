@@ -3,7 +3,7 @@ export function Hero(){
       <>
         <div className="top-4 z-40 max-w-[calc(100vw-2rem)] backdrop-blur-sm px-3 py-2">
             <p className="text-xs text-muted-hero text-center">
-              Last updated: <span className="font-medium text-foreground">8th October, 2025</span>
+              Last updated: <span className="font-medium text-foreground">9th October, 2025</span>
             </p>
         </div>
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
