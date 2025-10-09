@@ -11,6 +11,8 @@ import { Step3 } from "@/components/pagesections/step-3"
 import { Step4 } from "@/components/pagesections/step-4"
 import { useState } from "react"
 import { Hero } from "@/components/pagesections/hero"
+import { Step5 } from "@/components/pagesections/step-5"
+import { Step6 } from "@/components/pagesections/step-6"
 
 const sections = [
   { id: "introduction", title: "Introduction" },
@@ -38,6 +40,8 @@ export default function Home() {
           <Step2 setSelectedImage={setSelectedImage}/>
           <Step3 setSelectedImage={setSelectedImage}/>
           <Step4 setSelectedImage={setSelectedImage}/>
+          <Step5 setSelectedImage={setSelectedImage}/>
+          <Step6 setSelectedImage={setSelectedImage}/>
 
           {/* Conclusion section */}
           <ProjectSection id="thank-you" title="Thank You">
