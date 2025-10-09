@@ -26,7 +26,29 @@ export function Step4({setSelectedImage}: Step4Props){
           <Paragraph>
             • Search for "EC2" in the Search bar and open the EC2 Dashboard. <br/>
             • Click on "Launch Instance" to create a new EC2 instance. <br/>
+            • We'll create the first instance for the Bastion host. <br/>
+            • Choose an Amazon Machine Image (AMI). Select "Amazon Linux 2023. <br/>
+            • Choose an Instance Type. Select "t2.micro" (eligible for free tier). <br/>
+            • Select a key pair for SSH access. If you don't have one, 
+            create a new key pair and download the .pem file. <br/>
+            • Edit Network Settings: <br/>
+            - Select the VPC we created (webapp-network) <br/>
+            - Select the public subnet (public-subnet) <br/>
+            - Enable Auto-assign Public IP <br/>
+            - Under Security Group, select "Choose an existing security group" 
+            and select the Bastion security group (BastionHostSG) <br/>
+            - 
+
+
           </Paragraph>
+
+
+
+
+
+
+
+
        <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Set UP MariaDB database</h3>
@@ -52,7 +74,12 @@ export function Step4({setSelectedImage}: Step4Props){
                             sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2 <br />
                             sudo yum install -y httpd <br />
                             sudo systemctl start httpd <br />
-                            sudo systemctl enable httpd
+                            sudo systemctl enable httpd <br/>
+
+                            #!/bin/bash
+                            set -euxo pipefail
+                            sudo dnf update -y
+                            sudo dnf install -y mysql
                       </div>
                   </div>
                         <div>
