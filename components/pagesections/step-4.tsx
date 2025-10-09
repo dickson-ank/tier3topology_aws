@@ -40,7 +40,7 @@ export function Step4({setSelectedImage}: Step4Props){
               later when we you test the deployment.</span> <br/>
           </Paragraph>
           <ImageContainer src="./ec2-instance-type.jpeg" alt="EC2 Instance Type Selection" selectedImage={setSelectedImage} />
-                    
+
           <Paragraph> 
             • Edit Network Settings: <br/>
             - Select the VPC we created (webapp-network) <br/>
@@ -79,6 +79,34 @@ export function Step4({setSelectedImage}: Step4Props){
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Launch instance</span>
           </Paragraph>
+
+          <Paragraph>
+              Repeat the process to create the remaining instances. <br />
+            • For the Web Server instance, <br />
+             -select the public subnet (public-subnet) <br />
+             -use the WebServerSG security group <br />
+             -and inside the User data following user data paste the code below:
+          </Paragraph>
+          <div className="space-y-6 mb-4">
+              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Web Server User Data</h3>
+                <div className="space-y-4">
+                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                    <div className="text-muted-foreground mb-1"># Copy this and paste it into the user data</div>
+                    <div>
+                      #!/bin/bash
+                            set -euxo pipefail <br />
+                            sudo yum update -y <br />
+                            sudo yum install -y httpd <br />
+                            sudo systemctl start httpd <br />
+                            sudo systemctl enable httpd <br />
+                    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
       <div className="space-y-6 mt-6">
         <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
