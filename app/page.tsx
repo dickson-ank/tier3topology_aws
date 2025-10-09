@@ -20,8 +20,8 @@ const sections = [
   { id: "step-2", title: "Step 2: Routing" },
   { id: "step-3", title: "Step 3: Security Groups" },
   { id: "step-4", title: "Step 4: EC2 Instances" },
-  { id: "step-5", title: "Database" },
-  { id: "step-6", title: "Testing" },
+  { id: "step-5", title: "Step 5: Database" },
+  { id: "step-6", title: "Step 6: Testing" },
 ]
 
 export default function Home() {
