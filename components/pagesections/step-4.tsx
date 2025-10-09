@@ -30,26 +30,24 @@ export function Step4({setSelectedImage}: Step4Props){
             • Choose an Amazon Machine Image (AMI). Select "Amazon Linux 2023. <br/>
             • Choose an Instance Type. Select "t2.micro" (eligible for free tier). <br/>
             • Select a key pair for SSH access. If you don't have one, 
-            create a new key pair and download the .pem file. <br/>
+            create a new key pair and download the ".pem" file <br/>
+            <span className="text-sm md:text-sm lg:text-sm sm:text-sm">you'll need this to connect to your instance later when we you test the deployment.</span> <br/>
+             
             • Edit Network Settings: <br/>
             - Select the VPC we created (webapp-network) <br/>
             - Select the public subnet (public-subnet) <br/>
             - Enable Auto-assign Public IP <br/>
             - Under Security Group, select "Choose an existing security group" 
             and select the Bastion security group (BastionHostSG) <br/>
-            - 
-
+            
 
           </Paragraph>
 
-
-
-
-
-
-
-
-       <div className="space-y-6">
+          <Paragraph>
+            • Leave everything else as default and scroll to Advanced Details <br />
+            • In the User Data section, copy and paste the code below:
+          </Paragraph>
+            <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Bastion Host User Data</h3>
                 <div className="space-y-4">
@@ -94,7 +92,7 @@ export function Step4({setSelectedImage}: Step4Props){
                             #!/bin/bash
                             set -euxo pipefail
                             sudo dnf update -y
-                            sudo dnf install -y mysql
+                            sudo dnf install -y mariadb105
                       </div>
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
                     <div className="text-muted-foreground mb-1"># Database User Data</div>
