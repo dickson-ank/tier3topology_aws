@@ -59,7 +59,7 @@ export function Step4({setSelectedImage}: Step4Props){
                       #!/bin/bash <br />
                       set -euxo pipefail <br />
                       sudo dnf update -y <br />
-                      sudo dnf install -y mysql <br />
+                      sudo dnf install -y mariadb105 <br />
                     </div>
 
                   </div>
@@ -79,6 +79,44 @@ export function Step4({setSelectedImage}: Step4Props){
                 </div>
           </div>
       </div>
+
+               <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
+                    <div>
+                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p mydb
+                    </div>
+                      <div> #!/bin/bash
+                            set -euxo pipefail
+                            sudo yum update -y
+                            sudo yum install -y httpd
+                            sudo systemctl start httpd
+                            sudo systemctl enable httpd
+
+                            #!/bin/bash
+                            set -euxo pipefail
+                            sudo dnf update -y
+                            sudo dnf install -y mysql
+                      </div>
+                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                    <div className="text-muted-foreground mb-1"># Database User Data</div>
+                    <div>#!/bin/bash <br />
+                        set -euxo pipefail <br />
+                        sudo dnf update -y <br />
+                        sudo dnf install -y mariadb105<br />
+
+                        sudo systemctl enable --now mariadb
+                    </div>
+                </div>
+                        <div>
+                          <a
+                            href="./webapp-index.html"
+                            download
+                            className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono 
+                            hover:bg-primary/90 transition-colors text-xs sm:text-xs md:text-sm lg:text-sm"
+                          >
+                            📄Download webapp-index.html
+                          </a>
+                        </div>
+                
         </ProjectSection>
     )
 }
