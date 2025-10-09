@@ -51,51 +51,23 @@ export function Step4({setSelectedImage}: Step4Props){
 
        <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Set UP MariaDB database</h3>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Bastion Host User Data</h3>
                 <div className="space-y-4">
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># # # # # #</div>
+                    <div className="text-muted-foreground mb-1"># Copy this and paste it into the user data</div>
                     <div>
-                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p mydb
+                      #!/bin/bash <br />
+                      set -euxo pipefail <br />
+                      sudo dnf update -y <br />
+                      sudo dnf install -y mysql <br />
                     </div>
-                  </div>
-                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Database User Data</div>
-                    <div>#!/bin/bash <br />
-                        set -euxo pipefail <br />
-                        sudo dnf update -y <br />
-                        sudo dnf install -y mariadb105-server <br />
 
-                        sudo systemctl enable --now mariadb
-                    </div>
-                    <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
-                      <div> #!/bin/bash <br />
-                            sudo yum update -y <br />
-                            sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2 <br />
-                            sudo yum install -y httpd <br />
-                            sudo systemctl start httpd <br />
-                            sudo systemctl enable httpd <br/>
-
-                            #!/bin/bash
-                            set -euxo pipefail
-                            sudo dnf update -y
-                            sudo dnf install -y mysql
-                      </div>
                   </div>
-                        <div>
-                          <a
-                            href="./webapp-index.html"
-                            download
-                            className="px-1 py-1 bg-primary text-primary-foreground rounded-lg font-small font-mono 
-                            hover:bg-primary/90 transition-colors text-xs sm:text-xs md:text-sm lg:text-sm"
-                          >
-                            📄Download webapp-index.html
-                          </a>
-                        </div>
-                </div>
               </div>
-
-              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+          </div>
+      </div>
+      <div className="space-y-6 mt-6">
+        <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
                   Use these commands to test your deployed serverless architecture and verify all components are working
@@ -105,8 +77,8 @@ export function Step4({setSelectedImage}: Step4Props){
                   <div className="text-muted-foreground mb-1"># Test API endpoint</div>
                   <div>curl -X GET https://your-api-id.execute-api.region.amazonaws.com/prod/hello</div>
                 </div>
-              </div>
-            </div>
+          </div>
+      </div>
         </ProjectSection>
     )
 }
