@@ -28,26 +28,35 @@ export function Step4({setSelectedImage}: Step4Props){
             • Click on "Launch Instance" to create a new EC2 instance. <br/>
             • We'll create the first instance for the Bastion host. <br/>
             • Choose an Amazon Machine Image (AMI). Select "Amazon Linux 2023. <br/>
+          </Paragraph>
+          <ImageContainer src="./ec2-create.jpeg" alt="EC2 Dashboard" selectedImage={setSelectedImage} />
+          <ImageContainer src="./ec2-ami.jpeg" alt="EC2 AMI Selection" selectedImage={setSelectedImage} />
+
+          <Paragraph>
             • Choose an Instance Type. Select "t2.micro" (eligible for free tier). <br/>
             • Select a key pair for SSH access. If you don't have one, 
             create a new key pair and download the ".pem" file <br/>
-            <span className="text-sm md:text-sm lg:text-sm sm:text-sm">you'll need this to connect to your instance later when we you test the deployment.</span> <br/>
-             
+            <span className="text-sm md:text-sm lg:text-sm sm:text-sm">you'll need this to connect to your instance 
+              later when we you test the deployment.</span> <br/>
+          </Paragraph>
+          <ImageContainer src="./ec2-instance-type.jpeg" alt="EC2 Instance Type Selection" selectedImage={setSelectedImage} />
+                    
+          <Paragraph> 
             • Edit Network Settings: <br/>
             - Select the VPC we created (webapp-network) <br/>
             - Select the public subnet (public-subnet) <br/>
             - Enable Auto-assign Public IP <br/>
             - Under Security Group, select "Choose an existing security group" 
             and select the Bastion security group (BastionHostSG) <br/>
-            
-
-          </Paragraph>
+         </Paragraph>
+          <ImageContainer src="./ec2-network-settings.jpeg" alt="EC2 Network Settings" selectedImage={setSelectedImage} />
 
           <Paragraph>
             • Leave everything else as default and scroll to Advanced Details <br />
             • In the User Data section, copy and paste the code below:
           </Paragraph>
-            <div className="space-y-6">
+          
+            <div className="space-y-6 mb-4">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Bastion Host User Data</h3>
                 <div className="space-y-4">
@@ -60,10 +69,17 @@ export function Step4({setSelectedImage}: Step4Props){
                       sudo dnf install -y mariadb105 <br />
                     </div>
 
-                  </div>
-              </div>
-          </div>
-      </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <ImageContainer src="./ec2-user-data.jpeg" alt="EC2 User Data" selectedImage={setSelectedImage} />
+          <Paragraph>
+            • Review and click   
+              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Launch instance</span>
+          </Paragraph>
+
       <div className="space-y-6 mt-6">
         <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
