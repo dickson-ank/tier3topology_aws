@@ -154,6 +154,10 @@ export function Step3({setSelectedImage}: Step3Props){
           FromPort: 443
           ToPort: 443
           CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref MyIP
       Tags:
         - Key: Name
           Value: WebServerSG
