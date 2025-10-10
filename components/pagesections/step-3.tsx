@@ -123,7 +123,7 @@ export function Step3({setSelectedImage}: Step3Props){
 #    ....
 # Routing section
 #    ....
-####################
+
 # Security groups
 
   BastionSecurityGroup:

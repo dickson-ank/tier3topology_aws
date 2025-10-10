@@ -127,7 +127,8 @@ export function Step2({setSelectedImage}: Step2Props){
 
 # VPC and Subnets section  
 #    ....
-#######################
+
+
 # Routing section
 
   InternetGateway:
