@@ -73,6 +73,14 @@ Parameters:
     Description: The name of the VPC being created.
     Type: String
     Default: webapp-network
+  MyIP:
+    Description: Enter your IP address with /32 suffix or leave it at default (e.g., 201.16.145.100/32)
+    Type: String
+    Default: 0.0.0.0/0
+  
+  AL2023AMI:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
 
 Mappings:
   SubnetConfig:
@@ -86,20 +94,20 @@ Mappings:
       CIDR: 10.0.3.0/24
     Private3:
       CIDR: 10.0.4.0/24
-
+  
 Resources:
-VPC:
-Type: AWS::EC2::VPC                   
-Properties:
-EnableDnsSupport: "true"
-EnableDnsHostnames: "true"
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      EnableDnsSupport: "true"
+      EnableDnsHostnames: "true"
       CidrBlock: !FindInMap
         - SubnetConfig
         - VPC
         - CIDR
       Tags:
         - Key: Name
-          Value: !Ref VPCName          
+          Value: !Ref VPCName
 
   PublicSubnet:
     Type: AWS::EC2::Subnet
@@ -160,6 +168,7 @@ EnableDnsHostnames: "true"
       Tags:
         - Key: Name
           Value: private-subnet-3
+
                     `}
                    </SyntaxHighlighter>
                   </ReadMore>
