@@ -147,11 +147,18 @@ export function Step6({setSelectedImage}: Step6Props){
               </span> <br />
               Go to the RDS Dashboard and copy the Database Endpoint value if you didn't note it somewhere earlier<br />
              Enter the password for the database <br />
-              If you see the mysql prompt it means the App server can communicate with the Database server <br />
+              If you see the MariaDB prompt it means the App server can communicate with the Database server <br />
             </Paragraph>
             <ImageContainer src="./app-server-mysql-prompt.png" 
             alt="MySQL prompt on the App server" selectedImage={setSelectedImage}/>
 
+            <Paragraph>
+              You can run further tests on your own to verify if the security groups are working as intended <br />
+              For example try to ssh into the App server instance from your local machine <br />
+              It should not work because the security group of the App server only allows ssh access from the Bastion Host <br />
+            </Paragraph>
+            <h4 className="text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold text-foreground mb-4 text-balance">
+               Voila! Congratulations! That was easy, wasn't it?</h4>
         </ProjectSection>
     )
 }
