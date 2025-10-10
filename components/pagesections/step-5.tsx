@@ -22,18 +22,23 @@ export function Step5({setSelectedImage}: Step5Props){
             
 
             <Paragraph>
-              Go to the RDS/Aurora Dashboard <br />
+              Go to the Aurora/RDS Dashboard <br />
               • Create first a Subnet Group for the database <br />
               • Click on Subnet groups in the left sidebar <br />
               • Click on <span className="text-primary font-semibold">Create DB Subnet Group</span> <br />
               • We'll name it "database-subnet-group" <br />
               • Provide a description (optional) <br />
               • Select the VPC ("webapp-network") <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-subnetgroup1.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
+            <Paragraph>
+              Next, we will add subnets to the group <br />
+              • Selec the availability zones in which we created the subnets <br />
               • Check the 2 private subnets in the Data Tier <br />
                <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">-Private-subnet-2 and Private-subnet-3</span>
               • Click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create</span> <br />
             </Paragraph>
-            <ImageContainer  src="./rds-subnetgroup-create.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
+            <ImageContainer  src="./rds-subnetgroup2.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
 
 
             <Paragraph>
