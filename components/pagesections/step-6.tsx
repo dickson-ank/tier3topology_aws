@@ -51,7 +51,6 @@ export function Step6({setSelectedImage}: Step6Props){
                 <span className="text-muted-foreground mb-1 block">
                   scp -i YOUR-KEY-PAIR.pem webapp-index.html ec2-user@YOUR-WEB-SERVER-IP:~/
                 </span>
-                <div></div>
               </span>
             </Paragraph>
             <ImageContainer src="./rename-to-index.png" 
@@ -59,17 +58,27 @@ export function Step6({setSelectedImage}: Step6Props){
 
             <div className="space-y-6 mt-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                      <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
-                       Run the following command to upload the html file to the web server instance. <br />
-                      </p>
-                      <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                        <div className="text-muted-foreground mb-1">
-                          scp -i YOUR-KEY-PAIR.pem webapp-index.html ec2-user@YOUR-WEB-SERVER-IP:~/
-                        </div>
-                        <div></div>
-                      </div>
+                <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
+                  Make sure your key pair have the right permissions set. <br /> <br />
+                  Run this to set it if it doesn't: <br />
+                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                  <div className="text-muted-foreground mb-1">
+                    chmod 400 YOUR-KEY-PAIR.pem
+                  </div>
                 </div>
+                </p>
+                  Now run the following command to upload the html file to the web server instance. <br />
+                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                  <div className="text-muted-foreground mb-1">
+                    scp -i YOUR-KEY-PAIR.pem index.html ec2-user@YOUR-WEB-SERVER-PUBLIC-IP:~/
+                  </div>
+                </div>
+                </div>
+                Go to your web server instance in the EC2 Dashboard and copy the Public IP. <br />
+                If prompted to confirm key authenticity type "yes" and hit enter. <br />
             </div>
+            <ImageContainer src="./upload-index-html.png" 
+            alt="Upload the index.html file to the web server" selectedImage={setSelectedImage}/>
 
                <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
                     <div>
