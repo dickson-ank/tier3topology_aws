@@ -49,7 +49,7 @@ export function Step6({setSelectedImage}: Step6Props){
               Run this command: <br />
               <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
                 <span className="text-muted-foreground mb-1 block">
-                  scp -i YOUR-KEY-PAIR.pem webapp-index.html ec2-user@YOUR-WEB-SERVER-IP:~/
+                  scp -i YOUR-KEY-PAIR.pem index.html ec2-user@YOUR-WEB-SERVER-IP:~/
                 </span>
               </span>
             </Paragraph>
@@ -60,13 +60,12 @@ export function Step6({setSelectedImage}: Step6Props){
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
                   Make sure your key pair have the right permissions set. <br /> <br />
-                  Run this to set it if it doesn't: <br />
+                  Run this to set it if it doesn't: <br /></p>
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
                   <div className="text-muted-foreground mb-1">
                     chmod 400 YOUR-KEY-PAIR.pem
                   </div>
                 </div>
-                </p>
                   Now run the following command to upload the html file to the web server instance. <br />
                 <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
                   <div className="text-muted-foreground mb-1">
@@ -80,33 +79,79 @@ export function Step6({setSelectedImage}: Step6Props){
             <ImageContainer src="./upload-index-html.png" 
             alt="Upload the index.html file to the web server" selectedImage={setSelectedImage}/>
 
-               <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
-                    <div>
-                      mysql -h db.c7pjluiomm3k.us-west-2.rds.amazonaws.com -u root -p db
-                    </div>
-                      <div> #!/bin/bash
-                            set -euxo pipefail
-                            sudo yum update -y
-                            sudo yum install -y httpd
-                            sudo systemctl start httpd
-                            sudo systemctl enable httpd
+            <Paragraph>
+              Follow same procedure to upload the key pair pem file to the Bastion Host instance. <br />
+              To allow you to connect to the App server instance from the Bastion Host instance. <br />
+              Run this command: <br />
+              <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
+                <span className="text-muted-foreground mb-1 block">
+                  scp -i YOUR-KEY-PAIR.pem YOUR-KEY-PAIR.pem ec2-user@YOUR-BASTION-HOST-PUBLIC-IP:~/
+                </span>
+              </span>
+            </Paragraph>
+            <ImageContainer src="./upload-keypair-to-bastion.png" 
+            alt="Upload the key pair pem file to the Bastion Host" selectedImage={setSelectedImage}/>
+            <Paragraph>
+              Let's ssh into the Web server and copy the html file the 
+              /var/www/html directory so that it can serve the webpage <br />
+              <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
+                <span className="text-muted-foreground mb-1 block">
+                  ssh -i YOUR-KEY-PAIR.pem ec2-user@YOUR-WEB-SERVER-PUBLIC-IP
+                </span>
+              </span> <br />
+              You can see the index.html file in the home directory by running ls command <br />
+            </Paragraph>
+            <ImageContainer src="./ssh-into-web-server.png" 
+            alt="SSH into the web server instance" selectedImage={setSelectedImage}/>
+            <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+              Run this command to copy the file: <br />
+              <div className="text-muted-foreground mb-1">
+                sudo cp index.html /var/www/html/
+              </div>
+            </div>
+            <Paragraph>
+              <br />
+              Now open a browser and run <span className="text-primary">http://YOUR-WEB-SERVER-PUBLIC-IP/</span> and you see this page below <br />
+              Note that if you run https insted of http it will not work because you have not set up SSL certificate <br />
+            </Paragraph>
+            <ImageContainer src="./webpage-served-by-web-server.png" 
+            alt="Webpage served by the web server" selectedImage={setSelectedImage}/>
 
-                            #!/bin/bash
-                            set -euxo pipefail
-                            sudo dnf update -y
-                            sudo dnf install -y mariadb105
-                      </div>
-                  <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                    <div className="text-muted-foreground mb-1"># Database User Data</div>
-                    <div>#!/bin/bash <br />
-                        set -euxo pipefail <br />
-                        sudo dnf update -y <br />
-                        sudo dnf install -y mariadb105<br />
+            <Paragraph>
+              Now let's test if the App server can communicate with the Database server <br />
+              Exit the web server instance by running exit command <br />
+              And then ssh into the Bastion Host instance <br />
+              <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
+                <span className="text-muted-foreground mb-1 block">ssh -i YOUR-KEY-PAIR.pem ec2-user@YOUR-BASTION-HOST-PUBLIC-IP</span>
+              </span> <br />
+              Now we are in the Bastion Host instance <br />
+              "ls" to see if the key pair file we uploaded is there <br />
+              </Paragraph>
+            <ImageContainer src="./ssh-into-bastion-host.png" 
+            alt="SSH into the Bastion Host instance" selectedImage={setSelectedImage}/> 
 
-                        sudo systemctl enable --now mariadb
-                    </div>
-                </div>
- 
+            <Paragraph>
+              From here we will ssh into the App server instance <br />
+              <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
+                <span className="text-muted-foreground mb-1 block">ssh -i YOUR-KEY-PAIR.pem ec2-user@YOUR-APP-SERVER-PRIVATE-IP</span>
+              </span> <br />
+              Now we are in the App server instance <br />
+              </Paragraph>
+            <ImageContainer src="./ssh-into-app-server.png" 
+            alt="SSH into the App server instance from the Bastion Host" selectedImage={setSelectedImage}/>
+
+            <Paragraph>
+              Run this command to test if the App server can communicate with the Database server <br />
+              <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
+                <span className="text-muted-foreground mb-1 block">mysql -h YOUR-DATABASE-ENDPOINT-VALUE -u MASTER-USERNAME -p DATABASE-NAME</span>
+              </span> <br />
+              Go to the RDS Dashboard and copy the Database Endpoint value if you didn't note it somewhere earlier<br />
+             Enter the password for the database <br />
+              If you see the mysql prompt it means the App server can communicate with the Database server <br />
+            </Paragraph>
+            <ImageContainer src="./app-server-mysql-prompt.png" 
+            alt="MySQL prompt on the App server" selectedImage={setSelectedImage}/>
+
         </ProjectSection>
     )
 }
