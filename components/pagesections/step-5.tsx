@@ -157,7 +157,6 @@ export function Step5({setSelectedImage}: Step5Props){
       BackupRetentionPeriod: 0
       MonitoringInterval: 0
       EnablePerformanceInsights: false
-      DeletionProtection: false
       AutoMinorVersionUpgrade: false
       CopyTagsToSnapshot: false
       Tags:
