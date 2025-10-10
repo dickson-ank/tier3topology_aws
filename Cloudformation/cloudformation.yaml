@@ -1,9 +1,10 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
 Description: >-
-  This template creates a 3 tier web application infrastructure on AWS.
-  It includes a VPC with public and private subnets across two availability zones,
-  along with necessary routing, NAT gateways, and network ACLs.
+  Deploys a complete 3-tier web architecture on AWS, 
+  including a VPC with public and private subnets across two Availability Zones, 
+  internet and NAT gateways, route tables, security groups,
+  EC2 instances for bastion, web, and app servers, and an RDS database instance
 
 Parameters:
   VPCName:
@@ -14,6 +15,25 @@ Parameters:
     Description: Enter your IP address with /32 suffix or leave it at default (e.g., 201.16.145.100/32)
     Type: String
     Default: 0.0.0.0/0
+  
+  AL2023AMI:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+
+  DBMasterUsername:
+    Description: The database admin account username
+    Type: String
+    Default: adminuser
+    MinLength: 4
+    MaxLength: 16
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9]*"
+    ConstraintDescription: must begin with a letter and contain only alphanumeric characters.
+
+  DBPassword:
+    Description: The database admin account password
+    Type: String
+    MinLength: 6
+    NoEcho: true
 
 Mappings:
   SubnetConfig:
@@ -27,7 +47,7 @@ Mappings:
       CIDR: 10.0.3.0/24
     Private3:
       CIDR: 10.0.4.0/24
-
+  
 Resources:
   VPC:
     Type: AWS::EC2::VPC
@@ -102,7 +122,6 @@ Resources:
         - Key: Name
           Value: private-subnet-3
 
-#######################
 # Routing section
 
   InternetGateway:
@@ -191,6 +210,7 @@ Resources:
       RouteTableId: !Ref PrivateRouteTable
 
 # Security Groups
+
   BastionSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -289,38 +309,142 @@ Resources:
       FromPort: -1
       ToPort: -1
       SourceSecurityGroupId: !Ref AppServerSecurityGroup
+
+# EC2 Instances
+
+  BastionHost:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Ref PublicSubnet
+          GroupSet:
+            - !Ref BastionSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo dnf update -y
+          sudo dnf install -y mariadb105
+      Tags:
+        - Key: Name
+          Value: BastionHost
+
+
+  WebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+      - AssociatePublicIpAddress: true
+        DeviceIndex: 0
+        SubnetId: !Ref PublicSubnet
+        GroupSet:
+          - !Ref WebServerSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo yum update -y
+          sudo yum install -y httpd
+          sudo systemctl start httpd
+          sudo systemctl enable httpd
+      Tags:
+        - Key: Name
+          Value: WebServer
+
+  AppServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: false
+          DeviceIndex: 0
+          SubnetId: !Ref PrivateSubnet1
+          GroupSet:
+            - !Ref AppServerSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo dnf update -y
+          sudo dnf install -y mariadb105
+      Tags:
+          - Key: Name
+            Value: AppServer
+
+# Database
+
+  DatabaseSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS instance
+      SubnetIds:
+        - !Ref PrivateSubnet2
+        - !Ref PrivateSubnet3
+      Tags:
+        - Key: Name
+          Value: database-subnet-group
+
+  DatabaseInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: database-instance
+      AllocatedStorage: 20
+      DBInstanceClass: db.t4g.micro
+      Engine: mariadb
+      EngineVersion: "11.4.5"
+      MasterUsername: !Ref DBMasterUsername
+      MasterUserPassword: !Ref DBPassword
+      VPCSecurityGroups:
+        - !Ref DatabaseSecurityGroup
+      DBSubnetGroupName: !Ref DatabaseSubnetGroup
+      MultiAZ: false
+      PubliclyAccessible: false
+      StorageType: gp2
+      DBName: db
+      DeletionProtection: false
+      BackupRetentionPeriod: 0
+      MonitoringInterval: 0
+      EnablePerformanceInsights: false
+      AutoMinorVersionUpgrade: false
+      CopyTagsToSnapshot: false
+      Tags:
+        - Key: Name
+          Value: database-instance
+
       
 
 
 # Outputs
+
 Outputs:
-  VPCId:
-    Description: VPCId of VPC
-    Value: !Ref VPC
+  DatabaseInstanceEndpoint:
+    Description: The connection endpoint (host) for the RDS database instance
+    Value: !GetAtt DatabaseInstance.Endpoint.Address
     Export:
-      Name: !Sub ${AWS::Region}-${AWS::StackName}-VPC
+      Name: !Sub "${AWS::StackName}-DatabaseEndpoint"
 
-  PublicSubnet:
-    Description: SubnetId of public subnet
-    Value: !Ref PublicSubnet
+  DatabaseInstancePort:
+    Description: The port number used by the RDS database instance
+    Value: !GetAtt DatabaseInstance.Endpoint.Port
     Export:
-      Name: !Sub ${AWS::Region}-${AWS::StackName}-PublicSubnet
+      Name: !Sub "${AWS::StackName}-DatabasePort"
 
-  PrivateSubnet1:
-    Description: SubnetId of private subnet 1
-    Value: !Ref PrivateSubnet1
-    Export:
-      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet1
+  DatabaseName:
+    Description: The name of the created database
+    Value: !Ref DatabaseInstance
 
-  PrivateSubnet2:
-    Description: SubnetId of private subnet 2
-    Value: !Ref PrivateSubnet2
-    Export:
-      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet2
+  DatabaseSubnetGroupName:
+    Description: The name of the RDS DB Subnet Group
+    Value: !Ref DatabaseSubnetGroup
 
-  PrivateSubnet3:
-    Description: SubnetId of private subnet 3
-    Value: !Ref PrivateSubnet3
-    Export:
-      Name: !Sub ${AWS::Region}-${AWS::StackName}-PrivateSubnet3
 
