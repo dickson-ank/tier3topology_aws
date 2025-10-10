@@ -37,8 +37,8 @@ export function Step4({setSelectedImage}: Step4Props){
             • Choose an Instance Type. Select "t2.micro" (eligible for free tier). <br/>
             • Select a key pair for SSH access. If you don't have one, 
             create a new key pair and download the ".pem" file <br/>
-            <span className="text-sm md:text-sm lg:text-sm sm:text-sm">you'll need this to connect to your instance 
-              later when we you test the deployment.</span> <br/>
+            <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">you'll need this to connect to your instance 
+              later when we you test the deployment.</span>
           </Paragraph>
           <ImageContainer src="./ec2-instance-type.jpeg" alt="EC2 Instance Type Selection" selectedImage={setSelectedImage} />
 

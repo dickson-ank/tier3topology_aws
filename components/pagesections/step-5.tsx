@@ -30,7 +30,7 @@ export function Step5({setSelectedImage}: Step5Props){
               • Provide a description (optional) <br />
               • Select the VPC ("webapp-network") <br />
               • Check the 2 private subnets in the Data Tier <br />
-               <span className="text-xs lg:text-sm md:text-xs block ml-4">-Private-subnet-2 and Private-subnet-3</span>
+               <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">-Private-subnet-2 and Private-subnet-3</span>
               • Click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create</span> <br />
             </Paragraph>
             <ImageContainer  src="./rds-subnetgroup-create.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
@@ -38,74 +38,16 @@ export function Step5({setSelectedImage}: Step5Props){
 
             <Paragraph>
               Now, we can create the database instance <br />
-            </Paragraph>
-            <ImageContainer  src="./bastionhostSG-create.jpeg" alt="Bastion Host SG screenshot" selectedImage={setSelectedImage} />
-
-            <Paragraph>
-              We'll create the Web Server Security Group next. <br />
-              • We'll name it "WebServerSG" <br />
-              • Add 3 inbound rules:<br />
-              • HTTP - Source: Anywhere IPv4<span className="font-mono text-primary"> (0.0.0.0/0) </span><br />
-              • HTTPS - Source: Anywhere IPv4 <span className="font-mono text-primary"> (0.0.0.0/0)  </span><br />
-              • SSH - Source: "My IP" (for management purposes) <br />
-              • We should add ICMP rule from App Server SG but we 
-              haven't created it yet so we'll come back and add it later<br />
-              • Review and create the security group<br />
-            </Paragraph>
-            <ImageContainer  src="./webserverSG-create.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
-            <ImageContainer  src="./webserverSG-create2.jpeg" alt="Web Server SG screenshot" selectedImage={setSelectedImage} />
-            
-            <Paragraph>
-              Next, we'll create the App Server Security Group. <br />
-              • We'll name it "AppServerSG" <br />
-              • Add 3 inbound rules:<br />
-              • SSH - Source: Custom - "BastionHostSG" (search "sg" and select BastionHostSG from the dropdown) <br />
-              • HTTP - Source: Custom - "WebServerSG" (search "sg" and select WebServerSG from the dropdown) <br />
-              • ICMP - Source: Custom - "WebServerSG"<br />
-              • We can ingnore https and use only http between web and app server for simplicity <br />
-              • We should add MySQL/Aurora rule from Database SG but we 
-              haven't created it yet so we'll come back and add it later<br /><br />
-              • Review and create the security group<br />
-            </Paragraph>
-            <ImageContainer  src="./appserverSG-create2.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />
-            <ImageContainer  src="./appserverSG-create.jpeg" alt="App Server SG screenshot" selectedImage={setSelectedImage} />          
-            
-            <Paragraph>
-              Finally, we'll create the Database Security Group. <br />
-              • We'll name it "DatabaseSG" <br />
-              • Add 2 inbound rules:<br />
-              • MySQL/Aurora - Source: Custom - "AppServerSG" <br />
-              • MySQL/Aurora - Source: Custom - "BastionHostSG" <br />
-              • Review and create the security group<br />
-            </Paragraph>
-            <ImageContainer  src="./databaseSG-create.jpeg" alt="Database SG screenshot" selectedImage={setSelectedImage} />            
-            
-            <Paragraph>
-              Now, let's go back and add the missing rules to the Web Server and App Server Security Groups. <br />
-              • Select each Security Group and edit the inbound rules<br />
-              • For WebServerSG, add an ICMP rule with Source: Custom - "AppServerSG"<br />
-              • For AppServerSG, add a MySQL/Aurora rule with Source: Custom - "DatabaseSG"<br />
-              • Save the changes<br /><br />
-              This completes the setup of our Security Groups, ensuring that our application components
-              can communicate securely while minimizing exposure to potential threats.
+              • Go to Databases click on <span className="text-primary font-semibold">Create database</span> <br />
+              • Choose "Standard Create" <br />
             </Paragraph>
             
-            <Note grid={false}
-            note1={<>
-              - Allow limited access to specific IPs into bastion host <br />
-              - Since web server already built to allow traffic from internet,
-               we do not to ssh into it through the bastion host<br />
-              - Allowing too much traffic from anywhere can risk your most critical resources <br />
-              - Regularly review and update security group rules as needed <br />
-              - Use descriptive names and comments for rules to make management easier <br />
-                  </>}        
-            />
             
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 3 - (Security Groups)</h3>
+                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 5 - (Database)</h3>
                 <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates
-                 the Security Groups as dicussed above<br/>
+                 the Database as dicussed above<br/>
                 Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
                 Append this code to the code from Step 1 and Step 2 to make it work, and ensure the indentations are correct
                 </p>
