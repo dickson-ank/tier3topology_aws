@@ -33,7 +33,7 @@ export function Step5({setSelectedImage}: Step5Props){
             <ImageContainer className="mb-1"src="./rds-subnetgroup1.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
             <Paragraph>
               Next, we will add subnets to the group <br />
-              • Selec the availability zones in which we created the subnets <br />
+              • Selec the availability zones in which you created the subnets <br />
               • Check the 2 private subnets in the Data Tier <br />
                <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">-Private-subnet-2 and Private-subnet-3</span>
               • Click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create</span> <br />
