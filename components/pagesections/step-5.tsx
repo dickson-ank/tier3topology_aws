@@ -46,16 +46,36 @@ export function Step5({setSelectedImage}: Step5Props){
               • Go to Databases and click on <span className="text-primary font-semibold">Create database</span> <br />
               • Choose "Standard Create" <br />
               • Select "MariaDB" as the engine type <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-engine.jpeg" alt="RDS Engine screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
               • Leave the engine version to default <br />
               • For the template, select "Free tier" <br />
               • Set the DB instance identifier to "database-instance" <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-instanceid.jpeg" alt="RDS Instance ID screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
               • Set the Master username to "adminuser" <br />
               • Set the Master password and confirm it (make sure to note this down somewhere) <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-masteruser.jpeg" alt="RDS Master User screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
               • Move to connectivity section <br />
               • Select the VPC ("webapp-network") <br />
               • Select the subnet group created ("database-subnet-group") <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-connectivity.jpeg" alt="RDS Connectivity screenshot" selectedImage={setSelectedImage} />            
+            
+            <Paragraph>
               • Set Public access to "No" <br />
               • Set VPC security group to "Choose existing" and select "DatabaseSG" <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-connectivity2.jpeg" alt="RDS Connectivity screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
               • Skip to Additional configuration expand it<br />
               • Set Initial database name to "db" for simplicity<br />
                <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">- 
@@ -64,17 +84,21 @@ export function Step5({setSelectedImage}: Step5Props){
                for faster database creation<br />
               • Review and <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Create database</span> <br />
+            </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-additionalconfig.jpeg" alt="RDS Additional Configuration screenshot" selectedImage={setSelectedImage} />
+            
+            <Paragraph>
               • It will take a few minutes for the database to be created <br />
-              • Once created, note down the endpoint, close to where you kept the Master password,
+              • Once available, note down the endpoint, close to where you kept the Master password,
                 we will need it to test connections to the database through the appserver in the next step <br />
               <br />
-              •Essentially to connec to the database you will need the following <br />
-              <span className="ml-4 block">- Endpoint</span> <br />
-              <span className="ml-4 block">- Port (default is 3306 for MariaDB)</span> <br />
-              <span className="ml-4 block">- Database name (in our case "db")</span> <br />
-              <span className="ml-4 block">- Master username (in our case "adminuser")</span> <br />
-              <span className="ml-4 block">- Master password (the one you set above)</span> <br />
+              •Essentially to connect to the database you will need the following <br />
+              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Endpoint</span> <br />
+              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Database name (in our case "db")</span> <br />
+              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master username (in our case "adminuser")</span> <br />
+              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master password (the one you set above)</span> <br />
             </Paragraph>
+            <ImageContainer className="mb-1"src="./rds-endpoint.jpeg" alt="RDS Endpoint screenshot" selectedImage={setSelectedImage} />
             
             
             <div className="space-y-6">
