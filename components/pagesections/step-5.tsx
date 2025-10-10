@@ -13,29 +13,31 @@ export function Step5({setSelectedImage}: Step5Props){
     return(
         <ProjectSection id="step-5" title="Step 5: Database" onImageClick={setSelectedImage}>
             <Paragraph>
-              In this step we will set up the Database for our AWS resources.
-              We'll use Amazon RDS to create a managed database instance.
-               We will create rules to allow only necessary traffic, enhancing the security of our application.
+              In this section we are going to create an RDS Database. <br />
+              • A database is essential for storing and managing the data that our application will use. <br />
+              • The App server will connect to this database to perform various operations such as reading,
+               writing, and updating data. <br />
+              • as well the Bastion host for management purposes as configured in the Security Groups step <br />
             </Paragraph>
             
 
             <Paragraph>
-              We'll create the Bastion Host Security Group first. <br />
-              • Go to Security in the VPC Dashboard. <br />
-              • Choose "Security Groups" and click on <span className="text-primary font-semibold">Create Security Group</span>.<br />
-              • We'll name it "BastionHostSG" <br />
-              • Add a description (optional) <br />
-              • Choose the VPC we created earlier ("webapp-vpc") from the dropdown <br />
+              Go to the RDS/Aurora Dashboard <br />
+              • Create first a Subnet Group for the database <br />
+              • Click on Subnet groups in the left sidebar <br />
+              • Click on <span className="text-primary font-semibold">Create DB Subnet Group</span> <br />
+              • We'll name it "database-subnet-group" <br />
+              • Provide a description (optional) <br />
+              • Select the VPC ("webapp-network") <br />
+              • Check the 2 private subnets in the Data Tier <br />
+               <span className="text-xs lg:text-sm md:text-xs block ml-4">-Private-subnet-2 and Private-subnet-3</span>
+              • Click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create</span> <br />
             </Paragraph>
+            <ImageContainer  src="./rds-subnetgroup-create.jpeg" alt="RDS Subnet Group screenshot" selectedImage={setSelectedImage} />
+
 
             <Paragraph>
-              For Inbound rules:<br />
-              • Add a rule for SSH access<br />
-              • Choose "SSH" from the dropdown <br />
-              • Set the Source to "My IP" and it will auto-fill your current IP address<br />
-              • Review and click
-              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
-                Create security group</span>
+              Now, we can create the database instance <br />
             </Paragraph>
             <ImageContainer  src="./bastionhostSG-create.jpeg" alt="Bastion Host SG screenshot" selectedImage={setSelectedImage} />
 

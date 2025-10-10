@@ -36,7 +36,7 @@ export function ContactSection() {
           {/* Name and Title */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-foreground mb-2">Dickson Ankamah</h3>
-            <p className="text-muted-hero">Cloud Engineer</p>
+            <p className="text-muted-hero">Cloud Practitioner</p>
           </div>
 
           {/* Contact Methods */}
