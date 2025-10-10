@@ -228,9 +228,9 @@ export function Step3({setSelectedImage}: Step3Props){
               `}
                     </SyntaxHighlighter>
                   </ReadMore>
-                                    </div>
-                                </div>
-                              </div>
+                </div>
+            </div>
+          </div>
           
         </ProjectSection>
     )

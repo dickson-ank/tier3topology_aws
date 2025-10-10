@@ -1,6 +1,8 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ImageContainer } from "../custom-image-container";
 import { Paragraph } from "../paragraph";
 import { ProjectSection } from "../project-section";
+import ReadMore from "../read-more-less";
 
 interface Step4Props {
     setSelectedImage: (src: string) => void
@@ -128,7 +130,103 @@ export function Step4({setSelectedImage}: Step4Props){
               </div>
           </div>
       </div>
+      <div className="space-y-6">
+                    <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                      <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Cloudformation Code for Step 3 - (Security Groups)</h3>
+                      <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates
+                       the Security Groups as dicussed above<br/>
+                      Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
+                      Append this code to the code from Step 1 and Step 2 to make it work, and ensure the indentations are correct
+                      </p>
+                      <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
+                        <ReadMore>
+                          <SyntaxHighlighter style={{}} customStyle={{background: "transparent"}} language="yaml">
+                            {`# Resources: ...
+      
+# VPC and Subnets section  
+#    ....
+# Routing section
+#    ....
+####################
+# Security groups
+#    ....
+# EC2 Instances
 
+  BastionHost:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Ref PublicSubnet
+          GroupSet:
+            - !Ref BastionSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo dnf update -y
+          sudo dnf install -y mariadb105
+      Tags:
+        - Key: Name
+          Value: BastionHost
+
+
+  WebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+      - AssociatePublicIpAddress: true
+        DeviceIndex: 0
+        SubnetId: !Ref PublicSubnet
+        GroupSet:
+          - !Ref WebServerSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo yum update -y
+          sudo yum install -y httpd
+          sudo systemctl start httpd
+          sudo systemctl enable httpd
+      Tags:
+        - Key: Name
+          Value: WebServer
+
+  AppServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: vockey
+      ImageId: !Ref AL2023AMI
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: false
+          DeviceIndex: 0
+          SubnetId: !Ref PrivateSubnet1
+          GroupSet:
+            - !Ref AppServerSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -euxo pipefail
+          sudo dnf update -y
+          sudo dnf install -y mariadb105
+      Tags:
+          - Key: Name
+            Value: AppServer
+      
+                    `}
+                          </SyntaxHighlighter>
+                        </ReadMore>
+                      </div>
+                  </div>
+                </div>
 
              </ProjectSection>
     )
