@@ -43,8 +43,37 @@ export function Step5({setSelectedImage}: Step5Props){
 
             <Paragraph>
               Now, we can create the database instance <br />
-              • Go to Databases click on <span className="text-primary font-semibold">Create database</span> <br />
+              • Go to Databases and click on <span className="text-primary font-semibold">Create database</span> <br />
               • Choose "Standard Create" <br />
+              • Select "MariaDB" as the engine type <br />
+              • Leave the engine version to default <br />
+              • For the template, select "Free tier" <br />
+              • Set the DB instance identifier to "database-instance" <br />
+              • Set the Master username to "adminuser" <br />
+              • Set the Master password and confirm it (make sure to note this down somewhere) <br />
+              • Move to connectivity section <br />
+              • Select the VPC ("webapp-network") <br />
+              • Select the subnet group created ("database-subnet-group") <br />
+              • Set Public access to "No" <br />
+              • Set VPC security group to "Choose existing" and select "DatabaseSG" <br />
+              • Skip to Additional configuration expand it<br />
+              • Set Initial database name to "db" for simplicity<br />
+               <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">- 
+                This will create a database named "db" upon instance creation</span>
+              • For demo purposes, we will uncheck the backup and monitoring options
+               for faster database creation<br />
+              • Review and <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Create database</span> <br />
+              • It will take a few minutes for the database to be created <br />
+              • Once created, note down the endpoint, close to where you kept the Master password,
+                we will need it to test connections to the database through the appserver in the next step <br />
+              <br />
+              •Essentially to connec to the database you will need the following <br />
+              <span className="ml-4 block">- Endpoint</span> <br />
+              <span className="ml-4 block">- Port (default is 3306 for MariaDB)</span> <br />
+              <span className="ml-4 block">- Database name (in our case "db")</span> <br />
+              <span className="ml-4 block">- Master username (in our case "adminuser")</span> <br />
+              <span className="ml-4 block">- Master password (the one you set above)</span> <br />
             </Paragraph>
             
             
