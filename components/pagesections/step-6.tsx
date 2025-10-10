@@ -13,18 +13,18 @@ export function Step6({setSelectedImage}: Step6Props){
     return(
         <ProjectSection id="step-6" title="Step 6: Testing" onImageClick={setSelectedImage}>
             <div className="space-y-6 mt-6">
-        <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
-                  Use these commands to test your deployed serverless architecture and verify all components are working
-                  correctly.
-                </p>
-                <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
-                  <div className="text-muted-foreground mb-1"># Test API endpoint</div>
-                  <div>curl -X GET https://your-api-id.execute-api.region.amazonaws.com/prod/hello</div>
+              <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
+                      <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Testing Your Deployment</h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
+                        Use these commands to test your deployed serverless architecture and verify all components are working
+                        correctly.
+                      </p>
+                      <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
+                        <div className="text-muted-foreground mb-1"># Test API endpoint</div>
+                        <div>curl -X GET https://your-api-id.execute-api.region.amazonaws.com/prod/hello</div>
+                      </div>
                 </div>
-          </div>
-      </div>
+            </div>
 
                <div className="text-muted-foreground mb-1 mt-6"># Web Server User Data</div>
                     <div>

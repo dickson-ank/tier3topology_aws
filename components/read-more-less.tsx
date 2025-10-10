@@ -61,7 +61,7 @@ export default function ReadMore({
       )}
       <div
         ref={contentRef}
-        className="transition-all duration-300 ease-in-out overflow-hidden"
+        className="transition-all duration-300 ease-in-out overflow-hidden overflow-x-auto"
         style={{
           maxHeight: expanded ? contentHeight : collapsedHeight,
         }}
