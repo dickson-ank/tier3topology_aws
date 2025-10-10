@@ -17,14 +17,7 @@ export function Step5({setSelectedImage}: Step5Props){
               We'll use Amazon RDS to create a managed database instance.
                We will create rules to allow only necessary traffic, enhancing the security of our application.
             </Paragraph>
-            <Paragraph>
-              What we'll create:
-              • A Security Group for Bastion Host to allow SSH access from our IP.<br />
-              • A Security Group for the Web Server to allow inbound HTTP/HTTPS traffic<br />
-              • A Security Group for the App Server to allow traffic only from the Web Server and Bastion Host Security Groups<br />
-              • A Security Group for the Database to allow traffic only from the App Server Security and Bastion Host Security Groups<br />
-            </Paragraph>
-            <ImageContainer  src="./draw.io.securitygroups.png" alt="" selectedImage={setSelectedImage} />
+            
 
             <Paragraph>
               We'll create the Bastion Host Security Group first. <br />

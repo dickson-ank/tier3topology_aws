@@ -10,7 +10,7 @@ export function Step4({setSelectedImage}: Step4Props){
     return(
         <ProjectSection id="step-4" title="Step 4: EC2 Instances" onImageClick={setSelectedImage}>
           <Paragraph>
-            In this step, we will launch EC2 instances for the web server and database server,
+            In this step, we will launch EC2 instances for the bastion server, web server, and app server,
              configure them with appropriate security groups created in the previous step,
             and set up user data scripts to automate the installation of necessary software.
           </Paragraph>
@@ -18,8 +18,7 @@ export function Step4({setSelectedImage}: Step4Props){
             What we'll create:
             • EC2 Instance for Bastion<br />
             • EC2 Instance for Web Server<br />
-            • EC2 Instance for Database Server<br />
-            • RDS Instance for MariaDB
+            • EC2 Instance for App Server<br />
           </Paragraph>
           <ImageContainer src="./draw.io-ec2-database.png" alt="EC2 and Database Setup Diagram" selectedImage={setSelectedImage} />
 
@@ -125,10 +124,10 @@ export function Step4({setSelectedImage}: Step4Props){
                       sudo dnf install -y mariadb105 <br />
                     </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
 
              </ProjectSection>
