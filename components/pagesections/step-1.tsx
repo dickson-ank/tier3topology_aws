@@ -13,7 +13,7 @@ export function Step1({setSelectedImage}: Step1Props){
         <ProjectSection id="step-1" title="Step 1: Creating VPC and Subnets" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
               We'll begin by creating a VPC and subnets to isolate our application resources, 
-              analogous to the network on industrial premise <br/> 
+              analogous to on-prem network topology <br/> 
                
                 <br />
                 • In the Management Console search for VPC and open the VPC Dashboard. <br/>
@@ -25,9 +25,9 @@ export function Step1({setSelectedImage}: Step1Props){
             <ImageContainer className="mb-1"src="./vpc-create.png" alt="Container setup" selectedImage={setSelectedImage} />
             <ImageContainer className="mt-1"src="./vpc-create2.png" alt="Container setup" selectedImage={setSelectedImage} />
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Next we will create our subnets. One each for presentation Tier and Application Tier, <br />
-              and Two for the data tier for extra security and high availability. <br />
-              as shown in the image below. <br />
+              Next we will create the subnets. One each for presentation Tier and Application Tier, <br />
+              and Two for the data tier for high availability as shown below. <br />
+             
             </p>
             <ImageContainer id="vpc-subnet-base" className="mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
