@@ -17,7 +17,7 @@ export function Step4({setSelectedImage}: Step4Props){
             and set up user data scripts to automate the installation of necessary software.
           </Paragraph>
           <Paragraph>
-            What we'll create:
+            What we'll create: <br />
             • EC2 Instance for Bastion<br />
             • EC2 Instance for Web Server<br />
             • EC2 Instance for App Server<br />
@@ -38,13 +38,13 @@ export function Step4({setSelectedImage}: Step4Props){
             • Select a key pair for SSH access. If you don't have one, 
             create a new key pair and download the ".pem" file <br/>
             <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">you'll need this to connect to your instance 
-              later when we you test the deployment.</span>
+              later when we test the deployment.</span>
           </Paragraph>
           <ImageContainer src="./ec2-instance-type.jpeg" alt="EC2 Instance Type Selection" selectedImage={setSelectedImage} />
 
           <Paragraph> 
-            • Edit Network Settings: <br/>
-            - Select the VPC we created (webapp-network) <br/>
+            Edit Network Settings: <br/>
+            - Select the VPC  (webapp-network) <br/>
             - Select the public subnet (public-subnet) <br/>
             - Enable Auto-assign Public IP <br/>
             - Under Security Group, select "Choose an existing security group" 
@@ -76,7 +76,7 @@ export function Step4({setSelectedImage}: Step4Props){
             </div>
           <ImageContainer src="./ec2-user-data.jpeg" alt="EC2 User Data" selectedImage={setSelectedImage} />
           <Paragraph>
-            • Review and click   
+            • Review and   
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Launch instance</span>
           </Paragraph>

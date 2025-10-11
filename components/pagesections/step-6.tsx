@@ -154,7 +154,7 @@ export function Step6({setSelectedImage}: Step6Props){
               You can run further tests on your own to verify if the security groups are working as intended <br />
               For example try to ssh into the App server instance from your local machine <br />
               It should not work because the security group of the App server only allows ssh access from the Bastion Host <br />
-              You can ping the Web Server from the App Server to check if the ICMP rule works fine <br />
+              You can ping the Web Server's private IP from the App Server to check if the ICMP rule works fine <br />
             </Paragraph>
             <h4 className="text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold text-foreground mb-4 text-balance">
                Voila! Congratulations! That was easy, wasn't it?</h4>

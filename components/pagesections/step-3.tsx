@@ -87,7 +87,7 @@ export function Step3({setSelectedImage}: Step3Props){
             
             <Paragraph>
               Now, let's go back and add the missing rules to the Web Server and App Server Security Groups. <br />
-              • Select each Security Group and edit the inbound rules<br />
+              Select each Security Group and edit the inbound rules<br />
               • For WebServerSG, add an ICMP rule with Source: Custom - "AppServerSG"<br />
               • For AppServerSG, add a MySQL/Aurora rule with Source: Custom - "DatabaseSG"<br />
               • Save the changes<br /><br />
@@ -97,10 +97,11 @@ export function Step3({setSelectedImage}: Step3Props){
             
             <Note grid={false}
             note1={<>
-              - Allow limited access to specific IPs into bastion host <br />
-              - Since web server already built to allow traffic from internet,
-               we do not to ssh into it through the bastion host<br />
+              - Allow limited access to specific IPs into bastion host as 
+              it has access to both app server and database<br />
               - Allowing too much traffic from anywhere can risk your most critical resources <br />
+              - Since web server is already built to allow traffic from internet,
+               we do not to ssh into it through the bastion host<br />
               - Regularly review and update security group rules as needed <br />
               - Use descriptive names and comments for rules to make management easier <br />
                   </>}        
