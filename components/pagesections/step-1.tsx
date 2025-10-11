@@ -38,8 +38,8 @@ export function Step1({setSelectedImage}: Step1Props){
               Choose the VPC created earlier ("webapp-network"). <br />
               • We will create the Public Subnet first <br />
               • Let's name it "public-subnet" since it's the only public subnet <br />
-              • Set the Availability Zone to your preference (e.g., us-east-1a) and note it somewhere<br />
-              • Set the IPv4 CIDR block to <span className="font-mono text-primary">10.0.1.0/24</span> <br />
+              • Set the Availability Zone to your preference (e.g., us-west-2a) and note it somewhere<br />
+              • Set the IPv4 subnet CIDR block to <span className="font-mono text-primary">10.0.1.0/24</span> <br />
               • Review and click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create Subnet</span> <br />
             </Paragraph>
             <ImageContainer className="mb-1"src="./create-subnet1.jpeg" alt="Subnet create screenshot" selectedImage={setSelectedImage} />
@@ -49,10 +49,11 @@ export function Step1({setSelectedImage}: Step1Props){
               Repeat the process to create the three private subnets <br />
               <br />
               • We'll name them "private-subnet-1", "private-subnet-2", and "private-subnet-3" respectively <br />
-              <span className="ml-4 mb-1 block">or go for any naming format that works for you</span>
+              <span className="ml-4 mb-1 block">or you can go for any naming format that works for you</span>
               • Put the first 2 private subnets in same Availability Zone as the public subnet <br />
                 <span className="block ml-4">and then put the last subnet in a different Availability Zone <br />
-                refer to the image for clarity <a href="#vpc-subnet-base" className="text-primary font-medium">here</a> and set their CIDRs as shown </span><br />
+                Refer to the image <a href="#vpc-subnet-base" className="text-primary font-medium">here </a> 
+                for clarity and set their CIDRs as shown </span><br />
             </Paragraph>
             <div className="space-y-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
