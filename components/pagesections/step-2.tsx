@@ -38,16 +38,16 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer src="./igw-attach.jpeg" alt="Internet gateway attach" selectedImage={setSelectedImage} />
             <Paragraph>
               Let's create a NAT Gateway in the same manner.<br /> <br />
-              Before that, we need to allocate an Elastic IP address to the NAT Gateway so that it maintains a consistent public IP address.<br />
+              Before that, we need to allocate an Elastic IP address to the NAT Gateway so 
+              that it maintains a consistent public IP address.<br />
               Go to "Elastic IPs" and click on <span className="text-primary font-semibold">Allocate Elastic IP address</span>.<br />
               Let's give it a tag name "ngw-eip" and leave the rest as default.<br />
-              • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span><br /><br />
+              • Then, <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span><br /><br />
             </Paragraph>
             <ImageContainer  src="./eip-create.jpeg" alt="Elastic IP create" selectedImage={setSelectedImage} />
             
             <Paragraph>
-               Now, go back to the VPC Dashboard. <br />
-              •Choose "NAT Gateways" from the side menu and click on <span className="text-primary font-semibold">Create NAT Gateway</span>.<br />
+              Now go to "NAT Gateways" and hit <span className="text-primary font-semibold">Create NAT Gateway</span>.<br />
               • We'll name it "webapp-network-ngw" <br />
               • Choose the public subnet we created earlier ("public-subnet") from the dropdown <br />
                 <span className="text-muted-foreground block font-mono text-sm mt-1 ml-4">
