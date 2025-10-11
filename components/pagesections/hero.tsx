@@ -9,10 +9,10 @@ export function Hero(){
         <section className="gradient-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-foreground mb-6 text-balance">
-              Build A 3-Tier Web Application on AWS
+              Building A 3-Tier Web Application on AWS
             </h1>
             <p className="text-sm sm:text-lg text-primary mb-10 text-pretty max-w-2xl mx-auto">
-              Learn to design a robust, scalable web application using AWS services like EC2, RDS, etc. This step-by-step guide
+              Learn to design a Scalable, Secure, Reliable, Resilient web application using AWS services
             </p>
             <p className="font-mono text-left text-xs sm:text-sm text-muted-hero mb-8 text-pretty max-w-2xl mx-auto">
               This project was developed within a lab environment that automatically terminates 
