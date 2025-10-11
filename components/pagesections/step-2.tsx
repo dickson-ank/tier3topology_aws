@@ -70,11 +70,10 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./ngw-create.jpeg" alt="NAT Gateway create" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              Now that we have both Internet Gateway and NAT Gateway created, focus is back on the main subject of this step: <span className="text-muted-foreground font-medium">"Setting up routes"</span><br />
-              So let's go to the "Route Tables", from the side menu section and click on 
-              <span className="text-primary font-semibold">
-                Create Route Table
-              </span>.<br />
+              Now that we have both Internet Gateway and NAT Gateway created, we can focus on the subject of this step:
+              <span className="text-muted-foreground font-medium"> "Setting up routes"</span><br />
+              So let's go to the "Route Tables", from the side menu section to 
+              <span className="text-primary font-semibold"> Create Route Table.</span><br />
               • We'll name it "public-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create route table</span> to confirm.<br />
             </Paragraph>
