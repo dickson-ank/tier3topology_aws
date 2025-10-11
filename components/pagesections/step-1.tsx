@@ -12,8 +12,9 @@ export function Step1({setSelectedImage}: Step1Props){
     return(
         <ProjectSection id="step-1" title="Step 1: Creating VPC and Subnets" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              We'll begin by creating our VPC and subnets to isolate our application resources, 
-               a crucial step in setting up a highly available and resilient architecture. <br/>
+              We'll begin by creating a VPC and subnets to isolate our application resources, 
+              analogous to the network on industrial premise <br/> 
+               
                 <br />
                 • In the Management Console search for VPC and open the VPC Dashboard. <br/>
                 • Click on <span className="text-primary font-semibold">Create VPC</span>. <br/>
