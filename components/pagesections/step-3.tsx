@@ -52,7 +52,7 @@ export function Step3({setSelectedImage}: Step3Props){
               • Add 3 inbound rules:<br />
               • HTTP - Source: Anywhere IPv4<span className="font-mono text-primary"> (0.0.0.0/0) </span><br />
               • HTTPS - Source: Anywhere IPv4 <span className="font-mono text-primary"> (0.0.0.0/0)  </span><br />
-              • SSH - Source: "My IP" (for management purposes) <br />
+              • SSH - Source: "My IP" (for management and testing purposes) <br />
               • We should add ICMP rule from App Server SG but we 
               haven't created it yet so we'll come back and add it later<br />
               • Review and create the security group<br />
@@ -65,7 +65,7 @@ export function Step3({setSelectedImage}: Step3Props){
               • We'll name it "AppServerSG" <br />
               • Add 3 inbound rules:<br />
               • SSH - Source: Custom - "BastionHostSG" (search "sg" and select BastionHostSG from the dropdown) <br />
-              • HTTP - Source: Custom - "WebServerSG" (search "sg" and select WebServerSG from the dropdown) <br />
+              • HTTP - Source: Custom - "WebServerSG"  <br />
               • ICMP - Source: Custom - "WebServerSG"<br />
               • We can ingnore https and use only http between web and app server for simplicity <br />
               • We should add MySQL/Aurora rule from Database SG but we 
