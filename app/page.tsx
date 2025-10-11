@@ -22,6 +22,7 @@ const sections = [
   { id: "step-4", title: "Step 4: EC2 Instances" },
   { id: "step-5", title: "Step 5: Database" },
   { id: "step-6", title: "Step 6: Testing" },
+  { id: "thank-you", title: "Need Help?" },
 ]
 
 export default function Home() {

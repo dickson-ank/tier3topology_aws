@@ -10,9 +10,9 @@ export function Introduction({setSelectedImage}: IntroductionProps){
         
         <ProjectSection id="introduction" title="Introduction: Initial Setup & Prerequisites" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-sm sm:text-base">
-                A 3-tier architecture is a well-established software application architecture that orgainizes application into 
-                three logical and physical computing tiers: the presentation tier, application tier, and data tier <br/> 
-                This guide will walk you through setting up a 3-tier web application on AWS.
+                A 3-tier architecture is a proven software design model that separates an application into three distinct layers; <br />
+                presentation, application, and data. This separation improves scalability, security, and maintainability.
+                In this guide, you’ll learn how to deploy a 3-tier web application architecture on AWS, step by step.
             </p>
             <ImageContainer src="./tier3topology.png" alt="Topology Diagram" selectedImage={setSelectedImage}>
                 <div className="text-center p-1 rounded text-xs sm:text-sm text-muted-foreground mt-1">
