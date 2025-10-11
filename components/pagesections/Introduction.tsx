@@ -32,7 +32,7 @@ export function Introduction({setSelectedImage}: IntroductionProps){
             </Paragraph>
             <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                 A three tier architecture obeys the principle of lose coupling
-                in that it makes easy to detach/substitute resources for new ones without
+                in that it makes it easy to detach/substitute resources for new ones without
                 needing to redesign the whole architecture.
                 <br />
                 A web application designed in this manner is Scalable, Reliable, Resilient and Secure.
@@ -46,7 +46,7 @@ export function Introduction({setSelectedImage}: IntroductionProps){
                 Topology Diagram
                 </div>
             </ImageContainer>
-            
+
             <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border mb-6">
                 <h3 className="font-semibold text-foreground mb-4 text-sm sm:text-base">Prerequisites</h3>
                 <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
@@ -58,14 +58,6 @@ export function Introduction({setSelectedImage}: IntroductionProps){
                 <li>• Familiarity with AWS CloudFormation (optional but recommended)</li>
                 </ul>
             </div>
-            {/* <ImageContainer src="./placeholder.svg" alt="Container setup" selectedImage={setSelectedImage} />
-
-            <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto">
-                <div className="text-muted-foreground mb-1"># Configure AWS CLI</div>
-                <div className="whitespace-nowrap">aws configure</div>
-                <div className="mt-2 text-muted-foreground"># Verify configuration</div>
-                <div>aws sts get-caller-identity</div>
-            </div> */}
         </ProjectSection>
     )
 }
