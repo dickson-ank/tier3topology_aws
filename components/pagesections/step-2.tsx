@@ -32,7 +32,9 @@ export function Step2({setSelectedImage}: Step2Props){
             </Paragraph>
             <ImageContainer src="./igw-create.jpeg" alt="Internet gateway create" selectedImage={setSelectedImage} />
 
-            <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC</span> from the green pop-up and choose the VPC we created earlier ("webapp-network").</Paragraph>
+            <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC</span>
+             from the green pop-up and select the VPC ("webapp-network").
+             </Paragraph>
             <ImageContainer src="./igw-attach.jpeg" alt="Internet gateway attach" selectedImage={setSelectedImage} />
             <Paragraph>
               Let's create a NAT Gateway in the same manner.<br /> <br />
