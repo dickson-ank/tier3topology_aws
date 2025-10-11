@@ -27,8 +27,10 @@ export function Step2({setSelectedImage}: Step2Props){
               Choose "Internet gateways" from the sidebar and click on 
               <span className="text-primary font-semibold"> Create Internet Gateway</span>.<br />
               • Name it "webapp-network-igw" implying that it's the VPC's gateway to the internet <br />
-              and <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
-                Create internet gateway</span>.<br />
+              and 
+              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Create internet gateway
+              </span>.<br />
             </Paragraph>
             <ImageContainer src="./igw-create.jpeg" alt="Internet gateway create" selectedImage={setSelectedImage} />
 
@@ -36,32 +38,43 @@ export function Step2({setSelectedImage}: Step2Props){
              from the green pop-up and select the VPC ("webapp-network").
              </Paragraph>
             <ImageContainer src="./igw-attach.jpeg" alt="Internet gateway attach" selectedImage={setSelectedImage} />
+
             <Paragraph>
               Let's create a NAT Gateway in the same manner.<br /> <br />
               Before that, we need to allocate an Elastic IP address to the NAT Gateway so 
               that it maintains a consistent public IP address.<br />
-              Go to "Elastic IPs" and click on <span className="text-primary font-semibold">Allocate Elastic IP address</span>.<br />
+              Go to "Elastic IPs" and click on 
+              <span className="text-primary font-semibold"> Allocate Elastic IP address</span>.<br />
               Let's give it a tag name "ngw-eip" and leave the rest as default.<br />
-              • Then, <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Allocate</span><br /><br />
+              • Then, 
+              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Allocate
+              </span><br /><br />
             </Paragraph>
             <ImageContainer  src="./eip-create.jpeg" alt="Elastic IP create" selectedImage={setSelectedImage} />
             
             <Paragraph>
-              Now go to "NAT Gateways" and hit <span className="text-primary font-semibold">Create NAT Gateway</span>.<br />
+              Now go to "NAT Gateways" and hit 
+              <span className="text-primary font-semibold"> Create NAT Gateway</span>.<br /> 
               • We'll name it "webapp-network-ngw" <br />
               • Choose the public subnet we created earlier ("public-subnet") from the dropdown <br />
-                <span className="text-muted-foreground block font-mono text-sm mt-1 ml-4">
+                <span className="text-muted-foreground block text-sm mt-1 ml-4">
                 A NAT Gateway must always be in a public subnet
                 </span>
-              • We'll choose our Elastic IP (ngw-eip) from the dropdown<br />
-              • Review and click on
-              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create a NAT gateway</span>
+              • Choose the Elastic IP (ngw-eip) from the dropdown<br />
+              • Review and 
+              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Create a NAT gateway
+              </span>
             </Paragraph>
             <ImageContainer className="mt-1" src="./ngw-create.jpeg" alt="NAT Gateway create" selectedImage={setSelectedImage} />
 
             <Paragraph>
               Now that we have both Internet Gateway and NAT Gateway created, focus is back on the main subject of this step: <span className="text-muted-foreground font-medium">"Setting up routes"</span><br />
-              So let's go to the "Route Tables", from the side menu section and click on <span className="text-primary font-semibold">Create Route Table</span>.<br />
+              So let's go to the "Route Tables", from the side menu section and click on 
+              <span className="text-primary font-semibold">
+                Create Route Table
+              </span>.<br />
               • We'll name it "public-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
               • Click <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create route table</span> to confirm.<br />
             </Paragraph>
