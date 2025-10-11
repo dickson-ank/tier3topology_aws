@@ -13,7 +13,7 @@ export function Step2({setSelectedImage}: Step2Props){
     return(
         <ProjectSection id="step-2" title="Step 2: Routing" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              The routing part is also done in the VPC Dashboard. The purpose of routing 
+              While still in the VPC Dashboard we'll configure route tables for the subnets. The purpose of routing 
               is to control the traffic flow between the subnets and the internet. <br />
             </p>
             <Paragraph>
@@ -21,12 +21,17 @@ export function Step2({setSelectedImage}: Step2Props){
               • A Route Table for the Public Subnet with a route to an Internet Gateway to enable internet access. <br />
               • A Route Table for the Private Subnets with routes to a NAT Gateway to ensure they remain isolated from direct internet access. <br />
             </Paragraph>
-            <Paragraph>Let's create the components required for the routing starting with the internet gateway<br />
-              In the VPC Dashboard, choose "Internet Gateways" and click on <span className="text-primary font-semibold">Create Internet Gateway</span>.<br />
-              • Name it "webapp-network-igw" implying that it's the VPC's gateway to the internet <br />and click 
-              <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create internet gateway</span>.<br />
+
+            <Paragraph>
+              Let's create the components required for the routing, starting with Internet Gateway<br />
+              Choose "Internet gateways" from the sidebar and click on 
+              <span className="text-primary font-semibold"> Create Internet Gateway</span>.<br />
+              • Name it "webapp-network-igw" implying that it's the VPC's gateway to the internet <br />
+              and <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
+                Create internet gateway</span>.<br />
             </Paragraph>
             <ImageContainer src="./igw-create.jpeg" alt="Internet gateway create" selectedImage={setSelectedImage} />
+
             <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC</span> from the green pop-up and choose the VPC we created earlier ("webapp-network").</Paragraph>
             <ImageContainer src="./igw-attach.jpeg" alt="Internet gateway attach" selectedImage={setSelectedImage} />
             <Paragraph>
