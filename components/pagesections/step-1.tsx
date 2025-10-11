@@ -31,11 +31,11 @@ export function Step1({setSelectedImage}: Step1Props){
             </p>
             <ImageContainer id="vpc-subnet-base" className="mt-1"src="./draw.io.vpc-subnet-base.png" alt="Container setup" selectedImage={setSelectedImage} />
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              Expand the VPC Dashboard menu if closed and select Subnets
+              Expand the VPC Dashboard sidebar if closed and go to Subnets
             </p>
             <Paragraph>
-              In the Subnets section, click on <span className="text-primary font-semibold">Create Subnet</span><br />
-              Choose the VPC you created earlier ("webapp-network"). <br />
+              Click on <span className="text-primary font-semibold">Create Subnet</span><br />
+              Choose the VPC created earlier ("webapp-network"). <br />
               • We will create the Public Subnet first <br />
               • Let's name it "public-subnet" since it's the only public subnet <br />
               • Set the Availability Zone to your preference (e.g., us-east-1a) and note it somewhere<br />
