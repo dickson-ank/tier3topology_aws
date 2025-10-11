@@ -14,7 +14,7 @@ export function Step5({setSelectedImage}: Step5Props){
         <ProjectSection id="step-5" title="Step 5: Database" onImageClick={setSelectedImage}>
             <Paragraph>
               In this section we are going to create an RDS Database. <br />
-              • A database is essential for storing and managing the data that our application will use. <br />
+              • A database is essential for storing and managing the user information that our application will use. <br />
               • The App server will connect to this database to perform various operations such as reading,
                writing, and updating data. <br />
               • as well the Bastion host for management purposes as configured in the Security Groups step <br />
@@ -34,7 +34,7 @@ export function Step5({setSelectedImage}: Step5Props){
             <Paragraph>
               Next, we will add subnets to the group <br />
               • Selec the availability zones in which you created the subnets <br />
-              • Check the 2 private subnets in the Data Tier <br />
+              • Check the 2 private subnets for the Data Tier <br />
                <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">-Private-subnet-2 and Private-subnet-3</span>
               • Click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Create</span> <br />
             </Paragraph>
@@ -79,8 +79,8 @@ export function Step5({setSelectedImage}: Step5Props){
               • Skip to Additional configuration expand it<br />
               • Set Initial database name to "db" for simplicity<br />
                <span className="text-sm md:text-sm lg:text-sm sm:text-sm block ml-4">- 
-                This will create a database named "db" upon instance creation</span>
-              • For demo purposes, we will uncheck the backup and monitoring options
+                This will create a database named "db" on the database-instance</span>
+              • Since this architecture isn't fully functional, we will uncheck the backup and monitoring options
                for faster database creation<br />
               • Review and <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Create database</span> <br />
@@ -92,7 +92,7 @@ export function Step5({setSelectedImage}: Step5Props){
               • Once available, note down the endpoint, close to where you kept the Master password,
                 we will need it to test connections to the database through the appserver in the next step <br />
               <br />
-              •Essentially to connect to the database you will need the following <br />
+              •Essentially, to connect to the database you will need the following <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Endpoint</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Database name (in our case "db")</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master username (in our case "adminuser")</span> <br />

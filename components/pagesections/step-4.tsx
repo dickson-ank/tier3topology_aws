@@ -111,7 +111,7 @@ export function Step4({setSelectedImage}: Step4Props){
             • For the App Server instance, <br />
              -select the private subnet (public-subnet-1) <br />
              -use the AppServerSG security group <br />
-             -and inside the User data following user data paste this:
+             -and inside the User data following user data paste this code:
           </Paragraph>
           <div className="space-y-6 mb-4">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
