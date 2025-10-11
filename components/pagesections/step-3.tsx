@@ -13,9 +13,9 @@ export function Step3({setSelectedImage}: Step3Props){
     return(
         <ProjectSection id="step-3" title="Step 3: Security Groups" onImageClick={setSelectedImage}>
             <Paragraph>
-              In this step we will set up Security Groups to control access to our AWS resources.
+              In this step we will set up Security Groups to control access to the resources we will provision.
               Security Groups act as virtual firewalls that regulate inbound and outbound traffic. 
-               We will create rules to allow only necessary traffic, enhancing the security of our application.
+              We will create rules to allow only necessary traffic, enhancing the security of our application.
             </Paragraph>
             <Paragraph>
               What we'll create:
@@ -27,12 +27,12 @@ export function Step3({setSelectedImage}: Step3Props){
             <ImageContainer  src="./draw.io.securitygroups.png" alt="" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              We'll create the Bastion Host Security Group first. <br />
+              We'll start with the Bastion Host Security Group <br />
               • Go to Security in the VPC Dashboard. <br />
               • Choose "Security Groups" and click on <span className="text-primary font-semibold">Create Security Group</span>.<br />
               • We'll name it "BastionHostSG" <br />
               • Add a description (optional) <br />
-              • Choose the VPC we created earlier ("webapp-vpc") from the dropdown <br />
+              • Select VPC (webapp-network) <br />
             </Paragraph>
 
             <Paragraph>
@@ -40,14 +40,14 @@ export function Step3({setSelectedImage}: Step3Props){
               • Add a rule for SSH access<br />
               • Choose "SSH" from the dropdown <br />
               • Set the Source to "My IP" and it will auto-fill your current IP address<br />
-              • Review and click
+              • Review and
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Create security group</span>
             </Paragraph>
             <ImageContainer  src="./bastionhostSG-create.jpeg" alt="Bastion Host SG screenshot" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              We'll create the Web Server Security Group next. <br />
+              On to the Web Server Security Group <br />
               • We'll name it "WebServerSG" <br />
               • Add 3 inbound rules:<br />
               • HTTP - Source: Anywhere IPv4<span className="font-mono text-primary"> (0.0.0.0/0) </span><br />

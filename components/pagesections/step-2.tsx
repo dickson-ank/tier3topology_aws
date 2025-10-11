@@ -90,17 +90,17 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer className="mt-1" src="./public-rt-route.jpeg" alt="Public route table route" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              • Next, we need to associate this route table with the public subnet so that it can use this route table for its routing needs.<br />
+              Next, we need to associate this route table with the public subnet so that it can use this route table to reach the internet.<br />
               • Select the "Subnet associations" tab and click on <span className="text-primary font-semibold">Edit subnet associations</span>.<br />
-              • Select the public subnet ("public-subnet") and click on <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save associations</span> to confirm.
+              • Select the public subnet ("public-subnet") and  <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">Save associations</span>
             </Paragraph>
             <ImageContainer className="mt-1" src="./public-rt-assoc.jpeg" alt="Public route table association" selectedImage={setSelectedImage} />
 
             <Paragraph>
-              Repeat the process to create a route table for the private subnets.<br />
-              • We'll name it "private-rt" and associate it with the VPC we created earlier ("webapp-network"). <br />
+              We repeat the process to create a route table for the private subnets.<br />
+              • We'll name it "private-rt" and associate it with the VPC. <br />
               • In the "Routes" tab, add a route with destination <span className="font-mono text-primary">0.0.0.0/0 </span> 
-              and target the NAT Gateway we created earlier ("webapp-network-ngw"). <br />
+              and target the NAT Gateway ("webapp-network-ngw"). <br />
               • In the "Subnet associations" tab, associate all three private subnets 
               ("private-subnet-1", "private-subnet-2", and "private-subnet-3") with this route table.<br />
             </Paragraph>
@@ -112,23 +112,19 @@ export function Step2({setSelectedImage}: Step2Props){
               The additional route table was created by default by the lab environment I used. It doesn't affect anything
             </Paragraph>
             <ImageContainer className="mt-1" src="./vpc-resource-map.jpeg" alt="VPC resource map" selectedImage={setSelectedImage} />
-
-
-
-
-
-
-
+            
             <Note grid={true} 
               note1={
                     <>- A NAT Gateway must always be in a public subnet <br />
-                - Private subnets should not have a direct route to the Internet Gateway <br />
-                - Ensure that the route tables are correctly associated with their respective subnets <br />
-                - Double-check the CIDR blocks to avoid overlaps and ensure proper segmentation <br /></>
+                      - Private subnets should not have a direct route to the Internet Gateway, they only interact with the internet
+                      for their needs through the NAT Gateway <br />
+                    </>
                 }
               
               note2={
-              <>- Connect your API Gateway endpoints to the Lambda functions we created in the previous step.</>
+              <>- Ensure that the route tables are correctly associated with their respective subnets <br />
+                - Double-check the CIDR blocks to avoid overlaps and ensure proper segmentation <br />
+              </>
             }
             />
 
