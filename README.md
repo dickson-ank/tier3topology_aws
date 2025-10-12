@@ -1,2 +1,4 @@
-# 3 tier Architecture With AWS
-## This project demonstrates the process of implementing 3-tier web application on aws.
+# 3 tier Architecture on AWS
+![Project Image](./public/tier3topology.png)
+
+[Visit Project](https://dickson-ank.github.io/tier3topology_aws/)
