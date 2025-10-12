@@ -18,7 +18,7 @@ export function Introduction({setSelectedImage}: IntroductionProps){
             <Paragraph>
                 <span className="text-primary">The Presentation Tier: <br /></span>
                  <span className="block ml-4 text-sm sm:text-xs md:text-sm lg:text-sm">
-                    -The using facing side of the application, containing web servers which receives and responds to incoming requests <br />
+                    -The user-facing side of the application, containing web servers which receives and responds to incoming requests <br />
                 </span>
                 <span className="text-primary">The Application Tier: <br /></span>
                  <span className="block ml-4 text-sm sm:text-xs md:text-sm lg:text-sm">

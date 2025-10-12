@@ -12,7 +12,7 @@ export function Hero(){
               Building A 3-Tier Web Application on AWS
             </h1>
             <p className="text-sm sm:text-lg text-primary mb-10 text-pretty max-w-2xl mx-auto">
-              Learn to design a Scalable, Secure, Reliable, Resilient web application using AWS services
+              Learn to design a Scalable, Secure, Reliable and Resilient web application using AWS
             </p>
             <p className="font-mono text-left text-xs sm:text-sm text-muted-hero mb-8 text-pretty max-w-2xl mx-auto">
               This project was developed within a lab environment that automatically terminates 
