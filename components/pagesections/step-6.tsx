@@ -157,7 +157,7 @@ export function Step6({setSelectedImage}: Step6Props){
               You can ping the Web Server's private IP from the App Server to check if the ICMP rule works fine <br />
             </Paragraph>
             <h4 className="text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold text-foreground mb-4 text-balance">
-               Voila! Congratulations! That was easy, wasn't it?</h4>
+               Voila! Congratulations!</h4>
             That's all about it, we've been able to successfully complete the design
             <ImageContainer src="./tier3topology.png" alt="Topology Diagram" selectedImage={setSelectedImage} />
         </ProjectSection>
