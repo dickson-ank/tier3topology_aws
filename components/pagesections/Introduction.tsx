@@ -31,12 +31,10 @@ export function Introduction({setSelectedImage}: IntroductionProps){
 
             </Paragraph>
             <p className="text-muted-foreground mb-6 text-sm sm:text-base">
-                A three tier architecture obeys the principle of lose coupling
-                in that it makes it easy to detach/substitute resources for new ones without
-                needing to redesign the whole architecture.
+                A three-tier architecture follows the principle of loose coupling, making it easy to replace or 
+                upgrade individual components without redesigning the entire system.
+                Applications built with this design are inherently scalable, reliable, resilient, and secure.
                 <br />
-                A web application designed in this manner is Scalable, Reliable, Resilient and Secure.
-
             </p>
             <Paragraph>
                 Here's the architecture we're going to develop

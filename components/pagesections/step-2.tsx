@@ -34,7 +34,7 @@ export function Step2({setSelectedImage}: Step2Props){
             </Paragraph>
             <ImageContainer src="./igw-create.jpeg" alt="Internet gateway create" selectedImage={setSelectedImage} />
 
-            <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC</span>
+            <Paragraph>Select <span className="text-primary font-semibold">Attach to VPC </span>
              from the green pop-up and select the VPC ("webapp-network").
              </Paragraph>
             <ImageContainer src="./igw-attach.jpeg" alt="Internet gateway attach" selectedImage={setSelectedImage} />
@@ -45,7 +45,7 @@ export function Step2({setSelectedImage}: Step2Props){
               that it maintains a consistent public IP address.<br />
               Go to "Elastic IPs" and click on 
               <span className="text-primary font-semibold"> Allocate Elastic IP address</span>.<br />
-              Let's give it a tag name "ngw-eip" and leave the rest as default.<br />
+              Give it a name tag "ngw-eip" and leave the rest as default.<br />
               • Then, 
               <span className="text-black text-sm font-semibold px-2 py-0 bg-aws rounded-2xl">
                 Allocate
@@ -54,7 +54,7 @@ export function Step2({setSelectedImage}: Step2Props){
             <ImageContainer  src="./eip-create.jpeg" alt="Elastic IP create" selectedImage={setSelectedImage} />
             
             <Paragraph>
-              Now go to "NAT Gateways" and hit 
+              Now go to "NAT Gateways" and 
               <span className="text-primary font-semibold"> Create NAT Gateway</span>.<br /> 
               • We'll name it "webapp-network-ngw" <br />
               • Choose the public subnet we created earlier ("public-subnet") from the dropdown <br />

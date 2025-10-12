@@ -12,8 +12,8 @@ export function Step1({setSelectedImage}: Step1Props){
     return(
         <ProjectSection id="step-1" title="Step 1: Creating VPC and Subnets" onImageClick={setSelectedImage}>
             <p className="text-muted-foreground mb-6 text-pretty text-sm sm:text-base">
-              We'll begin by creating a VPC and subnets to isolate our application resources, 
-              analogous to on-prem network topology <br/> 
+              We’ll start by creating a VPC and subnets to isolate application resources,
+              similar to how networks are segmented in an on-premises environment. <br/> 
                
                 <br />
                 • In the Management Console search for VPC and open the VPC Dashboard. <br/>
@@ -76,7 +76,9 @@ Parameters:
     Type: String
     Default: webapp-network
   MyIP:
-    Description: Enter your IP address with /32 suffix or leave it at default (e.g., 201.16.145.100/32)
+    Description:>-
+     Enter your IP address with /32 suffix or leave it at default
+     (e.g., 201.16.145.100/32)
     Type: String
     Default: 0.0.0.0/0
   

@@ -50,7 +50,7 @@ export function Step5({setSelectedImage}: Step5Props){
             <ImageContainer className="mb-1"src="./rds-engine.jpeg" alt="RDS Engine screenshot" selectedImage={setSelectedImage} />
             
             <Paragraph>
-              • Leave the engine version to default <br />
+              • Leave the engine version as default <br />
               • For the template, select "Free tier" <br />
               • Set the DB instance identifier to "database-instance" <br />
             </Paragraph>
@@ -92,7 +92,7 @@ export function Step5({setSelectedImage}: Step5Props){
               • Once available, note down the endpoint, close to where you kept the Master password,
                 we will need it to test connections to the database through the appserver in the next step <br />
               <br />
-              Essentially, to connect to the database you will need the following <br />
+              Essentially, to establish a connection to the database you will require the following <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Endpoint</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Database name (in our case "db")</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master username (in our case "adminuser")</span> <br />
