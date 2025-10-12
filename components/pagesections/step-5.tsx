@@ -96,7 +96,7 @@ export function Step5({setSelectedImage}: Step5Props){
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Endpoint</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Database name (in our case "db")</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master username (in our case "adminuser")</span> <br />
-              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master password (the one you set above)</span> <br />
+              <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master password (the one you set)</span> <br />
             </Paragraph>
             <ImageContainer className="mb-1"src="./rds-endpoint.jpeg" alt="RDS Endpoint screenshot" selectedImage={setSelectedImage} />
             
