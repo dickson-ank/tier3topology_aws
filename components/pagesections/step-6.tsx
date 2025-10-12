@@ -14,7 +14,7 @@ export function Step6({setSelectedImage}: Step6Props){
         <ProjectSection id="step-6" title="Step 6: Testing" onImageClick={setSelectedImage}>
             <Paragraph>
               In this final step, we will test the entire setup to ensure that all components are functioning correctly.
-               We will verify that the App server can communicate with the database as well 
+               We will verify that the App server can communicate with the database, as well 
                with the Web Sever.
                We will also test if the Web server is serving the web application properly. <br />
                We will test if only permitted access is allowed to all the Instances. <br /> <br />
@@ -42,7 +42,7 @@ export function Step6({setSelectedImage}: Step6Props){
 
             <Paragraph>
               Rename the file to index.html <br />
-              The file was interfering with other index.html files while developing the project 
+              The file kept interfering with other index.html files while developing the project 
               that's the reason I named it webapp-index.html but you must rename it to index.html <br /> <br />
               Run this command: <br />
               <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
@@ -57,14 +57,14 @@ export function Step6({setSelectedImage}: Step6Props){
             <div className="space-y-6 mt-6">
               <div className="gradient-card p-4 sm:p-6 rounded-lg border border-border">
                 <p className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">
-                  Make sure your key pair have the right permissions set. <br /> <br />
+                  Make sure your key pair file has the right permissions set. <br /> <br />
                   Run this to do so: <br /></p>
                   <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
                   <div className="text-muted-foreground mb-1">
                     chmod 400 YOUR-KEY-PAIR.pem
                   </div>
                 </div>
-                  Now run the following command to upload the html file to the web server instance. <br />
+                  <span className="text-xs sm:text-sm text-muted-foreground text-pretty mb-4">Now run the following command to upload the html file to the web server instance. <br /></span>
                 <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm">
                   <div className="text-muted-foreground mb-1">
                     scp -i YOUR-KEY-PAIR.pem index.html ec2-user@YOUR-WEB-SERVER-PUBLIC-IP:~/
@@ -79,7 +79,7 @@ export function Step6({setSelectedImage}: Step6Props){
 
             <Paragraph>
               Follow same procedure to upload the key pair pem file to the Bastion Host instance. <br />
-              To allow you to connect to the App server instance from the Bastion Host instance. <br />
+              To use it to connect to the App server instance from the Bastion Host. <br />
               Run the command: <br />
               <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
                 <span className="text-muted-foreground mb-1 block">

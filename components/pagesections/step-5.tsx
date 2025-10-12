@@ -92,7 +92,7 @@ export function Step5({setSelectedImage}: Step5Props){
               • Once available, note down the endpoint, close to where you kept the Master password,
                 we will need it to test connections to the database through the appserver in the next step <br />
               <br />
-              •Essentially, to connect to the database you will need the following <br />
+              Essentially, to connect to the database you will need the following <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Endpoint</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Database name (in our case "db")</span> <br />
               <span className="text-sm md:text-sm lg:text-sm sm:text-sm">- Master username (in our case "adminuser")</span> <br />
@@ -107,7 +107,7 @@ export function Step5({setSelectedImage}: Step5Props){
                 <p className="text-xs text-muted-foreground sm:text-xs md:text-xs lg:text-xs mb-2">The part of the Cloudformation code that creates
                  the Database as dicussed above<br/>
                 Uploading only this part to Cloudformation will fail to create unless the VPC and Subnets from Step 1 are already created <br />
-                Append this code to the code from Step 1 and Step 2 to make it work, and ensure the indentations are correct
+                Append this code to the code from Step 1 through Step 4 to make it work, and ensure the indentations are correct
                 </p>
                 <div className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto mb-4">
                   <ReadMore>
