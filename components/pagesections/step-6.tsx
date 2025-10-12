@@ -90,8 +90,8 @@ export function Step6({setSelectedImage}: Step6Props){
             <ImageContainer src="./upload-keypair-to-bastion.png" 
             alt="Upload the key pair pem file to the Bastion Host" selectedImage={setSelectedImage}/>
             <Paragraph>
-              Let's ssh into the Web server and copy the html file the 
-              /var/www/html directory so that it can serve the webpage <br />
+              Let's ssh into the Web server and copy the html file to 
+              /var/www/html/ so that it can serve the webpage <br />
               <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
                 <span className="text-muted-foreground mb-1 block">
                   ssh -i YOUR-KEY-PAIR.pem ec2-user@YOUR-WEB-SERVER-PUBLIC-IP
@@ -116,7 +116,7 @@ export function Step6({setSelectedImage}: Step6Props){
             alt="Webpage served by the web server" selectedImage={setSelectedImage}/>
 
             <Paragraph>
-              Now let's test if the App server can communicate with the Database server <br />
+              Now let's test if the App server can communicate with the Database <br />
               Exit the web server instance by running "exit" command <br />
               And then ssh into the Bastion Host instance <br />
               <span className="bg-muted p-3 sm:p-4 rounded font-mono text-xs sm:text-sm block w-fit">
@@ -144,7 +144,7 @@ export function Step6({setSelectedImage}: Step6Props){
                 <span className="text-muted-foreground mb-1 block">mysql -h YOUR-DATABASE-ENDPOINT -u MASTER-USERNAME -p DATABASE-NAME</span>
               </span> <br />
               Go to the RDS Dashboard and copy the Database Endpoint value if you didn't note it somewhere earlier<br />
-             Enter the password for the database <br />
+             Enter the master password for the database at the prompt<br />
               If you see the MariaDB prompt it means the App server can communicate with the Database server <br />
             </Paragraph>
             <ImageContainer src="./app-server-mysql-prompt.png" 
